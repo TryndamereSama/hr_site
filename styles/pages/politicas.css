@@ -1,0 +1,21 @@
+/* ============================================================
+   MC1 HUB — Políticas & Documentos Page Styles
+   ============================================================ */
+
+.card-document {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card-document:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive document card */
+@media (max-width: 640px) {
+  .card-document .card-body {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+  .card-document .btn { width: 100%; justify-content: center; }
+}

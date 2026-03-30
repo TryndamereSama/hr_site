@@ -1,0 +1,72 @@
+/* ============================================================
+   MC1 HUB — Notícias Page Styles
+   ============================================================ */
+
+/* ─── Article Hero ─── */
+.article-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Article Layout ─── */
+.article-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* ─── Article Content ─── */
+.article-content h3 {
+  font-size: var(--text-title-lg);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+  color: var(--color-on-surface);
+}
+
+.article-content p {
+  font-size: var(--text-body-lg);
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--space-5);
+  max-width: none;
+}
+
+.article-content ul {
+  padding-left: var(--space-5);
+  margin: var(--space-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.article-content li {
+  font-size: var(--text-body-lg);
+  color: var(--color-on-surface-variant);
+  list-style: disc;
+}
+
+/* ─── Sidebar ─── */
+.article-sidebar {
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--space-6));
+}
+
+.sidebar-news-card {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.sidebar-news-card:hover {
+  background: var(--color-surface-container-low);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .article-layout { grid-template-columns: 1fr; }
+  .article-sidebar { position: static; }
+}

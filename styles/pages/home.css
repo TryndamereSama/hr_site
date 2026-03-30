@@ -1,0 +1,277 @@
+/* ============================================================
+   MC1 HUB — Home Page Styles
+   ============================================================ */
+
+/* ─── Hero ─── */
+.hero-section {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--color-on-surface);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 70% 50%, rgba(0, 100, 148, 0.45) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 20% 80%, rgba(0, 75, 113, 0.3) 0%, transparent 60%),
+    linear-gradient(160deg, #0d1f33 0%, #1b1b1d 50%, #0a1628 100%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+}
+
+/* ─── Hero Text ─── */
+.hero-text {}
+
+.hero-headline {
+  font-size: var(--text-display-lg);
+  font-weight: var(--weight-extrabold);
+  color: white;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: var(--space-5) 0;
+}
+
+.hero-accent {
+  font-style: normal;
+  background: linear-gradient(90deg, #5ba8d4, #bfe0f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: var(--leading-relaxed);
+  max-width: 46ch;
+  margin-bottom: var(--space-8);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn-ghost {
+  color: rgba(255,255,255,0.85);
+  outline-color: rgba(255,255,255,0.25);
+}
+
+.hero-actions .btn-ghost:hover {
+  background: rgba(255,255,255,0.08);
+  outline-color: rgba(255,255,255,0.4);
+}
+
+/* ─── Hero Visual ─── */
+.hero-visual {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.hero-orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 100, 148, 0.35);
+  top: 10%;
+  right: 10%;
+}
+
+.hero-orb-2 {
+  width: 200px;
+  height: 200px;
+  background: rgba(191, 224, 245, 0.15);
+  bottom: 10%;
+  left: 20%;
+}
+
+.hero-card-float {
+  position: absolute;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-5);
+  outline: 1px solid rgba(255,255,255,0.12);
+  max-width: 240px;
+}
+
+.hero-card-1 {
+  top: 15%;
+  right: 5%;
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+.hero-card-2 {
+  bottom: 20%;
+  left: 5%;
+  animation: floatUp 4s ease-in-out infinite reverse;
+  animation-delay: 1.5s;
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ─── Quick Links ─── */
+.quick-links-row {
+  gap: var(--space-3);
+}
+
+.card-quick-link {
+  min-width: 100px;
+  background: var(--color-surface-lowest);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card-quick-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── Stats ─── */
+.stats-section {
+  padding-block: var(--space-12);
+  background: var(--color-surface-lowest);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+/* ─── Benefit Mini Card ─── */
+.benefit-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  background: var(--color-surface-lowest);
+  border-radius: var(--radius-xl);
+  min-width: 120px;
+  max-width: 140px;
+  text-align: center;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.benefit-mini-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── Calendar Callout ─── */
+.calendar-callout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  background: var(--color-surface-lowest);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  box-shadow: var(--shadow-md);
+}
+
+.calendar-callout-content {}
+
+/* ─── Mini Calendar ─── */
+.calendar-mini {
+  background: var(--color-surface-container-low);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  max-width: 280px;
+  margin-inline: auto;
+}
+
+.cal-header {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-on-surface);
+  text-align: center;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-outline-subtle);
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day-head {
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-on-surface-muted);
+  text-align: center;
+  padding: 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cal-day {
+  font-size: 12px;
+  color: var(--color-on-surface-variant);
+  text-align: center;
+  padding: 5px 2px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.cal-day-empty { color: transparent; }
+
+.cal-day-today {
+  background: var(--color-primary);
+  color: white;
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-full);
+}
+
+.cal-day-holiday {
+  background: var(--color-warning-container);
+  color: var(--color-warning);
+  font-weight: var(--weight-semibold);
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .hero-content   { grid-template-columns: 1fr; gap: var(--space-8); }
+  .hero-visual    { display: none; }
+  .hero-section   { min-height: 70vh; }
+  .stats-grid     { grid-template-columns: repeat(2, 1fr); }
+  .calendar-callout { grid-template-columns: 1fr; }
+  .calendar-callout-visual { display: none; }
+}
+
+@media (max-width: 640px) {
+  .stats-grid     { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  .hero-headline  { font-size: 2.25rem; }
+  .hero-section   { min-height: 80vh; }
+}

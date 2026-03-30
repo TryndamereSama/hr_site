@@ -1,0 +1,102 @@
+/* ============================================================
+   MC1 HUB — Typography System
+   ============================================================ */
+
+/* ─── Scale ─── */
+:root {
+  --text-xs:         0.75rem;    /* 12px */
+  --text-sm:         0.875rem;   /* 14px */
+  --text-base:       1rem;       /* 16px */
+  --text-lg:         1.125rem;   /* 18px */
+  --text-xl:         1.25rem;    /* 20px */
+  --text-2xl:        1.5rem;     /* 24px */
+  --text-title-md:   1.125rem;   /* 18px  – sub-headers */
+  --text-title-lg:   1.375rem;   /* 22px  – card titles */
+  --text-headline-md: 1.625rem;  /* 26px */
+  --text-headline-lg: 2rem;      /* 32px  – section titles */
+  --text-display-sm: 2.5rem;     /* 40px */
+  --text-display-md: 3rem;       /* 48px */
+  --text-display-lg: 3.5rem;     /* 56px  – hero */
+  --text-display-xl: 4.5rem;     /* 72px  – max hero */
+
+  --text-body-md:    0.875rem;   /* 14px  – standard body */
+  --text-body-lg:    1rem;       /* 16px  – body large */
+  --text-label-sm:   0.6875rem;  /* 11px */
+  --text-label-md:   0.75rem;    /* 12px  – labels, tags */
+  --text-label-lg:   0.8125rem;  /* 13px */
+
+  /* Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+
+  /* Line heights */
+  --leading-tight:   1.2;
+  --leading-snug:    1.35;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose:   1.8;
+}
+
+/* ─── Headings ─── */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-on-surface);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--text-display-lg); }
+h2 { font-size: var(--text-headline-lg); }
+h3 { font-size: var(--text-title-lg); }
+h4 { font-size: var(--text-title-md); }
+h5 { font-size: var(--text-base); }
+h6 { font-size: var(--text-sm); }
+
+/* ─── Utility Classes ─── */
+.display-xl  { font-size: var(--text-display-xl);  font-weight: var(--weight-extrabold); line-height: var(--leading-tight); letter-spacing: -0.03em; }
+.display-lg  { font-size: var(--text-display-lg);  font-weight: var(--weight-bold);      line-height: var(--leading-tight); letter-spacing: -0.025em; }
+.display-md  { font-size: var(--text-display-md);  font-weight: var(--weight-bold);      line-height: var(--leading-tight); letter-spacing: -0.02em; }
+.display-sm  { font-size: var(--text-display-sm);  font-weight: var(--weight-bold);      line-height: var(--leading-snug);  letter-spacing: -0.02em; }
+.headline-lg { font-size: var(--text-headline-lg); font-weight: var(--weight-bold);      line-height: var(--leading-snug);  letter-spacing: -0.015em; }
+.headline-md { font-size: var(--text-headline-md); font-weight: var(--weight-semibold);  line-height: var(--leading-snug);  letter-spacing: -0.01em; }
+.title-lg    { font-size: var(--text-title-lg);    font-weight: var(--weight-semibold);  line-height: var(--leading-snug); }
+.title-md    { font-size: var(--text-title-md);    font-weight: var(--weight-semibold);  line-height: var(--leading-normal); }
+.body-lg     { font-size: var(--text-body-lg);     font-weight: var(--weight-regular);   line-height: var(--leading-relaxed); }
+.body-md     { font-size: var(--text-body-md);     font-weight: var(--weight-regular);   line-height: var(--leading-relaxed); }
+.label-lg    { font-size: var(--text-label-lg);    font-weight: var(--weight-medium);    line-height: var(--leading-normal); letter-spacing: 0.02em; }
+.label-md    { font-size: var(--text-label-md);    font-weight: var(--weight-medium);    line-height: var(--leading-normal); letter-spacing: 0.03em; text-transform: uppercase; }
+.label-sm    { font-size: var(--text-label-sm);    font-weight: var(--weight-medium);    line-height: var(--leading-normal); letter-spacing: 0.04em; text-transform: uppercase; }
+
+/* ─── Color utilities ─── */
+.text-primary         { color: var(--color-primary); }
+.text-on-surface      { color: var(--color-on-surface); }
+.text-muted           { color: var(--color-on-surface-variant); }
+.text-faint           { color: var(--color-on-surface-muted); }
+.text-on-primary      { color: var(--color-on-primary); }
+.text-success         { color: var(--color-success); }
+.text-warning         { color: var(--color-warning); }
+.text-error           { color: var(--color-error); }
+
+/* ─── Paragraph ─── */
+p {
+  font-size: var(--text-body-lg);
+  color: var(--color-on-surface-variant);
+  line-height: var(--leading-relaxed);
+  max-width: 68ch;
+}
+
+/* ─── Responsive hero text ─── */
+@media (max-width: 1024px) {
+  .display-xl { font-size: var(--text-display-md); }
+  .display-lg { font-size: var(--text-display-sm); }
+}
+
+@media (max-width: 640px) {
+  .display-xl { font-size: 2.25rem; }
+  .display-lg { font-size: 2rem; }
+  .headline-lg { font-size: 1.5rem; }
+}

@@ -1,0 +1,16 @@
+/* ============================================================
+   MC1 HUB — Contato Page Styles
+   ============================================================ */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,132 @@
+/* ============================================================
+   MC1 HUB — Layout & Grid System
+   ============================================================ */
+
+/* ─── Container ─── */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+.container-sm  { max-width: 800px;  margin-inline: auto; padding-inline: var(--space-8); }
+.container-md  { max-width: 1024px; margin-inline: auto; padding-inline: var(--space-8); }
+.container-lg  { max-width: 1280px; margin-inline: auto; padding-inline: var(--space-8); }
+.container-xl  { max-width: 1440px; margin-inline: auto; padding-inline: var(--space-8); }
+
+@media (max-width: 768px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl { padding-inline: var(--space-5); }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl { padding-inline: var(--space-4); }
+}
+
+/* ─── Section Spacing ─── */
+.section        { padding-block: var(--space-20); }
+.section-sm     { padding-block: var(--space-12); }
+.section-lg     { padding-block: var(--space-32); }
+.section-header { margin-bottom: var(--space-12); }
+
+/* ─── Grid System ─── */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid-2   { display: grid; grid-template-columns: repeat(2, 1fr);                   gap: var(--space-6); }
+.grid-3   { display: grid; grid-template-columns: repeat(3, 1fr);                   gap: var(--space-6); }
+.grid-4   { display: grid; grid-template-columns: repeat(4, 1fr);                   gap: var(--space-6); }
+.grid-auto{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-6); }
+.grid-auto-sm { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); }
+
+/* ─── Flex Utilities ─── */
+.flex         { display: flex; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap    { flex-wrap: wrap; }
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+
+/* ─── Horizontal Scroll Row ─── */
+.scroll-row {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-row::-webkit-scrollbar { display: none; }
+.scroll-row > * { flex: 0 0 auto; }
+
+/* ─── Responsive Grid Collapse ─── */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid-4,
+  .grid-3,
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ─── Spacing Utilities ─── */
+.mt-4  { margin-top:    var(--space-4);  }
+.mt-6  { margin-top:    var(--space-6);  }
+.mt-8  { margin-top:    var(--space-8);  }
+.mt-12 { margin-top:    var(--space-12); }
+.mb-4  { margin-bottom: var(--space-4);  }
+.mb-6  { margin-bottom: var(--space-6);  }
+.mb-8  { margin-bottom: var(--space-8);  }
+.mb-12 { margin-bottom: var(--space-12); }
+.mb-16 { margin-bottom: var(--space-16); }
+.p-6   { padding:       var(--space-6);  }
+.p-8   { padding:       var(--space-8);  }
+.px-6  { padding-inline: var(--space-6); }
+.py-4  { padding-block:  var(--space-4); }
+.py-6  { padding-block:  var(--space-6); }
+
+/* ─── Display Utilities ─── */
+.hidden         { display: none !important; }
+.sr-only        { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+.text-center    { text-align: center; }
+.text-left      { text-align: left; }
+.w-full         { width: 100%; }
+.h-full         { height: 100%; }
+.overflow-hidden{ overflow: hidden; }
+.relative       { position: relative; }
+.absolute       { position: absolute; }
+
+/* ─── Page Content Area ─── */
+.page-enter {
+  animation: pageEnter var(--transition-slow) ease both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-exit {
+  animation: pageExit 150ms ease both;
+}
+
+@keyframes pageExit {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

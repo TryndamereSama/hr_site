@@ -1,0 +1,23 @@
+/* ============================================================
+   MC1 HUB — Links Úteis Page Styles
+   ============================================================ */
+
+.card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-link .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  #links-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  #links-grid { grid-template-columns: 1fr; }
+}

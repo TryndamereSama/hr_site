@@ -1,0 +1,19 @@
+/* ============================================================
+   MC1 HUB — Treinamentos Page Styles
+   ============================================================ */
+
+.card-course {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-course .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-course .card-body .btn {
+  margin-top: auto;
+}
