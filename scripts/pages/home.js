@@ -56,30 +56,6 @@ export function renderHome(container) {
       </div>
     </section>
 
-    <!-- ═══ STATS STRIP ═══ -->
-    <section class="stats-section" aria-label="Estatísticas">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card" data-reveal>
-            <span class="stat-number" data-count="9" data-suffix="">0</span>
-            <span class="stat-label">Benefícios ativos</span>
-          </div>
-          <div class="stat-card" data-reveal data-reveal-delay="100">
-            <span class="stat-number" data-count="5" data-suffix="">0</span>
-            <span class="stat-label">Manuais disponíveis</span>
-          </div>
-          <div class="stat-card" data-reveal data-reveal-delay="200">
-            <span class="stat-number" data-count="6" data-suffix="">0</span>
-            <span class="stat-label">Treinamentos disponíveis</span>
-          </div>
-          <div class="stat-card" data-reveal data-reveal-delay="300">
-            <span class="stat-number" data-count="14" data-suffix="">0</span>
-            <span class="stat-label">Links corporativos</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ═══ FEATURED NEWS ═══ -->
     <section class="section" aria-labelledby="news-heading">
       <div class="container">
