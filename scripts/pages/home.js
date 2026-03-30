@@ -46,7 +46,7 @@ export function renderHome(container) {
             </div>
             <div class="hero-card-float hero-card-2">
               <div style="font-size:11px;font-weight:500;color:#5ba8d4;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase">SINDPD 2026</div>
-              <div style="font-size:13px;font-weight:600;color:white">Reajuste de 5,5% aprovado</div>
+              <div style="font-size:13px;font-weight:600;color:white">Reajuste de 4% aprovado</div>
             </div>
             <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
             <div class="hero-orb hero-orb-2" aria-hidden="true"></div>

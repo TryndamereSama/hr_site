@@ -3,20 +3,36 @@ export const noticias = [
   {
     id: 'convencao-sindpd-2026',
     title: 'Convenção SINDPD 2026 — Tudo que você precisa saber',
-    excerpt: 'A convenção coletiva do SINDPD para 2026 foi finalizada. Confira os principais pontos acordados que impactam sua jornada de trabalho e remuneração.',
+    excerpt: 'A Convenção Coletiva do SINDPD-SP para 2026 foi divulgada. Reajuste de 4%, novo piso salarial de R$ 2.500, licença paternidade ampliada e mais. Confira tudo.',
     body: `
-      <p>A convenção coletiva do Sindicato dos Trabalhadores em Tecnologia da Informação (SINDPD) para o ano de 2026 foi oficialmente homologada. Este documento estabelece as condições de trabalho, benefícios e reajustes salariais que se aplicam a todos os colaboradores da MC1 Global.</p>
-      <h3>Principais pontos da convenção</h3>
-      <p>O reajuste salarial acordado é de <strong>5,5%</strong>, aplicado retroativamente a partir de 1º de janeiro de 2026. Este índice supera a inflação do período, garantindo ganho real para todos os colaboradores enquadrados na convenção.</p>
-      <p>Além do reajuste, foram mantidos e ampliados os seguintes benefícios:</p>
+      <p>O Sindpd-SP (Sindicato dos Trabalhadores em Tecnologia da Informação de São Paulo) divulgou os principais pontos da Convenção Coletiva de Trabalho para o ano de 2026. Confira abaixo tudo que você precisa saber.</p>
+
+      <h3>Reajuste Salarial 2026</h3>
+      <p>Os salários com data-base em 12/2025 serão reajustados em <strong>4% (quatro por cento)</strong>, retroativo a 01/01/2026.</p>
+      <p>A MC1, por liberalidade, já havia antecipado <strong>3% (três por cento)</strong> na folha de pagamento de janeiro/2026. Dessa forma, a diferença de <strong>1% (um por cento)</strong> será aplicada na folha de fevereiro/2026.</p>
+      <p>Ressaltamos que os colaboradores admitidos ao longo de 2025 terão o reajuste aplicado de forma proporcional ao tempo de trabalho.</p>
+
+      <h3>Novo Piso Salarial 2026</h3>
+      <p>O novo piso salarial normativo passa a ser <strong>R$ 2.500,00</strong>.</p>
+
+      <h3>Reajuste Auxílio Creche</h3>
       <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li>Vale refeição/alimentação com atualização de 8% no valor</li>
-        <li>Manutenção do regime de trabalho híbrido como padrão</li>
-        <li>Ampliação da cobertura do plano de saúde</li>
-        <li>Novo adicional de produtividade para equipes de tecnologia</li>
+        <li>Crianças até 24 meses: <strong>R$ 720,00</strong></li>
+        <li>Crianças até 6 anos (5 anos e 11 meses): <strong>R$ 630,00</strong></li>
       </ul>
-      <h3>Próximos passos</h3>
-      <p>O RH está processando os ajustes na folha de pagamento. Os valores retroativos serão pagos na próxima competência. Qualquer dúvida, entre em contato com o RH através da página de contatos.</p>
+
+      <h3>Auxílio para Filhos com Deficiência</h3>
+      <p>Novo valor: <strong>R$ 900,00 (novecentos reais)</strong>.</p>
+
+      <h3>Licença Paternidade</h3>
+      <p>A licença paternidade passa a ser de <strong>10 (dez) dias úteis</strong> em 2026. Em 2027, passa a ser de <strong>12 (doze) dias úteis</strong>.</p>
+
+      <h3>Reajustes em 2027</h3>
+      <p>Já está definido que o reajuste salarial para 2027 será com base no <strong>INPC acumulado de 2026, acrescido de mais 1% (um por cento)</strong>. Todas as cláusulas da convenção que mencionam valores serão reajustadas por este índice.</p>
+
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong> ou acesse a página de <a href="#/contato" style="color: var(--color-primary); font-weight: 600;">Contato</a>.
+      </p>
     `,
     category: 'Sindicato',
     tag: 'sindpd',
