@@ -73,12 +73,61 @@ export const noticias = [
     featured: true,
   },
   {
+    id: 'aniversariantes-marco-2026',
+    title: 'Parabéns aos Aniversariantes de Março! 🎂',
+    excerpt: 'Março chegou cheio de comemorações! Confira os colegas que fazem aniversário este mês e celebre com eles.',
+    body: `
+      <img src="assets/images/Birhtday 03.2026.png" alt="Aniversariantes de Março 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em março de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
+      <h3>Day Off de Aniversário</h3>
+      <p>Nossa política de Day Off de Aniversário garante que cada colaborador possa comemorar seu dia especial com um dia de folga próximo à data. Consulte seu gestor e o RH para agendar o seu day off.</p>
+      <h3>Como funciona o Day Off</h3>
+      <p>O day off de aniversário pode ser utilizado no próprio dia do aniversário ou em até 7 dias úteis antes ou após a data. Basta alinhar com seu gestor e registrar no sistema Ahgora.</p>
+      <p>Que 2026 seja repleto de conquistas, saúde e realizações para todos! 🎉</p>
+    `,
+    category: 'Celebração',
+    tag: 'celebracao',
+    tagLabel: 'Celebração',
+    date: '2026-03-05',
+    dateLabel: '5 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/Birhtday 03.2026.png',
+    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+    featured: false,
+  },
+  {
+    id: 'aniversariantes-fevereiro-2026',
+    title: 'Parabéns aos Aniversariantes de Fevereiro! 🎂',
+    excerpt: 'Fevereiro chegou cheio de comemorações! Confira os colegas que fazem aniversário este mês e celebre com eles.',
+    body: `
+      <img src="assets/images/Birhtday 02.2026.png" alt="Aniversariantes de Fevereiro 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em fevereiro de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
+      <h3>Day Off de Aniversário</h3>
+      <p>Nossa política de Day Off de Aniversário garante que cada colaborador possa comemorar seu dia especial com um dia de folga próximo à data. Consulte seu gestor e o RH para agendar o seu day off.</p>
+      <h3>Como funciona o Day Off</h3>
+      <p>O day off de aniversário pode ser utilizado no próprio dia do aniversário ou em até 7 dias úteis antes ou após a data. Basta alinhar com seu gestor e registrar no sistema Ahgora.</p>
+      <p>Que 2026 seja repleto de conquistas, saúde e realizações para todos! 🎉</p>
+    `,
+    category: 'Celebração',
+    tag: 'celebracao',
+    tagLabel: 'Celebração',
+    date: '2026-02-05',
+    dateLabel: '5 de fevereiro de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/Birhtday 02.2026.png',
+    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+    featured: false,
+  },
+  {
     id: 'aniversariantes-janeiro-2026',
     title: 'Parabéns aos Aniversariantes de Janeiro! 🎂',
-    excerpt: 'Janeiro chegou cheio de comemorações! Confira a lista dos colegas que fazem aniversário este mês e celebre com eles.',
+    excerpt: 'Janeiro chegou cheio de comemorações! Confira os colegas que fazem aniversário este mês e celebre com eles.',
     body: `
+      <img src="assets/images/Birhtday 01.2026.png" alt="Aniversariantes de Janeiro 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
       <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em janeiro de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
-      <h3>Aniversariantes do mês</h3>
+      <h3>Day Off de Aniversário</h3>
       <p>Nossa política de Day Off de Aniversário garante que cada colaborador possa comemorar seu dia especial com um dia de folga próximo à data. Consulte seu gestor e o RH para agendar o seu day off.</p>
       <h3>Como funciona o Day Off</h3>
       <p>O day off de aniversário pode ser utilizado no próprio dia do aniversário ou em até 7 dias úteis antes ou após a data. Basta alinhar com seu gestor e registrar no sistema Ahgora.</p>
@@ -91,7 +140,7 @@ export const noticias = [
     dateLabel: '8 de janeiro de 2026',
     author: 'Equipe RH',
     readTime: '2 min',
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1400&q=80',
+    image: 'assets/images/Birhtday 01.2026.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
   },
