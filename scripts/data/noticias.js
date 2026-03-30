@@ -1,5 +1,94 @@
 // MC1 HUB — News Articles Data
 export const noticias = [
+  // ─── 2026-03-20 ───
+  {
+    id: 'canal-speak-up-safely-2026',
+    title: 'Canal Speak Up Safely MC1 — Agora Disponível',
+    excerpt: 'O canal de relatos confidenciais Speak Up Safely já está disponível para todos os colaboradores. Saiba como acessar e quando utilizar.',
+    body: `
+      <img src="assets/images/17- Canal Speak Up Safely MC1.png" alt="Canal Speak Up Safely MC1" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>O canal de relatos confidenciais <strong>Speak Up Safely</strong> da MC1 Global está oficialmente disponível a partir de hoje.</p>
+      <h3>Como Acessar</h3>
+      <p>Para registrar um relato, envie um e-mail para: <strong>relato.mc1@neivadelima.com.br</strong></p>
+      <h3>Confidencialidade</h3>
+      <p>Todos os relatos são tratados com total confidencialidade. O canal é gerenciado de forma independente, garantindo a segurança e o anonimato de quem reporta.</p>
+      <h3>Quando Utilizar</h3>
+      <p>Utilize o canal para reportar situações que envolvam condutas inadequadas, violações de políticas, ou quaisquer preocupações éticas que você não se sinta confortável em tratar pelos canais tradicionais.</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'Comunicado',
+    tag: 'comunicado',
+    tagLabel: 'Comunicado',
+    date: '2026-03-20',
+    dateLabel: '20 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/17- Canal Speak Up Safely MC1.png',
+    gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
+    featured: false,
+  },
+  // ─── 2026-03-19 ───
+  {
+    id: 'speak-up-safely-2026',
+    title: 'Speak Up Safely MC1 — Novo Canal de Relatos Confidenciais',
+    excerpt: 'A MC1 Global está lançando o Speak Up Safely, um canal confidencial para relatos. A apresentação oficial acontece amanhã, 20/03, às 11h (BRT).',
+    body: `
+      <img src="assets/images/16- Speak Up Safely MC1.png" alt="Speak Up Safely MC1" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>A MC1 Global está lançando o <strong>Speak Up Safely</strong>, um canal confidencial de relatos para todos os colaboradores.</p>
+      <h3>Apresentação Oficial</h3>
+      <p>Amanhã, <strong>20 de março de 2026</strong>, realizaremos a apresentação oficial do canal. O evento será:</p>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>Data:</strong> 20/03/2026</li>
+        <li><strong>Horário:</strong> 11h00 (BRT)</li>
+        <li><strong>Formato:</strong> Online</li>
+      </ul>
+      <h3>O que é o Speak Up Safely?</h3>
+      <p>O Speak Up Safely é um canal seguro e confidencial criado para que todos os colaboradores possam reportar preocupações, condutas inadequadas ou violações de políticas sem receio de retaliação.</p>
+      <p>Aguarde mais informações sobre o acesso ao canal após a apresentação oficial.</p>
+    `,
+    category: 'Comunicado',
+    tag: 'comunicado',
+    tagLabel: 'Comunicado',
+    date: '2026-03-19',
+    dateLabel: '19 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/16- Speak Up Safely MC1.png',
+    gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
+    featured: false,
+  },
+  // ─── 2026-03-16 ───
+  {
+    id: 'palestra-saude-mulher-2026',
+    title: 'Palestra Saúde da Mulher — Save the Date! 💜',
+    excerpt: 'Save the Date! No dia 18 de março, às 15h, acontece a palestra online sobre Saúde da Mulher com a enfermeira Tatyane de Andrade. Não perca!',
+    body: `
+      <img src="assets/images/15- Palestra Saúde da Mulher.png" alt="Palestra Saúde da Mulher" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>A MC1 Global convida todos os colaboradores para uma palestra especial sobre <strong>Saúde da Mulher</strong>.</p>
+      <h3>Detalhes do Evento</h3>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>Data:</strong> 18 de março de 2026</li>
+        <li><strong>Horário:</strong> 15h00 (BRT)</li>
+        <li><strong>Formato:</strong> Online</li>
+      </ul>
+      <h3>Sobre a Palestrante</h3>
+      <p><strong>Tatyane de Andrade</strong> — Enfermeira com <strong>12 anos de experiência</strong>, com pós-graduação em Urgência e Emergência, Ginecologia e Obstetrícia pelo Instituto Einstein. Uma profissional altamente qualificada para abordar os temas mais importantes relacionados à saúde feminina.</p>
+      <p>Salve a data na sua agenda e participe desta iniciativa de bem-estar promovida pela MC1! 💜</p>
+    `,
+    category: 'Bem-estar',
+    tag: 'bemestar',
+    tagLabel: 'Bem-estar',
+    date: '2026-03-16',
+    dateLabel: '16 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/15- Palestra Saúde da Mulher.png',
+    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+    featured: false,
+  },
+  // ─── 2026-03-15 ───
   {
     id: 'convencao-sindpd-2026',
     title: 'Convenção SINDPD 2026 — Tudo que você precisa saber',
@@ -45,21 +134,91 @@ export const noticias = [
     gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: true,
   },
+  // ─── 2026-03-13 ───
+  {
+    id: 'boas-vindas-gilberto-marquez',
+    title: 'Boas-vindas, Gilberto Márquez Ramírez! 👋',
+    excerpt: 'A MC1 Global dá as boas-vindas ao novo Diretor Comercial para México e América Central, Gilberto Márquez Ramírez, com 26 anos de experiência no setor.',
+    body: `
+      <img src="assets/images/14- Boas-Vindas Gilberto Márquez.png" alt="Boas-vindas Gilberto Márquez Ramírez" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>A MC1 Global tem o prazer de anunciar a chegada de <strong>Gilberto Márquez Ramírez</strong>, que assume o cargo de <strong>Diretor Comercial para México e América Central</strong>.</p>
+      <h3>Trajetória Profissional</h3>
+      <p>Gilberto traz consigo <strong>26 anos de experiência</strong> no setor de tecnologia e negócios, com passagens por empresas de grande relevância no mercado latino-americano:</p>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>Globant México</strong></li>
+        <li><strong>IDS Comercial</strong></li>
+        <li><strong>Teamcore Solutions</strong></li>
+      </ul>
+      <h3>Áreas de Atuação</h3>
+      <p>Sua expertise abrange os segmentos de <strong>CPG, Consumo, Serviços e Consultoria</strong>, trazendo uma visão estratégica e ampla experiência em desenvolvimento de negócios na região.</p>
+      <p>Sejam muito bem-vindo, Gilberto! Estamos muito felizes em tê-lo na equipe MC1. 🎉</p>
+    `,
+    category: 'Comunicado',
+    tag: 'comunicado',
+    tagLabel: 'Comunicado',
+    date: '2026-03-13',
+    dateLabel: '13 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/14- Boas-Vindas Gilberto Márquez.png',
+    gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
+    featured: false,
+  },
+  {
+    id: 'novo-informe-rendimentos-2025',
+    title: 'ATENÇÃO — Novo Informe de Rendimentos 2025',
+    excerpt: 'Um novo Informe de Rendimentos 2025 foi disponibilizado no Apdata. A retransmissão foi necessária por exigência do eSocial. Os valores totais não foram alterados.',
+    body: `
+      <img src="assets/images/13- ATENÇÃO NOVO Informe de Rendimentos 2025 (image1).png" alt="Novo Informe de Rendimentos 2025 - Parte 1" style="width:100%; border-radius:12px; margin-bottom:1rem;" />
+      <img src="assets/images/13- ATENÇÃO NOVO Informe de Rendimentos 2025 (image2).png" alt="Novo Informe de Rendimentos 2025 - Parte 2" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>Informamos que um <strong>novo Informe de Rendimentos 2025</strong> foi disponibilizado no portal Apdata. Esta retransmissão foi necessária em decorrência de uma exigência do <strong>eSocial</strong>, que requereu a retransmissão da DIRF.</p>
+      <h3>O que mudou?</h3>
+      <p>Os <strong>valores totais não foram alterados</strong>. A única mudança foi uma redistribuição no <strong>campo 07</strong> do informe, conforme orientação do eSocial.</p>
+      <h3>Por que é importante?</h3>
+      <p>Com o início do período de declaração do Imposto de Renda, é fundamental que você utilize o <strong>novo informe</strong> para sua declaração:</p>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>Início do prazo IR:</strong> 16 de março de 2026</li>
+        <li><strong>Fim do prazo IR:</strong> 29 de maio de 2026</li>
+      </ul>
+      <h3>Como acessar o novo Informe</h3>
+      <p>Acesse pelo mesmo portal Apdata:</p>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+        <li><strong>Usuário:</strong> Seu CPF</li>
+        <li><strong>Senha:</strong> Mesma do holerite</li>
+        <li><strong>Caminho:</strong> Dados Contratuais → Informe de Rendimentos → Ano: 2025</li>
+      </ul>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'RH',
+    tag: 'pagamento',
+    tagLabel: 'Pagamento',
+    date: '2026-03-13',
+    dateLabel: '13 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '3 min',
+    image: 'assets/images/13- ATENÇÃO NOVO Informe de Rendimentos 2025 (image1).png',
+    gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
+    featured: false,
+  },
+  // ─── 2026-03-10 ───
   {
     id: 'adiantamento-salarial-2026',
-    title: 'Adiantamento Salarial — Atualização Convenção SINDPD',
-    excerpt: 'Informamos que o adiantamento do reajuste salarial previsto na Convenção SINDPD 2026 será processado com as instruções detalhadas abaixo.',
+    title: 'Adiantamento Reajuste Salarial — Antecipação de 3% em Janeiro',
+    excerpt: 'As negociações da Convenção SINDPD/SEPROSP ainda não foram concluídas. A MC1, por liberalidade, antecipou 3% de reajuste na folha de janeiro/2026.',
     body: `
-      <p>Com a homologação da Convenção SINDPD 2026, o departamento de Recursos Humanos informa os procedimentos para o adiantamento do reajuste salarial.</p>
-      <h3>Cronograma de pagamento</h3>
-      <p>O adiantamento será efetuado conforme o seguinte cronograma:</p>
-      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li><strong>Parcela 1 (50%):</strong> Processada em abril de 2026</li>
-        <li><strong>Parcela 2 (50% restante):</strong> Processada em maio de 2026</li>
-      </ul>
+      <p>O departamento de Recursos Humanos informa que as negociações da <strong>Convenção Coletiva SINDPD/SEPROSP</strong> ainda não foram concluídas até o fechamento da folha de janeiro de 2026.</p>
+      <h3>Adiantamento por Liberalidade da MC1</h3>
+      <p>A MC1, por <strong>liberalidade</strong> e comprometimento com seus colaboradores, antecipou <strong>3% (três por cento)</strong> de reajuste salarial já na folha de pagamento de <strong>janeiro/2026</strong>.</p>
+      <h3>Acerto da Diferença</h3>
+      <p>Quando o índice definitivo da Convenção Coletiva for conhecido e homologado, a <strong>diferença será ajustada de forma retroativa</strong> a 01/01/2026, garantindo que todos os colaboradores recebam o valor correto.</p>
       <h3>Quem tem direito</h3>
-      <p>Todos os colaboradores com contrato ativo até 31 de dezembro de 2025 têm direito ao reajuste retroativo. Colaboradores admitidos em 2026 receberão o salário já corrigido.</p>
-      <p>Para dúvidas específicas sobre sua situação, entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.</p>
+      <p>Os colaboradores admitidos ao longo de <strong>2025</strong> terão o reajuste aplicado de forma <strong>proporcional ao tempo de trabalho</strong> no período.</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
     `,
     category: 'RH',
     tag: 'pagamento',
@@ -72,6 +231,30 @@ export const noticias = [
     gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
     featured: true,
   },
+  // ─── 2026-03-06 ───
+  {
+    id: 'dia-da-mulher-2026',
+    title: 'Feliz Dia da Mulher! 💜',
+    excerpt: 'Nossa homenagem a você, mulher, que é exemplo de amor, determinação e bravura! A MC1 Global celebra o Dia Internacional da Mulher.',
+    body: `
+      <img src="assets/images/11- Feliz dia da Mulher.png" alt="Feliz Dia da Mulher" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>Nossa homenagem a você, mulher, que é exemplo de <strong>amor, determinação e bravura!</strong></p>
+      <p>A MC1 Global celebra o <strong>Dia Internacional da Mulher</strong> reconhecendo e valorizando cada mulher que faz parte da nossa equipe. Vocês são fundamentais para o nosso crescimento e para a construção de um ambiente de trabalho mais diverso, inclusivo e humano.</p>
+      <p>Que este dia sirva de celebração, reflexão e renovação do compromisso com a igualdade, o respeito e as oportunidades para todas!</p>
+      <p>Feliz Dia da Mulher! 💜</p>
+    `,
+    category: 'Celebração',
+    tag: 'celebracao',
+    tagLabel: 'Celebração',
+    date: '2026-03-06',
+    dateLabel: '6 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '1 min',
+    image: 'assets/images/11- Feliz dia da Mulher.png',
+    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+    featured: false,
+  },
+  // ─── 2026-03-05 ───
   {
     id: 'aniversariantes-marco-2026',
     title: 'Parabéns aos Aniversariantes de Março! 🎂',
@@ -97,6 +280,131 @@ export const noticias = [
     featured: false,
   },
   {
+    id: 'programa-indicacao-2026',
+    title: 'Programa Indicação Amiga MC1 — Indique e Ganhe R$ 1.000',
+    excerpt: 'Conhece alguém que combina com a MC1? Sua indicação pode valer R$ 1.000,00! Veja como participar do Programa Indicação Amiga MC1.',
+    body: `
+      <img src="assets/images/12- Programa Indicação Amiga MC1 v2.png" alt="Programa Indicação Amiga MC1" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>O <strong>Programa Indicação Amiga MC1</strong> está de volta! Conhece alguém que combina com a MC1? Sua indicação pode valer <strong>R$ 1.000,00</strong>!</p>
+      <h3>Como participar</h3>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li>Identifique as vagas abertas no portal interno</li>
+        <li>Indique um candidato preenchendo o formulário de indicação</li>
+        <li>Acompanhe o processo seletivo do seu indicado</li>
+        <li>Receba o bônus após o período de experiência (90 dias)</li>
+      </ul>
+      <h3>Valor do Bônus</h3>
+      <p>O bônus para indicações aprovadas é de <strong>R$ 1.000,00 (mil reais)</strong>, pago após a conclusão do período de experiência do colaborador indicado.</p>
+      <p>Confira as vagas disponíveis no portal e comece a indicar seus talentos!</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'Programas',
+    tag: 'programas',
+    tagLabel: 'Programas',
+    date: '2026-03-05',
+    dateLabel: '5 de março de 2026',
+    author: 'Equipe RH',
+    readTime: '3 min',
+    image: 'assets/images/12- Programa Indicação Amiga MC1 v2.png',
+    gradient: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
+    featured: false,
+  },
+  // ─── 2026-02-27 ───
+  {
+    id: 'informe-rendimentos-2025',
+    title: 'Informe de Rendimentos 2025 — Disponível no Apdata',
+    excerpt: 'O Informe de Rendimentos 2025 já está disponível para consulta e download no portal Apdata. Veja o passo a passo para acessar o documento.',
+    body: `
+      <img src="assets/images/10 - Informe de Rendimentos 2025 (image1).png" alt="Informe de Rendimentos 2025 - Parte 1" style="width:100%; border-radius:12px; margin-bottom:1rem;" />
+      <img src="assets/images/10 - Informe de Rendimentos 2025 (image2).png" alt="Informe de Rendimentos 2025 - Parte 2" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>O <strong>Informe de Rendimentos 2025</strong> já está disponível para todos os colaboradores no portal Apdata. Utilize este documento para sua declaração do Imposto de Renda.</p>
+      <h3>Como acessar</h3>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+        <li><strong>Usuário:</strong> Seu CPF</li>
+        <li><strong>Senha:</strong> Mesma utilizada para acessar o holerite</li>
+        <li><strong>Caminho no menu:</strong> Dados Contratuais → Informe de Rendimentos</li>
+        <li><strong>Ano:</strong> 2025</li>
+      </ul>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Problemas para acessar? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'RH',
+    tag: 'pagamento',
+    tagLabel: 'Pagamento',
+    date: '2026-02-27',
+    dateLabel: '27 de fevereiro de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/10 - Informe de Rendimentos 2025 (image1).png',
+    gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
+    featured: false,
+  },
+  // ─── 2026-02-25 ───
+  {
+    id: 'plr-2025',
+    title: 'PLR 2025 — Pagamento por Liberalidade da MC1',
+    excerpt: 'As metas da PLR 2025 não foram atingidas. Mesmo assim, a MC1 pagará R$ 500,00 por liberalidade a todos os colaboradores CLT. Pagamento em 27/02/2026.',
+    body: `
+      <p>O departamento de Recursos Humanos informa os colaboradores sobre a <strong>PLR (Participação nos Lucros e Resultados) 2025</strong>.</p>
+      <h3>Resultado das Metas</h3>
+      <p>Informamos que as metas estabelecidas para a PLR 2025 <strong>não foram atingidas</strong>.</p>
+      <h3>Pagamento por Liberalidade</h3>
+      <p>Ainda assim, a MC1 Global, por <strong>liberalidade e comprometimento com seus colaboradores</strong>, realizará o pagamento de <strong>R$ 500,00 (quinhentos reais)</strong> a todos os colaboradores com contrato CLT ativo.</p>
+      <h3>Data de Pagamento</h3>
+      <p>O pagamento será realizado em <strong>27 de fevereiro de 2026</strong>.</p>
+      <h3>Proporcionalidade</h3>
+      <p>Colaboradores admitidos ao longo de 2025 receberão o valor de forma <strong>proporcional ao período trabalhado</strong> no ano.</p>
+      <h3>Associados ao Sindicato</h3>
+      <p>Colaboradores não associados ao SINDPD terão um <strong>desconto de 6%</strong> sobre o valor, conforme previsto na Convenção Coletiva.</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'RH',
+    tag: 'pagamento',
+    tagLabel: 'Pagamento',
+    date: '2026-02-25',
+    dateLabel: '25 de fevereiro de 2026',
+    author: 'Equipe RH',
+    readTime: '3 min',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
+    gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
+    featured: false,
+  },
+  // ─── 2026-02-13 ───
+  {
+    id: 'feriado-carnaval-2026',
+    title: 'Feriado de Carnaval 2026 — Comunicado Oficial',
+    excerpt: 'Terça-feira, 17/02, é feriado de Carnaval. Na Quarta-feira de Cinzas (18/02), as atividades têm início às 12h (BRT). Não há pontes oficiais.',
+    body: `
+      <p>O departamento de Recursos Humanos informa os colaboradores sobre as orientações para o período de <strong>Carnaval 2026</strong>.</p>
+      <h3>Feriado de Carnaval</h3>
+      <p>A <strong>terça-feira, 17 de fevereiro de 2026</strong>, é feriado de Carnaval, sendo considerado dia não útil para todos os colaboradores.</p>
+      <h3>Quarta-feira de Cinzas</h3>
+      <p>Na <strong>Quarta-feira de Cinzas, 18 de fevereiro de 2026</strong>, as atividades terão início às <strong>12h00 (horário de Brasília)</strong>.</p>
+      <h3>Pontes Facultativas</h3>
+      <p>Informamos que <strong>não há pontes oficiais</strong> determinadas pela empresa para este período. As áreas que desejarem fazer compensação de horas devem alinhar previamente com seus gestores, respeitando o banco de horas.</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'Calendário',
+    tag: 'calendario',
+    tagLabel: 'Calendário',
+    date: '2026-02-13',
+    dateLabel: '13 de fevereiro de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1400&q=80',
+    gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
+    featured: false,
+  },
+  // ─── 2026-02-05 ───
+  {
     id: 'aniversariantes-fevereiro-2026',
     title: 'Parabéns aos Aniversariantes de Fevereiro! 🎂',
     excerpt: 'Fevereiro chegou cheio de comemorações! Confira os colegas que fazem aniversário este mês e celebre com eles.',
@@ -120,6 +428,53 @@ export const noticias = [
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
   },
+  // ─── 2026-01-29 ───
+  {
+    id: 'calendario-2026',
+    title: 'Calendário de Feriados 2026 — Brasil, México, EUA e Grécia',
+    excerpt: 'O calendário oficial de feriados 2026 da MC1 Global já está disponível, contemplando as operações no Brasil (SP), México, EUA e Grécia. Confira as datas.',
+    body: `
+      <p>O calendário corporativo de feriados 2026 da MC1 Global já está disponível para consulta. Este documento contempla as operações em todos os países onde a empresa atua.</p>
+      <h3>Países contemplados</h3>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li>🇧🇷 <strong>Brasil (São Paulo)</strong></li>
+        <li>🇲🇽 <strong>México</strong></li>
+        <li>🇺🇸 <strong>Estados Unidos</strong></li>
+        <li>🇬🇷 <strong>Grécia</strong></li>
+      </ul>
+      <h3>Principais feriados nacionais — Brasil</h3>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li><strong>01/01</strong> — Confraternização Universal (Feriado Nacional)</li>
+        <li><strong>17/02</strong> — Carnaval (Feriado)</li>
+        <li><strong>03/04</strong> — Sexta-Feira Santa (Feriado Nacional)</li>
+        <li><strong>21/04</strong> — Tiradentes (Feriado Nacional)</li>
+        <li><strong>01/05</strong> — Dia do Trabalho (Feriado Nacional)</li>
+        <li><strong>07/09</strong> — Independência do Brasil (Feriado Nacional)</li>
+        <li><strong>12/10</strong> — Nossa Senhora Aparecida (Feriado Nacional)</li>
+        <li><strong>02/11</strong> — Finados (Feriado Nacional)</li>
+        <li><strong>15/11</strong> — Proclamação da República (Feriado Nacional)</li>
+        <li><strong>25/12</strong> — Natal (Feriado Nacional)</li>
+      </ul>
+      <h3>Pontes e Autonomia das Áreas</h3>
+      <p>Não há pontes oficiais determinadas pela empresa. Cada área tem autonomia para definir a compensação de horas, desde que alinhado com o gestor e registrado no banco de horas.</p>
+      <h3>Recesso de fim de ano</h3>
+      <p>O recesso de fim de ano será de 26 de dezembro de 2026 a 2 de janeiro de 2027. Os colaboradores que precisarem trabalhar nesse período devem alinhar previamente com seus gestores.</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Acesse o calendário completo na página de <a href="#/politicas" style="color: var(--color-primary); font-weight: 600;">Documentos</a>.
+      </p>
+    `,
+    category: 'Calendário',
+    tag: 'calendario',
+    tagLabel: 'Calendário',
+    date: '2026-01-29',
+    dateLabel: '29 de janeiro de 2026',
+    author: 'Equipe RH',
+    readTime: '4 min',
+    image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1400&q=80',
+    gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
+    featured: false,
+  },
+  // ─── 2026-01-08 ───
   {
     id: 'aniversariantes-janeiro-2026',
     title: 'Parabéns aos Aniversariantes de Janeiro! 🎂',
@@ -144,65 +499,37 @@ export const noticias = [
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
   },
+  // ─── 2026-01-02 ───
   {
-    id: 'programa-indicacao-2026',
-    title: 'Programa de Indicação MC1 — Indique e Ganhe',
-    excerpt: 'O Programa de Indicação está de volta para 2026! Indique talentos para vagas abertas e receba um bônus especial após a contratação e período de experiência.',
+    id: 'convencao-sindpd-2026-inicial',
+    title: 'Convenção SINDPD 2026 — Comunicado Inicial e Período de Oposição',
+    excerpt: 'Informamos o início do processo da Convenção Coletiva SINDPD 2026. O índice ainda não foi divulgado. O prazo para oposição à contribuição vai de 05/01 a 14/01/2026.',
     body: `
-      <p>O Programa de Indicação da MC1 Global é uma das formas mais eficientes de crescermos juntos. Quando você indica alguém de confiança, todos ganham: a empresa recebe um talento qualificado e você é recompensado!</p>
-      <h3>Como participar</h3>
+      <p>O departamento de Recursos Humanos informa os colaboradores sobre o início do processo da <strong>Convenção Coletiva de Trabalho SINDPD 2026</strong>.</p>
+      <h3>Índice de Reajuste</h3>
+      <p>O índice de reajuste salarial para 2026 <strong>ainda não foi divulgado</strong> pelo Sindicato. Assim que as negociações forem concluídas e o índice homologado, informaremos a todos os colaboradores.</p>
+      <h3>Período de Oposição à Contribuição Sindical</h3>
+      <p>Colaboradores que desejarem se <strong>opor ao desconto da contribuição sindical</strong> devem fazê-lo dentro do prazo estabelecido:</p>
       <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li>Acesse o portal de vagas internas e identifique as oportunidades abertas</li>
-        <li>Indique um candidato preenchendo o formulário de indicação</li>
-        <li>Acompanhe o processo seletivo do seu indicado</li>
-        <li>Receba o bônus após o período de experiência (90 dias)</li>
+        <li><strong>Início:</strong> 05 de janeiro de 2026</li>
+        <li><strong>Término:</strong> 14 de janeiro de 2026</li>
+        <li><strong>Horário:</strong> 09h às 17h</li>
       </ul>
-      <h3>Valores do bônus</h3>
-      <p>O valor do bônus varia conforme o nível da vaga indicada. Para vagas técnicas e de liderança, o bônus pode chegar a <strong>R$ 2.000</strong>. Para vagas operacionais, o valor é de <strong>R$ 500</strong>.</p>
-      <p>Confira as vagas disponíveis no portal e comece a indicar!</p>
+      <h3>Como formalizar a oposição</h3>
+      <p>A carta de oposição deve ser <strong>entregue pessoalmente</strong> ao RH dentro do prazo indicado. Não serão aceitas oposições enviadas por e-mail ou outros meios.</p>
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
     `,
-    category: 'Programas',
-    tag: 'programas',
-    tagLabel: 'Programas',
-    date: '2026-02-12',
-    dateLabel: '12 de fevereiro de 2026',
+    category: 'Sindicato',
+    tag: 'sindpd',
+    tagLabel: 'Sindicato',
+    date: '2026-01-02',
+    dateLabel: '2 de janeiro de 2026',
     author: 'Equipe RH',
     readTime: '3 min',
-    image: 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1400&q=80',
-    gradient: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
-    featured: false,
-  },
-  {
-    id: 'calendario-2026',
-    title: 'Calendário Corporativo 2026 — Feriados e Datas Importantes',
-    excerpt: 'O calendário oficial da MC1 Global para 2026 já está disponível! Confira todos os feriados nacionais, pontos facultativos e datas especiais do ano.',
-    body: `
-      <p>O calendário corporativo 2026 da MC1 Global já está disponível para consulta. Este documento é essencial para planejamento de férias, viagens e projetos ao longo do ano.</p>
-      <h3>Principais datas</h3>
-      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li><strong>01/01</strong> — Confraternização Universal (Feriado Nacional)</li>
-        <li><strong>02-03/03</strong> — Carnaval (Ponto Facultativo)</li>
-        <li><strong>03/04</strong> — Sexta-Feira Santa (Feriado Nacional)</li>
-        <li><strong>21/04</strong> — Tiradentes (Feriado Nacional)</li>
-        <li><strong>01/05</strong> — Dia do Trabalho (Feriado Nacional)</li>
-        <li><strong>07/09</strong> — Independência do Brasil (Feriado Nacional)</li>
-        <li><strong>12/10</strong> — Nossa Senhora Aparecida (Feriado Nacional)</li>
-        <li><strong>02/11</strong> — Finados (Feriado Nacional)</li>
-        <li><strong>15/11</strong> — Proclamação da República (Feriado Nacional)</li>
-        <li><strong>25/12</strong> — Natal (Feriado Nacional)</li>
-      </ul>
-      <h3>Recesso de fim de ano</h3>
-      <p>O recesso de fim de ano será de 26 de dezembro de 2026 a 2 de janeiro de 2027. Os colaboradores que precisarem trabalhar nesse período devem alinhar previamente com seus gestores.</p>
-    `,
-    category: 'Calendário',
-    tag: 'calendario',
-    tagLabel: 'Calendário',
-    date: '2026-01-20',
-    dateLabel: '20 de janeiro de 2026',
-    author: 'Equipe RH',
-    readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1400&q=80',
-    gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80',
+    gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: false,
   },
 ];
