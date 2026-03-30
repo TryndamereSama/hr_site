@@ -6,46 +6,82 @@ import { createCard } from '../../components/card.js';
 
 export function renderHome(container) {
   const news = getNoticiasRecentes(3);
+  const latestNews = news[0];
 
   container.innerHTML = `
-    <!-- ═══ HERO ═══ -->
-    <section class="hero-section" aria-label="Boas-vindas">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-content container">
-        <div class="hero-text" data-reveal>
-          <span class="chip chip-teal" style="margin-bottom: var(--space-5)">✦ MC1 Global · 2026</span>
-          <h1 class="display-lg hero-headline">
-            Seu espaço<br>no <em class="hero-accent">MC1 Hub.</em>
-          </h1>
-          <p class="hero-sub">
-            Um espaço criado para simplificar, conectar e evoluir a forma como vivemos o dia a dia na empresa.
-          </p>
-          <div class="hero-actions" data-reveal data-reveal-delay="200">
-            <a href="#/noticias" class="btn btn-primary btn-lg">
-              Ver Novidades
-              <svg width="18" height="18"><use href="#icon-arrow-right"/></svg>
-            </a>
-            <a href="#/rh" class="btn btn-ghost btn-lg">
-              Meus Benefícios
-            </a>
-          </div>
+    <!-- ═══ HERO CAROUSEL ═══ -->
+    <section class="hero-section" aria-label="Destaques">
+
+      <!-- Slide 1: Boas-vindas -->
+      <div class="hero-slide active" data-slide="0">
+        <div class="hero-bg" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
+               alt="" class="hero-bg-img" loading="eager" />
+          <div class="hero-bg-overlay"></div>
         </div>
-        <div class="hero-visual" data-reveal="right" data-reveal-delay="150" aria-hidden="true">
-          <div class="hero-card-float hero-card-1">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#004b71,#006494);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700">VF</div>
-              <span style="font-size:13px;font-weight:600;color:var(--color-on-surface)">Bom dia, Vitor!</span>
+        <div class="hero-content container">
+          <div class="hero-text" data-reveal>
+            <span class="chip chip-teal" style="margin-bottom: var(--space-5)">✦ MC1 Global · 2026</span>
+            <h1 class="display-lg hero-headline">
+              Seu espaço<br>no <em class="hero-accent">MC1 Hub.</em>
+            </h1>
+            <p class="hero-sub">
+              Um espaço criado para simplificar, conectar e evoluir a forma como vivemos o dia a dia na empresa.
+            </p>
+            <div class="hero-actions" data-reveal data-reveal-delay="200">
+              <a href="#/noticias" class="btn btn-primary btn-lg">
+                Ver Novidades
+                <svg width="18" height="18"><use href="#icon-arrow-right"/></svg>
+              </a>
+              <a href="#/rh" class="btn btn-ghost btn-lg">Meus Benefícios</a>
             </div>
-            <div style="font-size:12px;color:var(--color-on-surface-variant)">Você tem 1 day off disponível 🎂</div>
           </div>
-          <div class="hero-card-float hero-card-2">
-            <div style="font-size:11px;font-weight:500;color:var(--color-primary);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase">SINDPD 2026</div>
-            <div style="font-size:13px;font-weight:600;color:var(--color-on-surface)">Reajuste de 5,5% aprovado</div>
+          <div class="hero-visual" data-reveal="right" data-reveal-delay="150" aria-hidden="true">
+            <div class="hero-card-float hero-card-1">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#004b71,#006494);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700">VF</div>
+                <span style="font-size:13px;font-weight:600;color:white">Bom dia, Vitor!</span>
+              </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.7)">Você tem 1 day off disponível 🎂</div>
+            </div>
+            <div class="hero-card-float hero-card-2">
+              <div style="font-size:11px;font-weight:500;color:#5ba8d4;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase">SINDPD 2026</div>
+              <div style="font-size:13px;font-weight:600;color:white">Reajuste de 5,5% aprovado</div>
+            </div>
+            <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+            <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
           </div>
-          <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-          <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
         </div>
       </div>
+
+      <!-- Slide 2: Última Notícia -->
+      <div class="hero-slide" data-slide="1">
+        <div class="hero-bg" aria-hidden="true">
+          ${latestNews.image ? `<img src="${latestNews.image}" alt="" class="hero-bg-img" loading="eager" />` : ''}
+          <div class="hero-bg-overlay hero-bg-overlay-news" style="${!latestNews.image ? `background: ${latestNews.gradient};` : ''}"></div>
+        </div>
+        <div class="hero-news-content container">
+          <div class="hero-news-inner">
+            <span class="chip chip-teal" style="margin-bottom:var(--space-4)">📰 Última Notícia</span>
+            <p class="label-md" style="color:rgba(255,255,255,0.55); margin-bottom:var(--space-3)">${latestNews.dateLabel} · ${latestNews.tagLabel}</p>
+            <h2 class="display-lg hero-headline" style="max-width:20ch">${latestNews.title}</h2>
+            <p class="hero-sub">${latestNews.excerpt}</p>
+            <div class="hero-actions">
+              <a href="#/noticia/${latestNews.id}" class="btn btn-primary btn-lg" style="text-decoration:none">
+                Leia agora <svg width="18" height="18"><use href="#icon-arrow-right"/></svg>
+              </a>
+              <a href="#/noticias" class="btn btn-ghost btn-lg" style="text-decoration:none">Ver todas</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Dots -->
+      <div class="hero-dots" role="tablist" aria-label="Navegação do banner">
+        <button class="hero-dot active" data-slide="0" aria-label="Slide boas-vindas"></button>
+        <button class="hero-dot" data-slide="1" aria-label="Slide última notícia"></button>
+      </div>
+
     </section>
 
     <!-- ═══ QUICK ACCESS ═══ -->
@@ -154,11 +190,38 @@ export function renderHome(container) {
       tagLabel: n.tagLabel,
       dateLabel: n.dateLabel,
       gradient: n.gradient,
+      image: n.image,
       href: `#/noticia/${n.id}`,
       revealDelay: i * 100,
     });
     newsGrid.appendChild(card);
   });
+
+  // ─── Hero Carousel ───
+  (function () {
+    const slides = container.querySelectorAll('.hero-slide');
+    const dots   = container.querySelectorAll('.hero-dot');
+    let current  = 0;
+    let timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function start() { timer = setInterval(() => goTo(current + 1), 6000); }
+
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      clearInterval(timer);
+      goTo(parseInt(dot.dataset.slide));
+      start();
+    }));
+
+    start();
+  })();
 
   // ─── Benefits scroll row ───
   const benefitsRow = container.querySelector('#home-benefits-row');

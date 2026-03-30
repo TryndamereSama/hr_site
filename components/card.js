@@ -55,11 +55,14 @@ export function createCard(options = {}) {
 }
 
 // ─── News Card ───
-function buildNewsCard(card, { title, excerpt, tagLabel, dateLabel, gradient, href, revealDelay }) {
+function buildNewsCard(card, { title, excerpt, tagLabel, dateLabel, gradient, href, revealDelay, image }) {
   card.style.cursor = 'pointer';
+  const thumbContent = image
+    ? `<img src="${image}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />`
+    : `<svg width="40" height="40" style="color:rgba(255,255,255,0.5)"><use href="#icon-newspaper"/></svg>`;
   card.innerHTML = `
-    <div class="card-thumb" style="background: ${gradient}; min-height: 180px;">
-      <svg width="40" height="40" style="color:rgba(255,255,255,0.5)"><use href="#icon-newspaper"/></svg>
+    <div class="card-thumb" style="background: ${gradient}; min-height: 180px; position:relative; overflow:hidden;">
+      ${thumbContent}
     </div>
     <div class="card-body">
       ${tagLabel ? `<span class="chip chip-primary" style="margin-bottom: var(--space-3)">${tagLabel}</span>` : ''}
