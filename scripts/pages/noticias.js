@@ -61,6 +61,7 @@ export function renderNoticias(container) {
         tagLabel: n.tagLabel,
         dateLabel: n.dateLabel,
         gradient: n.gradient,
+        image: n.image,
         href: `#/noticia/${n.id}`,
         revealDelay: i * 80,
       });
@@ -104,8 +105,13 @@ export function renderNoticia(container, { id }) {
 
   container.innerHTML = `
     <!-- Article Hero -->
-    <div class="article-hero" style="background: ${noticia.gradient}">
-      <div class="container" style="padding-top:var(--space-20); padding-bottom:var(--space-16)">
+    <div class="article-hero" style="background: ${noticia.gradient}; position:relative; overflow:hidden;">
+      ${noticia.image ? `
+        <img src="${noticia.image}" alt="" loading="eager"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,15,30,0.88) 0%,rgba(10,25,45,0.80) 100%);"></div>
+      ` : ''}
+      <div class="container" style="position:relative;z-index:1;padding-top:var(--space-20); padding-bottom:var(--space-16)">
         <nav class="breadcrumb" aria-label="Caminho" style="color:rgba(255,255,255,0.7)">
           <a href="#/" style="color:rgba(255,255,255,0.7)">Home</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
@@ -145,7 +151,9 @@ export function renderNoticia(container, { id }) {
             <div style="display:flex; flex-direction:column; gap:var(--space-4)">
               ${others.map(n => `
                 <a href="#/noticia/${n.id}" class="sidebar-news-card">
-                  <div style="width:48px; height:48px; border-radius:var(--radius-md); background:${n.gradient}; flex-shrink:0"></div>
+                  <div style="width:56px;height:56px;border-radius:var(--radius-md);background:${n.gradient};flex-shrink:0;overflow:hidden;position:relative;">
+                    ${n.image ? `<img src="${n.image}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />` : ''}
+                  </div>
                   <div>
                     <p style="font-size:var(--text-sm); font-weight:600; color:var(--color-on-surface); line-height:1.4; margin-bottom:4px">${n.title}</p>
                     <span class="label-md text-faint">${n.dateLabel}</span>
