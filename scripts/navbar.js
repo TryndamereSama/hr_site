@@ -30,9 +30,51 @@ export function initNavbar() {
           <li><a href="#/noticias" class="nav-link">
             <svg width="16" height="16"><use href="#icon-newspaper"/></svg>Notícias
           </a></li>
-          <li><a href="#/rh" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-heart"/></svg>RH
-          </a></li>
+
+          <!-- Departamentos Dropdown -->
+          <li class="nav-item-dropdown" id="nav-dept-item">
+            <button class="nav-dropdown-trigger" id="nav-dept-trigger" aria-haspopup="true" aria-expanded="false">
+              <svg width="16" height="16"><use href="#icon-users"/></svg>
+              Departamentos
+              <svg class="dropdown-chevron" width="13" height="13"><use href="#icon-chevron-right"/></svg>
+            </button>
+            <ul class="nav-dropdown" id="nav-dept-menu" role="menu">
+              <li role="none">
+                <a href="#/rh" class="nav-link nav-dropdown-item" role="menuitem">
+                  <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#004b71,#006494)">
+                    <svg width="16" height="16"><use href="#icon-heart"/></svg>
+                  </div>
+                  <span class="nav-dropdown-label">
+                    <strong>RH</strong>
+                    <small>Benefícios & Comunicados</small>
+                  </span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="#/financeiro" class="nav-link nav-dropdown-item" role="menuitem">
+                  <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#059669,#10b981)">
+                    <svg width="16" height="16"><use href="#icon-document"/></svg>
+                  </div>
+                  <span class="nav-dropdown-label">
+                    <strong>Financeiro</strong>
+                    <small>Em breve</small>
+                  </span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="#/governanca" class="nav-link nav-dropdown-item" role="menuitem">
+                  <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">
+                    <svg width="16" height="16"><use href="#icon-shield"/></svg>
+                  </div>
+                  <span class="nav-dropdown-label">
+                    <strong>Governança</strong>
+                    <small>Em breve</small>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li><a href="#/politicas" class="nav-link">
             <svg width="16" height="16"><use href="#icon-document"/></svg>Documentos
           </a></li>
@@ -75,14 +117,50 @@ export function initNavbar() {
 
   // ─── Glassmorphism on scroll ───
   const onScroll = () => {
-    if (window.scrollY > 24) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 24);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ─── Dropdown (desktop) ───
+  const deptItem    = document.getElementById('nav-dept-item');
+  const deptTrigger = document.getElementById('nav-dept-trigger');
+  const deptMenu    = document.getElementById('nav-dept-menu');
+
+  const openDropdown = () => {
+    deptItem.classList.add('open');
+    deptTrigger.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeDropdown = () => {
+    deptItem.classList.remove('open');
+    deptTrigger.setAttribute('aria-expanded', 'false');
+  };
+
+  // Click trigger to toggle
+  deptTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    deptItem.classList.contains('open') ? closeDropdown() : openDropdown();
+  });
+
+  // Hover support (mouse users)
+  deptItem?.addEventListener('mouseenter', openDropdown);
+  deptItem?.addEventListener('mouseleave', closeDropdown);
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!deptItem?.contains(e.target)) closeDropdown();
+  });
+
+  // Close on Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDropdown();
+  });
+
+  // Close dropdown when a menu item is clicked
+  deptMenu?.querySelectorAll('.nav-dropdown-item').forEach(item => {
+    item.addEventListener('click', closeDropdown);
+  });
 
   // ─── Mobile Menu ───
   if (mobileMenu) {
@@ -102,11 +180,26 @@ export function initNavbar() {
       <nav aria-label="Navegação mobile">
         <a href="#/" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-home"/></svg>Home</a>
         <a href="#/noticias" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-newspaper"/></svg>Notícias</a>
-        <a href="#/rh" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-heart"/></svg>RH &amp; Benefícios</a>
-        <a href="#/politicas" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-document"/></svg>Documentos</a>
+
+        <!-- Departamentos accordion -->
+        <div class="mobile-nav-group" id="mobile-dept-group">
+          <button class="mobile-nav-group-trigger" id="mobile-dept-trigger" aria-expanded="false">
+            <span style="display:flex;align-items:center;gap:var(--space-3)">
+              <svg width="20" height="20"><use href="#icon-users"/></svg>Departamentos
+            </span>
+            <svg class="mobile-group-chevron" width="16" height="16"><use href="#icon-chevron-right"/></svg>
+          </button>
+          <div class="mobile-nav-sub" id="mobile-dept-sub" hidden>
+            <a href="#/rh"         class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-heart"/></svg>RH</a>
+            <a href="#/financeiro" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-document"/></svg>Financeiro</a>
+            <a href="#/governanca" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-shield"/></svg>Governança</a>
+          </div>
+        </div>
+
+        <a href="#/politicas"    class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-document"/></svg>Documentos</a>
         <a href="#/treinamentos" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-book"/></svg>Treinamentos</a>
-        <a href="#/links" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-link"/></svg>Links Úteis</a>
-        <a href="#/contato" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-mail"/></svg>Contato</a>
+        <a href="#/links"        class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-link"/></svg>Links Úteis</a>
+        <a href="#/contato"      class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-mail"/></svg>Contato</a>
       </nav>
       <div style="margin-top: auto; padding-top: var(--space-6);">
         <button class="nav-icon-btn" id="mobile-search-btn" aria-label="Buscar" style="width:100%; justify-content:flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface-container-low);">
@@ -117,9 +210,20 @@ export function initNavbar() {
     `;
   }
 
+  // ─── Mobile Departamentos accordion ───
+  const mobileDeptTrigger = document.getElementById('mobile-dept-trigger');
+  const mobileDeptSub     = document.getElementById('mobile-dept-sub');
+
+  mobileDeptTrigger?.addEventListener('click', () => {
+    const isOpen = mobileDeptTrigger.getAttribute('aria-expanded') === 'true';
+    mobileDeptTrigger.setAttribute('aria-expanded', String(!isOpen));
+    mobileDeptSub.hidden = isOpen;
+    mobileDeptTrigger.classList.toggle('open', !isOpen);
+  });
+
   // ─── Hamburger toggle ───
   const hamburger = document.getElementById('nav-hamburger');
-  const closeBtn = document.getElementById('mobile-close-btn');
+  const closeBtn  = document.getElementById('mobile-close-btn');
 
   const openMenu = () => {
     mobileMenu?.classList.add('open');
@@ -146,8 +250,7 @@ export function initNavbar() {
 
   // ─── Search trigger ───
   const openSearch = () => {
-    const overlay = document.getElementById('search-overlay');
-    if (overlay && window._openSearch) window._openSearch();
+    if (window._openSearch) window._openSearch();
   };
 
   document.getElementById('nav-search-btn')?.addEventListener('click', openSearch);
@@ -190,11 +293,11 @@ export function initFooter() {
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-title">Recursos</h4>
+          <h4 class="footer-col-title">Departamentos</h4>
           <ul class="footer-links">
-            <li><a href="#/treinamentos">Treinamentos</a></li>
-            <li><a href="#/links">Links Úteis</a></li>
-            <li><a href="#/contato">Contato RH</a></li>
+            <li><a href="#/rh">RH</a></li>
+            <li><a href="#/financeiro">Financeiro</a></li>
+            <li><a href="#/governanca">Governança</a></li>
           </ul>
         </div>
         <div>

@@ -326,6 +326,219 @@
   margin-bottom: var(--space-4);
 }
 
+/* ─── Dropdown ─── */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-on-surface-variant);
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition:
+    background var(--transition-fast),
+    color      var(--transition-fast);
+}
+
+.nav-dropdown-trigger:hover,
+.nav-item-dropdown.open .nav-dropdown-trigger {
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.nav-item-dropdown:has(.nav-link.active) .nav-dropdown-trigger {
+  background: rgba(0, 75, 113, 0.08);
+  color: var(--color-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.nav-dropdown-trigger svg {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.nav-item-dropdown.open .nav-dropdown-trigger svg,
+.nav-dropdown-trigger:hover svg {
+  opacity: 1;
+}
+
+/* Chevron rotation */
+.dropdown-chevron {
+  transition: transform 0.25s ease;
+}
+
+.nav-item-dropdown.open .dropdown-chevron {
+  transform: rotate(90deg);
+}
+
+/* Dropdown panel */
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: var(--color-surface-lowest);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 32px rgba(27, 27, 29, 0.12), 0 2px 8px rgba(27, 27, 29, 0.08);
+  min-width: 240px;
+  padding: var(--space-2);
+  list-style: none;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity    0.2s ease,
+    transform  0.2s ease;
+}
+
+.nav-item-dropdown.open .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown items */
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--color-on-surface-variant);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  width: 100%;
+}
+
+.nav-dropdown-item:hover {
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.nav-dropdown-item.active {
+  background: rgba(0, 75, 113, 0.08);
+  color: var(--color-primary);
+}
+
+.nav-dropdown-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.nav-dropdown-icon svg {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+}
+
+.nav-dropdown-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.nav-dropdown-label strong {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-on-surface);
+}
+
+.nav-dropdown-label small {
+  font-size: var(--text-label-md);
+  color: var(--color-on-surface-muted);
+  font-weight: var(--weight-normal);
+}
+
+/* ─── Mobile Departamentos accordion ─── */
+.mobile-nav-group {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.mobile-nav-group-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-on-surface-variant);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mobile-nav-group-trigger:hover {
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.mobile-nav-group-trigger.open {
+  color: var(--color-primary);
+  background: rgba(0, 75, 113, 0.06);
+}
+
+.mobile-group-chevron {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.mobile-nav-group-trigger.open .mobile-group-chevron {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.mobile-nav-sub {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--space-4);
+  padding-bottom: var(--space-2);
+}
+
+.mobile-nav-sublink {
+  font-size: var(--text-sm) !important;
+  padding: var(--space-2) var(--space-4) !important;
+  opacity: 0.9;
+}
+
+/* ─── Tab badge ─── */
+.tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: white;
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-full);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  margin-left: var(--space-2);
+  vertical-align: middle;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 1024px) {
   .nav-links,

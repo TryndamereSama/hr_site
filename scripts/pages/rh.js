@@ -2,10 +2,18 @@
 
 import { beneficios } from '../data/beneficios.js';
 import { contatos, avatarGradients } from '../data/contatos.js';
+import { noticias } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
 import { openModal } from '../../components/modal.js';
 
+// Tags considered RH-related
+const RH_TAGS = ['sindpd', 'pagamento', 'programas', 'comunicado', 'bemestar'];
+
 export function renderRH(container) {
+  const comunicados = noticias
+    .filter(n => RH_TAGS.includes(n.tag))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
   container.innerHTML = `
     <!-- Page Header -->
     <section class="section-sm" style="background: var(--color-surface-container-low);">
@@ -18,12 +26,16 @@ export function renderRH(container) {
         <div class="page-header" style="padding-top:var(--space-6)">
           <span class="label-md" style="color:var(--color-primary)">Recursos Humanos</span>
           <h1>RH & Benefícios</h1>
-          <p>Conheça todos os seus benefícios e fale com a equipe de RH.</p>
+          <p>Conheça seus benefícios, acompanhe os comunicados e fale com a equipe de RH.</p>
         </div>
         <!-- Tabs -->
         <div class="tabs" role="tablist" aria-label="Seções de RH">
           <button class="tab-btn active" data-tab="beneficios" role="tab" aria-selected="true" aria-controls="tab-beneficios">
             <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-heart"/></svg>Benefícios
+          </button>
+          <button class="tab-btn" data-tab="comunicados" role="tab" aria-selected="false" aria-controls="tab-comunicados">
+            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-newspaper"/></svg>Comunicados
+            <span class="tab-badge">${comunicados.length}</span>
           </button>
           <button class="tab-btn" data-tab="contatos" role="tab" aria-selected="false" aria-controls="tab-contatos">
             <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-users"/></svg>Contatos RH
@@ -34,11 +46,21 @@ export function renderRH(container) {
 
     <section class="section">
       <div class="container">
-        <!-- Benefícios Tab -->
+
+        <!-- ─── Benefícios Tab ─── -->
         <div id="tab-beneficios" class="tab-panel active" role="tabpanel">
           <div class="grid grid-3" id="beneficios-grid"></div>
         </div>
-        <!-- Contatos Tab -->
+
+        <!-- ─── Comunicados Tab ─── -->
+        <div id="tab-comunicados" class="tab-panel" role="tabpanel">
+          <p class="body-md text-muted" style="margin-bottom: var(--space-8)">
+            Convenções sindicais, pagamentos, programas internos e comunicados — tudo em um só lugar.
+          </p>
+          <div id="comunicados-grid" class="grid grid-3"></div>
+        </div>
+
+        <!-- ─── Contatos Tab ─── -->
         <div id="tab-contatos" class="tab-panel" role="tabpanel">
           <div class="grid grid-3" id="contatos-grid"></div>
           <div style="margin-top:var(--space-12); padding:var(--space-8); background:var(--color-surface-container-low); border-radius:var(--radius-xl); text-align:center" data-reveal>
@@ -50,6 +72,7 @@ export function renderRH(container) {
             </a>
           </div>
         </div>
+
       </div>
     </section>
   `;
@@ -87,6 +110,23 @@ export function renderRH(container) {
       onClick: () => openBenefitModal(b),
     });
     beneficiosGrid.appendChild(card);
+  });
+
+  // ─── Comunicados Grid ───
+  const comunicadosGrid = container.querySelector('#comunicados-grid');
+  comunicados.forEach((n, i) => {
+    const card = createCard({
+      type: 'news',
+      title: n.title,
+      excerpt: n.excerpt,
+      tagLabel: n.tagLabel,
+      dateLabel: n.dateLabel,
+      gradient: n.gradient,
+      image: n.image,
+      href: `#/noticia/${n.id}`,
+      revealDelay: i * 80,
+    });
+    comunicadosGrid.appendChild(card);
   });
 
   // ─── Contacts Grid ───
