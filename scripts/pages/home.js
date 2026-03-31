@@ -1,12 +1,12 @@
 // MC1 HUB — Home Page Renderer
 
-import { getNoticiasRecentes } from '../data/noticias.js';
+import { getLocalizedNoticiasRecentes } from '../data/noticias.js';
 import { beneficios } from '../data/beneficios.js';
 import { createCard } from '../../components/card.js';
 import { t } from '../i18n.js';
 
 export function renderHome(container) {
-  const news = getNoticiasRecentes(3);
+  const news = getLocalizedNoticiasRecentes(3);
   const latestNews = news[0];
 
   container.innerHTML = `

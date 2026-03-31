@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Router (renders current route)
   initRouter();
 
-  // 5. Language change — update data-i18n elements + re-render current page
+  // 5. Language change — update data-i18n elements + rebuild search + re-render current page
   window.addEventListener('langchange', () => {
     applyTranslations();
-    // Re-render current page so template-literal strings update
+    buildSearchIndex(); // refresh search index with translated article titles
     window.dispatchEvent(new Event('hashchange'));
   });
 });

@@ -1,5 +1,5 @@
 // MC1 HUB — Search Engine
-import { noticias } from './data/noticias.js';
+import { getLocalizedNoticias } from './data/noticias.js';
 import { beneficios } from './data/beneficios.js';
 import { manuais } from './data/manuais.js';
 import { treinamentos } from './data/treinamentos.js';
@@ -19,7 +19,7 @@ let searchIndex = [];
 
 export function buildSearchIndex() {
   searchIndex = [
-    ...noticias.map(n => ({
+    ...getLocalizedNoticias().map(n => ({
       id: n.id,
       type: 'noticia',
       typeLabel: 'Notícia',
