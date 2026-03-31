@@ -49,10 +49,6 @@ export function renderFinanceiro(container) {
               <svg width="16" height="16"><use href="#icon-home"/></svg>
               Voltar ao início
             </a>
-            <a href="#/contato" class="btn btn-ghost">
-              <svg width="16" height="16"><use href="#icon-mail"/></svg>
-              Fale com o RH
-            </a>
           </div>
         </div>
       </div>

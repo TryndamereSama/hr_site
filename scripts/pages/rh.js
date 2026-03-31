@@ -63,14 +63,6 @@ export function renderRH(container) {
         <!-- ─── Contatos Tab ─── -->
         <div id="tab-contatos" class="tab-panel" role="tabpanel">
           <div class="grid grid-3" id="contatos-grid"></div>
-          <div style="margin-top:var(--space-12); padding:var(--space-8); background:var(--color-surface-container-low); border-radius:var(--radius-xl); text-align:center" data-reveal>
-            <h3 class="title-lg" style="margin-bottom:var(--space-3)">Precisa de ajuda?</h3>
-            <p class="body-md text-muted" style="margin-bottom:var(--space-6)">Envie uma mensagem diretamente para a equipe de RH.</p>
-            <a href="#/contato" class="btn btn-primary">
-              <svg width="16" height="16"><use href="#icon-mail"/></svg>
-              Enviar Mensagem
-            </a>
-          </div>
         </div>
 
       </div>
@@ -169,11 +161,7 @@ function openBenefitModal(b) {
         <p class="body-md" style="color:var(--color-on-surface)">${b.howToAccess}</p>
       </div>
     `,
-    footer: `
-      <a href="#/contato" class="btn btn-ghost" onclick="document.getElementById('modal-root').style.display='none'">
-        <svg width="14" height="14"><use href="#icon-mail"/></svg>Dúvidas? Fale com o RH
-      </a>
-    `,
+    footer: ``,
     size: 'md',
   });
 }
