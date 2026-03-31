@@ -297,8 +297,7 @@ export function initFooter() {
           <h4 class="footer-col-title">Contato RH</h4>
           <ul class="footer-links">
             <li><a href="mailto:rh@mc1global.com">rh@mc1global.com</a></li>
-            <li><a href="tel:+551134567890">(11) 3456-7890</a></li>
-            <li><a href="#/contato">Enviar mensagem</a></li>
+            <li><a href="#/contato">Equipe de RH</a></li>
           </ul>
         </div>
       </div>
