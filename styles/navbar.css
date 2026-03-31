@@ -381,30 +381,38 @@
   transform: rotate(90deg);
 }
 
-/* Dropdown panel */
+/* Dropdown panel —
+   top:100% means the element starts flush with the bottom of the <li>,
+   so there is zero dead-zone between trigger and items.
+   The visual 8px gap is achieved with padding-top inside .nav-dropdown-card. */
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(-6px);
-  background: var(--color-surface-lowest);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 8px 32px rgba(27, 27, 29, 0.12), 0 2px 8px rgba(27, 27, 29, 0.08);
+  transform: translateX(-50%) translateY(-4px);
   min-width: 240px;
-  padding: var(--space-2);
   list-style: none;
   z-index: 100;
   opacity: 0;
   pointer-events: none;
   transition:
-    opacity    0.2s ease,
-    transform  0.2s ease;
+    opacity   0.2s ease,
+    transform 0.2s ease;
 }
 
 .nav-item-dropdown.open .nav-dropdown {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Inner card: holds the visual shadow/background, offset by padding-top */
+.nav-dropdown-card {
+  margin-top: 8px;
+  background: var(--color-surface-lowest);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 32px rgba(27, 27, 29, 0.12), 0 2px 8px rgba(27, 27, 29, 0.08);
+  padding: var(--space-2);
 }
 
 /* Dropdown items */

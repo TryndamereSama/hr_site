@@ -40,37 +40,35 @@ export function initNavbar() {
             </button>
             <ul class="nav-dropdown" id="nav-dept-menu" role="menu">
               <li role="none">
-                <a href="#/rh" class="nav-link nav-dropdown-item" role="menuitem">
-                  <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#004b71,#006494)">
-                    <svg width="16" height="16"><use href="#icon-heart"/></svg>
-                  </div>
-                  <span class="nav-dropdown-label">
-                    <strong>RH</strong>
-                    <small>Benefícios & Comunicados</small>
-                  </span>
-                </a>
-              </li>
-              <li role="none">
-                <a href="#/financeiro" class="nav-link nav-dropdown-item" role="menuitem">
-                  <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#059669,#10b981)">
-                    <svg width="16" height="16"><use href="#icon-document"/></svg>
-                  </div>
-                  <span class="nav-dropdown-label">
-                    <strong>Financeiro</strong>
-                    <small>Em breve</small>
-                  </span>
-                </a>
-              </li>
-              <li role="none">
-                <a href="#/governanca" class="nav-link nav-dropdown-item" role="menuitem">
-                  <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">
-                    <svg width="16" height="16"><use href="#icon-shield"/></svg>
-                  </div>
-                  <span class="nav-dropdown-label">
-                    <strong>Governança</strong>
-                    <small>Em breve</small>
-                  </span>
-                </a>
+                <div class="nav-dropdown-card">
+                  <a href="#/rh" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#004b71,#006494)">
+                      <svg width="16" height="16"><use href="#icon-heart"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong>RH</strong>
+                      <small>Benefícios & Comunicados</small>
+                    </span>
+                  </a>
+                  <a href="#/financeiro" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#059669,#10b981)">
+                      <svg width="16" height="16"><use href="#icon-document"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong>Financeiro</strong>
+                      <small>Em breve</small>
+                    </span>
+                  </a>
+                  <a href="#/governanca" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">
+                      <svg width="16" height="16"><use href="#icon-shield"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong>Governança</strong>
+                      <small>Em breve</small>
+                    </span>
+                  </a>
+                </div>
               </li>
             </ul>
           </li>
@@ -127,7 +125,10 @@ export function initNavbar() {
   const deptTrigger = document.getElementById('nav-dept-trigger');
   const deptMenu    = document.getElementById('nav-dept-menu');
 
+  let closeTimer = null;
+
   const openDropdown = () => {
+    clearTimeout(closeTimer);
     deptItem.classList.add('open');
     deptTrigger.setAttribute('aria-expanded', 'true');
   };
@@ -137,15 +138,22 @@ export function initNavbar() {
     deptTrigger.setAttribute('aria-expanded', 'false');
   };
 
+  const scheduleClose = () => {
+    closeTimer = setTimeout(closeDropdown, 120);
+  };
+
   // Click trigger to toggle
   deptTrigger?.addEventListener('click', (e) => {
     e.stopPropagation();
     deptItem.classList.contains('open') ? closeDropdown() : openDropdown();
   });
 
-  // Hover support (mouse users)
+  // Hover: open on enter, schedule close on leave (delay avoids snap-close on gap)
   deptItem?.addEventListener('mouseenter', openDropdown);
-  deptItem?.addEventListener('mouseleave', closeDropdown);
+  deptItem?.addEventListener('mouseleave', scheduleClose);
+
+  // If mouse re-enters the dropdown area before the timer fires, cancel close
+  deptMenu?.addEventListener('mouseenter', openDropdown);
 
   // Close on outside click
   document.addEventListener('click', (e) => {
