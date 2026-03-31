@@ -5,6 +5,7 @@ import { contatos, avatarGradients } from '../data/contatos.js';
 import { noticias } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
 import { openModal } from '../../components/modal.js';
+import { t } from '../i18n.js';
 
 // Tags considered RH-related
 const RH_TAGS = ['sindpd', 'pagamento', 'programas', 'comunicado', 'bemestar'];
@@ -19,26 +20,26 @@ export function renderRH(container) {
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>RH</span>
+          <span>${t('rh.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Recursos Humanos</span>
-          <h1>RH & Benefícios</h1>
-          <p>Conheça seus benefícios, acompanhe os comunicados e fale com a equipe de RH.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('rh.label')}</span>
+          <h1>${t('rh.title')}</h1>
+          <p>${t('rh.subtitle')}</p>
         </div>
         <!-- Tabs -->
         <div class="tabs" role="tablist" aria-label="Seções de RH">
           <button class="tab-btn active" data-tab="beneficios" role="tab" aria-selected="true" aria-controls="tab-beneficios">
-            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-heart"/></svg>Benefícios
+            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-heart"/></svg>${t('rh.tab.benefits')}
           </button>
           <button class="tab-btn" data-tab="comunicados" role="tab" aria-selected="false" aria-controls="tab-comunicados">
-            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-newspaper"/></svg>Comunicados
+            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-newspaper"/></svg>${t('rh.tab.news')}
             <span class="tab-badge">${comunicados.length}</span>
           </button>
           <button class="tab-btn" data-tab="contatos" role="tab" aria-selected="false" aria-controls="tab-contatos">
-            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-users"/></svg>Contatos RH
+            <svg width="14" height="14" style="display:inline;margin-right:6px"><use href="#icon-users"/></svg>${t('rh.tab.contacts')}
           </button>
         </div>
       </div>
@@ -55,7 +56,7 @@ export function renderRH(container) {
         <!-- ─── Comunicados Tab ─── -->
         <div id="tab-comunicados" class="tab-panel" role="tabpanel">
           <p class="body-md text-muted" style="margin-bottom: var(--space-8)">
-            Convenções sindicais, pagamentos, programas internos e comunicados — tudo em um só lugar.
+            ${t('rh.news.desc')}
           </p>
           <div id="comunicados-grid" class="grid grid-3"></div>
         </div>
@@ -149,7 +150,7 @@ function openBenefitModal(b) {
         </div>
         <div>
           <span class="chip chip-primary">${b.category}</span>
-          <p class="body-md text-muted" style="margin-top:var(--space-2)">Fornecido por <strong>${b.provider}</strong></p>
+          <p class="body-md text-muted" style="margin-top:var(--space-2)">${t('rh.modal.provided_by')} <strong>${b.provider}</strong></p>
         </div>
       </div>
       <div style="margin-bottom:var(--space-6)">
@@ -157,7 +158,7 @@ function openBenefitModal(b) {
         <p class="body-md text-muted">${b.details}</p>
       </div>
       <div style="background:rgba(0,75,113,0.06); border-radius:var(--radius-lg); padding:var(--space-4)">
-        <p class="label-md" style="color:var(--color-primary); margin-bottom:var(--space-2)">Como Acessar</p>
+        <p class="label-md" style="color:var(--color-primary); margin-bottom:var(--space-2)">${t('rh.modal.how_to_access')}</p>
         <p class="body-md" style="color:var(--color-on-surface)">${b.howToAccess}</p>
       </div>
     `,

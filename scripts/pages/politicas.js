@@ -3,6 +3,7 @@
 import { manuais, manuaisCategories } from '../data/manuais.js';
 import { createCard } from '../../components/card.js';
 import { openModal } from '../../components/modal.js';
+import { t } from '../i18n.js';
 
 export function renderPoliticas(container) {
   let activeCategory = 'Todos';
@@ -12,14 +13,14 @@ export function renderPoliticas(container) {
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>Documentos</span>
+          <span>${t('docs.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Biblioteca</span>
-          <h1>Políticas & Documentos</h1>
-          <p>Manuais, normas e documentos importantes da MC1 Global.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('docs.label')}</span>
+          <h1>${t('docs.title')}</h1>
+          <p>${t('docs.subtitle')}</p>
         </div>
         <!-- Search & Filter Row -->
         <div style="display:flex; align-items:center; gap:var(--space-4); flex-wrap:wrap; margin-bottom:var(--space-6)">
@@ -29,9 +30,9 @@ export function renderPoliticas(container) {
               type="search"
               id="docs-search"
               class="form-input"
-              placeholder="Buscar documentos..."
+              placeholder="${t('docs.search_placeholder')}"
               style="padding-left:40px; background:var(--color-surface-lowest)"
-              aria-label="Buscar documentos"
+              aria-label="${t('docs.search_placeholder')}"
             />
           </div>
         </div>
@@ -45,7 +46,7 @@ export function renderPoliticas(container) {
 
     <section class="section">
       <div class="container">
-        <p class="label-lg text-muted mb-6" id="docs-count">${manuais.length} documentos</p>
+        <p class="label-lg text-muted mb-6" id="docs-count">${manuais.length} ${t('docs.documents')}</p>
         <div id="docs-list" style="display:flex; flex-direction:column; gap:var(--space-3)"></div>
       </div>
     </section>
@@ -65,10 +66,10 @@ export function renderPoliticas(container) {
       return matchCat && matchSearch;
     });
 
-    countEl.textContent = `${filtered.length} documento${filtered.length !== 1 ? 's' : ''}`;
+    countEl.textContent = `${filtered.length} ${t('docs.documents')}`;
 
     if (!filtered.length) {
-      list.innerHTML = `<div class="empty-state"><svg width="40" height="40"><use href="#icon-document"/></svg><p class="title-md text-muted">Nenhum documento encontrado</p></div>`;
+      list.innerHTML = `<div class="empty-state"><svg width="40" height="40"><use href="#icon-document"/></svg><p class="title-md text-muted">${t('docs.empty')}</p></div>`;
       return;
     }
 
@@ -120,15 +121,15 @@ function openDocModal(m) {
           <span class="chip chip-primary">${m.category}</span>
           <span class="chip chip-surface">v${m.version}</span>
           <span class="chip chip-surface">${m.fileType} · ${m.fileSize}</span>
-          <span class="chip chip-surface">Atualizado: ${m.lastUpdatedLabel}</span>
+          <span class="chip chip-surface">${t('docs.updated')} ${m.lastUpdatedLabel}</span>
         </div>
       </div>
       <p class="body-lg text-muted" style="margin-bottom:var(--space-5)">${m.description}</p>
       <div class="article-content">${m.details}</div>
     `,
     footer: `
-      <button class="btn btn-primary" onclick="alert('Download disponível em breve.')">
-        <svg width="14" height="14"><use href="#icon-download"/></svg>Baixar PDF
+      <button class="btn btn-primary" onclick="alert('${t('common.download_soon')}')">
+        <svg width="14" height="14"><use href="#icon-download"/></svg>${t('common.download')}
       </button>
     `,
   });

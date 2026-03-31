@@ -2,29 +2,31 @@
 
 import { noticias, getNoticia } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
+import { t } from '../i18n.js';
 
 // ─── All News Page ───
 export function renderNoticias(container) {
-  const categories = ['Todos', ...new Set(noticias.map(n => n.tagLabel))];
-  let activeFilter = 'Todos';
+  const allLabel = t('news.filter_all');
+  const categories = [allLabel, ...new Set(noticias.map(n => n.tagLabel))];
+  let activeFilter = allLabel;
 
   container.innerHTML = `
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho de navegação">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>Notícias</span>
+          <span>${t('news.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Comunicados</span>
-          <h1>Notícias Internas</h1>
-          <p>Fique por dentro de tudo que acontece na MC1 Global.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('news.label')}</span>
+          <h1>${t('news.title')}</h1>
+          <p>${t('news.subtitle')}</p>
         </div>
         <!-- Filter -->
         <div class="flex flex-wrap gap-3 mb-8" id="noticias-filters" role="group" aria-label="Filtros de categoria">
           ${categories.map(cat => `
-            <button class="chip chip-filter ${cat === 'Todos' ? 'active' : ''}" data-filter="${cat}" aria-pressed="${cat === 'Todos'}">${cat}</button>
+            <button class="chip chip-filter ${cat === allLabel ? 'active' : ''}" data-filter="${cat}" aria-pressed="${cat === allLabel}">${cat}</button>
           `).join('')}
         </div>
       </div>
@@ -42,13 +44,13 @@ export function renderNoticias(container) {
 
   function renderCards(filter) {
     grid.innerHTML = '';
-    const filtered = filter === 'Todos' ? noticias : noticias.filter(n => n.tagLabel === filter);
+    const filtered = filter === allLabel ? noticias : noticias.filter(n => n.tagLabel === filter);
 
     if (filtered.length === 0) {
       grid.innerHTML = `
         <div class="empty-state" style="grid-column:1/-1">
           <svg width="48" height="48"><use href="#icon-newspaper"/></svg>
-          <p class="title-md text-muted">Nenhuma notícia encontrada</p>
+          <p class="title-md text-muted">${t('news.empty')}</p>
         </div>`;
       return;
     }
@@ -85,7 +87,7 @@ export function renderNoticias(container) {
     });
   });
 
-  renderCards('Todos');
+  renderCards(allLabel);
 }
 
 // ─── Single Article Page ───
@@ -95,8 +97,8 @@ export function renderNoticia(container, { id }) {
   if (!noticia) {
     container.innerHTML = `
       <div class="section container text-center">
-        <p class="text-muted">Notícia não encontrada.</p>
-        <a href="#/noticias" class="btn btn-primary mt-6">← Voltar às notícias</a>
+        <p class="text-muted">${t('news.not_found')}</p>
+        <a href="#/noticias" class="btn btn-primary mt-6">${t('news.not_found_back')}</a>
       </div>`;
     return;
   }
@@ -113,9 +115,9 @@ export function renderNoticia(container, { id }) {
       ` : ''}
       <div class="container" style="position:relative;z-index:1;padding-top:var(--space-20); padding-bottom:var(--space-16)">
         <nav class="breadcrumb" aria-label="Caminho" style="color:rgba(255,255,255,0.7)">
-          <a href="#/" style="color:rgba(255,255,255,0.7)">Home</a>
+          <a href="#/" style="color:rgba(255,255,255,0.7)">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <a href="#/noticias" style="color:rgba(255,255,255,0.7)">Notícias</a>
+          <a href="#/noticias" style="color:rgba(255,255,255,0.7)">${t('news.breadcrumb')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
           <span style="color:white">${noticia.tagLabel}</span>
         </nav>
@@ -127,7 +129,7 @@ export function renderNoticia(container, { id }) {
             <span>·</span>
             <span>${noticia.author}</span>
             <span>·</span>
-            <span>${noticia.readTime} de leitura</span>
+            <span>${noticia.readTime} ${t('news.reading_time')}</span>
           </div>
         </div>
       </div>
@@ -142,12 +144,12 @@ export function renderNoticia(container, { id }) {
             <div class="article-content">${noticia.body}</div>
             <div style="margin-top:var(--space-10); padding-top:var(--space-8); border-top: 1px solid var(--color-outline-subtle)">
               <a href="#/noticias" class="btn btn-ghost">
-                ← Voltar às Notícias
+                ${t('news.back')}
               </a>
             </div>
           </article>
           <aside class="article-sidebar" data-reveal data-reveal-delay="150">
-            <h3 class="title-md" style="margin-bottom:var(--space-6)">Outras Notícias</h3>
+            <h3 class="title-md" style="margin-bottom:var(--space-6)">${t('news.other')}</h3>
             <div style="display:flex; flex-direction:column; gap:var(--space-4)">
               ${others.map(n => `
                 <a href="#/noticia/${n.id}" class="sidebar-news-card">

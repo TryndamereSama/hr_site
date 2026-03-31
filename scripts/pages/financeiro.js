@@ -1,18 +1,20 @@
 // MC1 HUB — Financeiro Page (Placeholder)
 
+import { t } from '../i18n.js';
+
 export function renderFinanceiro(container) {
   container.innerHTML = `
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho de navegação">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>Financeiro</span>
+          <span>${t('finance.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Departamento</span>
-          <h1>Financeiro</h1>
-          <p>Informações, comunicados e recursos do departamento Financeiro.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('common.department')}</span>
+          <h1>${t('finance.title')}</h1>
+          <p>${t('finance.subtitle')}</p>
         </div>
       </div>
     </section>
@@ -39,15 +41,15 @@ export function renderFinanceiro(container) {
           ">
             <svg width="36" height="36"><use href="#icon-document"/></svg>
           </div>
-          <span class="chip chip-primary" style="margin-bottom: var(--space-4)">Em breve</span>
-          <h2 class="headline-lg" style="margin-bottom: var(--space-4)">Página em construção</h2>
+          <span class="chip chip-primary" style="margin-bottom: var(--space-4)">${t('common.coming_soon')}</span>
+          <h2 class="headline-lg" style="margin-bottom: var(--space-4)">${t('common.page_building')}</h2>
           <p class="body-lg text-muted" style="max-width: 38ch; margin-bottom: var(--space-8)">
-            O conteúdo do departamento Financeiro está sendo preparado e estará disponível em breve.
+            ${t('finance.coming_soon_desc')}
           </p>
           <div style="display:flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center;">
             <a href="#/" class="btn btn-primary">
               <svg width="16" height="16"><use href="#icon-home"/></svg>
-              Voltar ao início
+              ${t('common.back_home')}
             </a>
           </div>
         </div>

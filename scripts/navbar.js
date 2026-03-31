@@ -1,6 +1,7 @@
 // MC1 HUB — Navbar Component
 
 import { navigate } from './router.js';
+import { getLang, setLang, t, applyTranslations } from './i18n.js';
 
 export function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -8,6 +9,8 @@ export function initNavbar() {
   const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
 
   if (!navbar) return;
+
+  const lang = getLang();
 
   // ─── Render navbar HTML ───
   navbar.innerHTML = `
@@ -25,17 +28,19 @@ export function initNavbar() {
       <nav aria-label="Navegação principal">
         <ul class="nav-links" role="list">
           <li><a href="#/" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-home"/></svg>Home
+            <svg width="16" height="16"><use href="#icon-home"/></svg>
+            <span data-i18n="nav.home">${t('nav.home')}</span>
           </a></li>
           <li><a href="#/noticias" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-newspaper"/></svg>Notícias
+            <svg width="16" height="16"><use href="#icon-newspaper"/></svg>
+            <span data-i18n="nav.news">${t('nav.news')}</span>
           </a></li>
 
           <!-- Departamentos Dropdown -->
           <li class="nav-item-dropdown" id="nav-dept-item">
             <button class="nav-dropdown-trigger" id="nav-dept-trigger" aria-haspopup="true" aria-expanded="false">
               <svg width="16" height="16"><use href="#icon-users"/></svg>
-              Departamentos
+              <span data-i18n="nav.departments">${t('nav.departments')}</span>
               <svg class="dropdown-chevron" width="13" height="13"><use href="#icon-chevron-right"/></svg>
             </button>
             <ul class="nav-dropdown" id="nav-dept-menu" role="menu">
@@ -46,8 +51,8 @@ export function initNavbar() {
                       <svg width="16" height="16"><use href="#icon-heart"/></svg>
                     </div>
                     <span class="nav-dropdown-label">
-                      <strong>RH</strong>
-                      <small>Benefícios & Comunicados</small>
+                      <strong data-i18n="nav.rh">${t('nav.rh')}</strong>
+                      <small data-i18n="nav.rh.sub">${t('nav.rh.sub')}</small>
                     </span>
                   </a>
                   <a href="#/financeiro" class="nav-link nav-dropdown-item" role="menuitem">
@@ -55,8 +60,8 @@ export function initNavbar() {
                       <svg width="16" height="16"><use href="#icon-document"/></svg>
                     </div>
                     <span class="nav-dropdown-label">
-                      <strong>Financeiro</strong>
-                      <small>Em breve</small>
+                      <strong data-i18n="nav.finance">${t('nav.finance')}</strong>
+                      <small data-i18n="nav.finance.sub">${t('nav.finance.sub')}</small>
                     </span>
                   </a>
                   <a href="#/governanca" class="nav-link nav-dropdown-item" role="menuitem">
@@ -64,8 +69,8 @@ export function initNavbar() {
                       <svg width="16" height="16"><use href="#icon-shield"/></svg>
                     </div>
                     <span class="nav-dropdown-label">
-                      <strong>Governança</strong>
-                      <small>Em breve</small>
+                      <strong data-i18n="nav.governance">${t('nav.governance')}</strong>
+                      <small data-i18n="nav.governance.sub">${t('nav.governance.sub')}</small>
                     </span>
                   </a>
                 </div>
@@ -74,22 +79,33 @@ export function initNavbar() {
           </li>
 
           <li><a href="#/politicas" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-document"/></svg>Documentos
+            <svg width="16" height="16"><use href="#icon-document"/></svg>
+            <span data-i18n="nav.docs">${t('nav.docs')}</span>
           </a></li>
           <li><a href="#/treinamentos" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-book"/></svg>Treinamentos
+            <svg width="16" height="16"><use href="#icon-book"/></svg>
+            <span data-i18n="nav.training">${t('nav.training')}</span>
           </a></li>
           <li><a href="#/links" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-link"/></svg>Links
+            <svg width="16" height="16"><use href="#icon-link"/></svg>
+            <span data-i18n="nav.links">${t('nav.links')}</span>
           </a></li>
           <li><a href="#/contato" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-mail"/></svg>Contato
+            <svg width="16" height="16"><use href="#icon-mail"/></svg>
+            <span data-i18n="nav.contact">${t('nav.contact')}</span>
           </a></li>
         </ul>
       </nav>
 
       <!-- Actions -->
       <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="nav-lang-switcher" role="group" aria-label="Language / Idioma">
+          <button class="lang-btn ${lang === 'pt' ? 'active' : ''}" data-lang="pt" title="Português">PT</button>
+          <button class="lang-btn ${lang === 'es' ? 'active' : ''}" data-lang="es" title="Español">ES</button>
+          <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en" title="English">EN</button>
+        </div>
+
         <!-- Search -->
         <button class="nav-icon-btn" id="nav-search-btn" aria-label="Abrir busca (Ctrl+K)" title="Buscar (Ctrl+K)">
           <svg width="20" height="20"><use href="#icon-search"/></svg>
@@ -111,12 +127,18 @@ export function initNavbar() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // ─── Language Switcher ───
+  document.getElementById('nav-lang-switcher')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (!btn) return;
+    setLang(btn.dataset.lang);
+  });
+
   // ─── Dropdown (desktop) ───
   const deptItem    = document.getElementById('nav-dept-item');
   const deptTrigger = document.getElementById('nav-dept-trigger');
   const deptMenu    = document.getElementById('nav-dept-menu');
-
-  let closeTimer = null;
+  let closeTimer    = null;
 
   const openDropdown = () => {
     clearTimeout(closeTimer);
@@ -133,30 +155,23 @@ export function initNavbar() {
     closeTimer = setTimeout(closeDropdown, 120);
   };
 
-  // Click trigger to toggle
   deptTrigger?.addEventListener('click', (e) => {
     e.stopPropagation();
     deptItem.classList.contains('open') ? closeDropdown() : openDropdown();
   });
 
-  // Hover: open on enter, schedule close on leave (delay avoids snap-close on gap)
   deptItem?.addEventListener('mouseenter', openDropdown);
   deptItem?.addEventListener('mouseleave', scheduleClose);
-
-  // If mouse re-enters the dropdown area before the timer fires, cancel close
   deptMenu?.addEventListener('mouseenter', openDropdown);
 
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!deptItem?.contains(e.target)) closeDropdown();
   });
 
-  // Close on Esc
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDropdown();
   });
 
-  // Close dropdown when a menu item is clicked
   deptMenu?.querySelectorAll('.nav-dropdown-item').forEach(item => {
     item.addEventListener('click', closeDropdown);
   });
@@ -165,43 +180,59 @@ export function initNavbar() {
   if (mobileMenu) {
     mobileMenu.innerHTML = `
       <div class="mobile-menu-header">
-        <span class="title-md" style="color:var(--color-on-surface)">Menu</span>
+        <span class="title-md" style="color:var(--color-on-surface)" data-i18n="nav.menu">${t('nav.menu')}</span>
         <button class="mobile-menu-close" id="mobile-close-btn" aria-label="Fechar menu">
           <svg width="18" height="18"><use href="#icon-close"/></svg>
         </button>
       </div>
+
+      <!-- Language switcher mobile -->
+      <div class="lang-switcher lang-switcher-mobile" id="mobile-lang-switcher" role="group" aria-label="Language / Idioma">
+        <button class="lang-btn ${lang === 'pt' ? 'active' : ''}" data-lang="pt">PT — Português</button>
+        <button class="lang-btn ${lang === 'es' ? 'active' : ''}" data-lang="es">ES — Español</button>
+        <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">EN — English</button>
+      </div>
+
       <nav aria-label="Navegação mobile">
-        <a href="#/" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-home"/></svg>Home</a>
-        <a href="#/noticias" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-newspaper"/></svg>Notícias</a>
+        <a href="#/" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-home"/></svg><span data-i18n="nav.home">${t('nav.home')}</span></a>
+        <a href="#/noticias" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-newspaper"/></svg><span data-i18n="nav.news">${t('nav.news')}</span></a>
 
         <!-- Departamentos accordion -->
         <div class="mobile-nav-group" id="mobile-dept-group">
           <button class="mobile-nav-group-trigger" id="mobile-dept-trigger" aria-expanded="false">
             <span style="display:flex;align-items:center;gap:var(--space-3)">
-              <svg width="20" height="20"><use href="#icon-users"/></svg>Departamentos
+              <svg width="20" height="20"><use href="#icon-users"/></svg>
+              <span data-i18n="nav.departments">${t('nav.departments')}</span>
             </span>
             <svg class="mobile-group-chevron" width="16" height="16"><use href="#icon-chevron-right"/></svg>
           </button>
           <div class="mobile-nav-sub" id="mobile-dept-sub" hidden>
-            <a href="#/rh"         class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-heart"/></svg>RH</a>
-            <a href="#/financeiro" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-document"/></svg>Financeiro</a>
-            <a href="#/governanca" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-shield"/></svg>Governança</a>
+            <a href="#/rh"         class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-heart"/></svg><span data-i18n="nav.rh">${t('nav.rh')}</span></a>
+            <a href="#/financeiro" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-document"/></svg><span data-i18n="nav.finance">${t('nav.finance')}</span></a>
+            <a href="#/governanca" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-shield"/></svg><span data-i18n="nav.governance">${t('nav.governance')}</span></a>
           </div>
         </div>
 
-        <a href="#/politicas"    class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-document"/></svg>Documentos</a>
-        <a href="#/treinamentos" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-book"/></svg>Treinamentos</a>
-        <a href="#/links"        class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-link"/></svg>Links Úteis</a>
-        <a href="#/contato"      class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-mail"/></svg>Contato</a>
+        <a href="#/politicas"    class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-document"/></svg><span data-i18n="nav.docs">${t('nav.docs')}</span></a>
+        <a href="#/treinamentos" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-book"/></svg><span data-i18n="nav.training">${t('nav.training')}</span></a>
+        <a href="#/links"        class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-link"/></svg><span data-i18n="nav.links">${t('nav.links')}</span></a>
+        <a href="#/contato"      class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-mail"/></svg><span data-i18n="nav.contact">${t('nav.contact')}</span></a>
       </nav>
       <div style="margin-top: auto; padding-top: var(--space-6);">
         <button class="nav-icon-btn" id="mobile-search-btn" aria-label="Buscar" style="width:100%; justify-content:flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface-container-low);">
           <svg width="20" height="20"><use href="#icon-search"/></svg>
-          <span style="font-size: var(--text-sm); color: var(--color-on-surface-muted)">Buscar no MC1 Hub...</span>
+          <span data-i18n="nav.search_placeholder" style="font-size: var(--text-sm); color: var(--color-on-surface-muted)">${t('nav.search_placeholder')}</span>
         </button>
       </div>
     `;
   }
+
+  // ─── Mobile lang switcher ───
+  document.getElementById('mobile-lang-switcher')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (!btn) return;
+    setLang(btn.dataset.lang);
+  });
 
   // ─── Mobile Departamentos accordion ───
   const mobileDeptTrigger = document.getElementById('mobile-dept-trigger');
@@ -236,7 +267,6 @@ export function initNavbar() {
   closeBtn?.addEventListener('click', closeMenu);
   mobileBackdrop?.addEventListener('click', closeMenu);
 
-  // Close mobile menu on nav link click
   mobileMenu?.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
@@ -252,7 +282,6 @@ export function initNavbar() {
     setTimeout(openSearch, 300);
   });
 
-  // ─── Keyboard shortcut Ctrl+K ───
   document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
       e.preventDefault();
@@ -274,39 +303,39 @@ export function initFooter() {
             <div class="footer-logo-mark" aria-hidden="true">MC1</div>
             <span class="footer-logo-name">MC1 Hub</span>
           </a>
-          <p class="footer-tagline">Um espaço criado para simplificar, conectar e evoluir a forma como vivemos o dia a dia na MC1 Global.</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">${t('footer.tagline')}</p>
         </div>
         <div>
-          <h4 class="footer-col-title">Navegação</h4>
+          <h4 class="footer-col-title" data-i18n="footer.navigation">${t('footer.navigation')}</h4>
           <ul class="footer-links">
-            <li><a href="#/">Home</a></li>
-            <li><a href="#/noticias">Notícias</a></li>
+            <li><a href="#/" data-i18n="nav.home">${t('nav.home')}</a></li>
+            <li><a href="#/noticias" data-i18n="nav.news">${t('nav.news')}</a></li>
             <li><a href="#/rh">RH & Benefícios</a></li>
-            <li><a href="#/politicas">Documentos</a></li>
+            <li><a href="#/politicas" data-i18n="nav.docs">${t('nav.docs')}</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-title">Departamentos</h4>
+          <h4 class="footer-col-title" data-i18n="footer.departments">${t('footer.departments')}</h4>
           <ul class="footer-links">
-            <li><a href="#/rh">RH</a></li>
-            <li><a href="#/financeiro">Financeiro</a></li>
-            <li><a href="#/governanca">Governança</a></li>
+            <li><a href="#/rh" data-i18n="nav.rh">${t('nav.rh')}</a></li>
+            <li><a href="#/financeiro" data-i18n="nav.finance">${t('nav.finance')}</a></li>
+            <li><a href="#/governanca" data-i18n="nav.governance">${t('nav.governance')}</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-col-title">Contato RH</h4>
+          <h4 class="footer-col-title" data-i18n="footer.contact_rh">${t('footer.contact_rh')}</h4>
           <ul class="footer-links">
             <li><a href="mailto:rh@mc1global.com">rh@mc1global.com</a></li>
-            <li><a href="#/contato">Equipe de RH</a></li>
+            <li><a href="#/contato" data-i18n="footer.hr_team">${t('footer.hr_team')}</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 MC1 Global. Todos os direitos reservados.</p>
+        <p class="footer-copy" data-i18n="footer.rights">${t('footer.rights')}</p>
         <div class="footer-legal">
-          <a href="#">Privacidade</a>
-          <a href="#">Termos de Uso</a>
-          <a href="#">Acessibilidade</a>
+          <a href="#" data-i18n="footer.privacy">${t('footer.privacy')}</a>
+          <a href="#" data-i18n="footer.terms">${t('footer.terms')}</a>
+          <a href="#" data-i18n="footer.accessibility">${t('footer.accessibility')}</a>
         </div>
       </div>
     </div>

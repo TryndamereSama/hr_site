@@ -1,6 +1,7 @@
 // MC1 HUB — Application Bootstrap
 
 import { route, initRouter } from './router.js';
+import { applyTranslations } from './i18n.js';
 import { initScrollReveal, initCounters, animateProgressBars } from './animations.js';
 import { initNavbar, initFooter } from './navbar.js';
 import { buildSearchIndex } from './search.js';
@@ -60,4 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Router (renders current route)
   initRouter();
+
+  // 5. Language change — update data-i18n elements + re-render current page
+  window.addEventListener('langchange', () => {
+    applyTranslations();
+    // Re-render current page so template-literal strings update
+    window.dispatchEvent(new Event('hashchange'));
+  });
 });
