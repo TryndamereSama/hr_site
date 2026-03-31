@@ -96,15 +96,6 @@ export function initNavbar() {
         </button>
         <span class="nav-search-hint" aria-hidden="true">Ctrl K</span>
 
-        <!-- User Avatar -->
-        <button class="nav-user" aria-label="Menu do usuário" aria-expanded="false">
-          <div class="avatar avatar-md" style="background: linear-gradient(135deg, #004b71, #006494); color: white;">VF</div>
-          <div class="nav-user-info">
-            <span class="nav-user-name">Vitor Faria</span>
-            <span class="nav-user-role">Colaborador</span>
-          </div>
-        </button>
-
         <!-- Hamburger (mobile) -->
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg width="22" height="22"><use href="#icon-menu" id="hamburger-icon"/></svg>
@@ -174,13 +165,7 @@ export function initNavbar() {
   if (mobileMenu) {
     mobileMenu.innerHTML = `
       <div class="mobile-menu-header">
-        <div class="mobile-user-card" style="width:100%">
-          <div class="avatar avatar-md" style="background: linear-gradient(135deg, #004b71, #006494); color: white;">VF</div>
-          <div>
-            <div class="title-md" style="color:var(--color-on-surface)">Vitor Faria</div>
-            <div class="body-md text-muted">Colaborador</div>
-          </div>
-        </div>
+        <span class="title-md" style="color:var(--color-on-surface)">Menu</span>
         <button class="mobile-menu-close" id="mobile-close-btn" aria-label="Fechar menu">
           <svg width="18" height="18"><use href="#icon-close"/></svg>
         </button>
