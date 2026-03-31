@@ -1,12 +1,13 @@
 // MC1 HUB — Notícias Page Renderer
 
-import { noticias, getNoticia } from '../data/noticias.js';
+import { getLocalizedNoticias, getLocalizedNoticia } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
 import { t } from '../i18n.js';
 
 // ─── All News Page ───
 export function renderNoticias(container) {
   const allLabel = t('news.filter_all');
+  const noticias = getLocalizedNoticias();
   const categories = [allLabel, ...new Set(noticias.map(n => n.tagLabel))];
   let activeFilter = allLabel;
 
@@ -92,7 +93,7 @@ export function renderNoticias(container) {
 
 // ─── Single Article Page ───
 export function renderNoticia(container, { id }) {
-  const noticia = getNoticia(id);
+  const noticia = getLocalizedNoticia(id);
 
   if (!noticia) {
     container.innerHTML = `
@@ -103,7 +104,7 @@ export function renderNoticia(container, { id }) {
     return;
   }
 
-  const others = noticias.filter(n => n.id !== id).slice(0, 3);
+  const others = getLocalizedNoticias().filter(n => n.id !== id).slice(0, 3);
 
   container.innerHTML = `
     <!-- Article Hero -->

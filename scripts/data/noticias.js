@@ -1,4 +1,7 @@
 // MC1 HUB — News Articles Data
+import { getLang } from '../i18n.js';
+import { noticiasTranslations } from './noticias-i18n.js';
+
 export const noticias = [
   // ─── 2026-03-20 ───
   {
@@ -537,3 +540,27 @@ export const noticias = [
 export const getNoticia = (id) => noticias.find(n => n.id === id);
 export const getNoticiasFeatured = () => noticias.filter(n => n.featured).slice(0, 3);
 export const getNoticiasRecentes = (limit = 3) => [...noticias].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, limit);
+
+// ─── Locale-aware helpers ───────────────────────────────
+/** Returns all articles with text fields in the current language */
+export function getLocalizedNoticias() {
+  const lang = getLang();
+  if (lang === 'pt') return noticias;
+  const tr = noticiasTranslations[lang] || {};
+  return noticias.map(n => {
+    const override = tr[n.id];
+    return override ? { ...n, ...override } : n;
+  });
+}
+
+/** Returns a single article by id in the current language */
+export function getLocalizedNoticia(id) {
+  return getLocalizedNoticias().find(n => n.id === id);
+}
+
+/** Returns the N most recent articles in the current language */
+export function getLocalizedNoticiasRecentes(limit = 3) {
+  return [...getLocalizedNoticias()]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, limit);
+}

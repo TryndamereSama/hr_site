@@ -2,7 +2,7 @@
 
 import { beneficios } from '../data/beneficios.js';
 import { contatos, avatarGradients } from '../data/contatos.js';
-import { noticias } from '../data/noticias.js';
+import { getLocalizedNoticias } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
 import { openModal } from '../../components/modal.js';
 import { t } from '../i18n.js';
@@ -11,7 +11,7 @@ import { t } from '../i18n.js';
 const RH_TAGS = ['sindpd', 'pagamento', 'programas', 'comunicado', 'bemestar'];
 
 export function renderRH(container) {
-  const comunicados = noticias
+  const comunicados = getLocalizedNoticias()
     .filter(n => RH_TAGS.includes(n.tag))
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
