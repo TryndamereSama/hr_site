@@ -1,20 +1,21 @@
 // MC1 HUB — Contato Interno Page Renderer
 
 import { contatos, avatarGradients } from '../data/contatos.js';
+import { t } from '../i18n.js';
 
 export function renderContato(container) {
   container.innerHTML = `
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>Contato</span>
+          <span>${t('contact.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Fale Conosco</span>
-          <h1>Contato RH</h1>
-          <p>Entre em contato diretamente com a equipe de Recursos Humanos.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('contact.label')}</span>
+          <h1>${t('contact.title')}</h1>
+          <p>${t('contact.subtitle')}</p>
         </div>
       </div>
     </section>
@@ -25,14 +26,14 @@ export function renderContato(container) {
 
           <!-- Canais de contato -->
           <div data-reveal>
-            <h2 class="headline-md" style="margin-bottom:var(--space-6)">Canais de Atendimento</h2>
+            <h2 class="headline-md" style="margin-bottom:var(--space-6)">${t('contact.channels')}</h2>
             <div style="display:flex; flex-direction:column; gap:var(--space-4)">
               <div style="display:flex; align-items:center; gap:var(--space-4); padding:var(--space-5); background:var(--color-surface-lowest); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm)">
                 <div class="icon-wrap icon-wrap-md icon-teal">
                   <svg width="20" height="20"><use href="#icon-mail"/></svg>
                 </div>
                 <div>
-                  <p class="label-md text-muted">E-mail geral</p>
+                  <p class="label-md text-muted">${t('contact.email_label')}</p>
                   <a href="mailto:rh@mc1global.com" style="font-weight:600; color:var(--color-primary); font-size:var(--text-sm)">rh@mc1global.com</a>
                 </div>
               </div>
@@ -41,7 +42,7 @@ export function renderContato(container) {
 
           <!-- Equipe -->
           <div data-reveal data-reveal-delay="100">
-            <h2 class="headline-md" style="margin-bottom:var(--space-6)">Equipe de RH</h2>
+            <h2 class="headline-md" style="margin-bottom:var(--space-6)">${t('contact.team')}</h2>
             <div style="display:flex; flex-direction:column; gap:var(--space-4)" id="contact-team-list"></div>
           </div>
 

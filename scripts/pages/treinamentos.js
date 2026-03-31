@@ -2,6 +2,7 @@
 
 import { treinamentos, getTreinamentosEmAndamento, treinamentosCategories } from '../data/treinamentos.js';
 import { createCard } from '../../components/card.js';
+import { t } from '../i18n.js';
 
 export function renderTreinamentos(container) {
   let activeCategory = 'Todos';
@@ -11,14 +12,14 @@ export function renderTreinamentos(container) {
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>Treinamentos</span>
+          <span>${t('training.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Desenvolvimento Contínuo</span>
-          <h1>Treinamentos</h1>
-          <p>Aprenda, evolua e cresça junto com a MC1 Global.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('training.label')}</span>
+          <h1>${t('training.title')}</h1>
+          <p>${t('training.subtitle')}</p>
         </div>
         <div class="flex flex-wrap gap-3" id="training-filters" role="group" aria-label="Filtros">
           ${treinamentosCategories.map(cat => `
@@ -34,25 +35,25 @@ export function renderTreinamentos(container) {
       <div class="container">
         <h2 class="headline-md" id="progress-heading" style="margin-bottom:var(--space-6)">
           <svg width="20" height="20" style="display:inline; margin-right:8px; color:var(--color-primary); vertical-align:-3px"><use href="#icon-play"/></svg>
-          Em Andamento
+          ${t('training.in_progress')}
         </h2>
         <div style="display:flex; flex-direction:column; gap:var(--space-4)" id="progress-list">
-          ${emAndamento.map(t => `
+          ${emAndamento.map(tr => `
             <div class="card card-flat" style="padding:var(--space-4);" data-reveal>
               <div style="display:flex; align-items:center; gap:var(--space-4)">
-                <div style="width:48px;height:48px;border-radius:var(--radius-lg);background:${t.gradient};flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                <div style="width:48px;height:48px;border-radius:var(--radius-lg);background:${tr.gradient};flex-shrink:0;display:flex;align-items:center;justify-content:center;">
                   <svg width="22" height="22" style="color:white"><use href="#icon-play"/></svg>
                 </div>
                 <div style="flex:1; min-width:0">
-                  <p style="font-weight:600; font-size:var(--text-sm); margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${t.title}</p>
+                  <p style="font-weight:600; font-size:var(--text-sm); margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${tr.title}</p>
                   <div style="display:flex; align-items:center; gap:var(--space-3)">
                     <div class="progress-bar" style="flex:1">
-                      <div class="progress-bar-fill" data-width="${t.progress}"></div>
+                      <div class="progress-bar-fill" data-width="${tr.progress}"></div>
                     </div>
-                    <span class="label-lg text-muted">${t.progress}%</span>
+                    <span class="label-lg text-muted">${tr.progress}%</span>
                   </div>
                 </div>
-                <button class="btn btn-primary btn-sm" style="flex-shrink:0">Continuar</button>
+                <button class="btn btn-primary btn-sm" style="flex-shrink:0">${t('training.continue')}</button>
               </div>
             </div>
           `).join('')}
@@ -74,23 +75,23 @@ export function renderTreinamentos(container) {
 
   function renderCourses(filter) {
     grid.innerHTML = '';
-    const filtered = filter === 'Todos' ? treinamentos : treinamentos.filter(t => t.category === filter);
+    const filtered = filter === 'Todos' ? treinamentos : treinamentos.filter(tr => tr.category === filter);
 
     if (!filtered.length) {
-      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><svg width="40" height="40"><use href="#icon-book"/></svg><p class="title-md text-muted">Nenhum treinamento encontrado</p></div>`;
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><svg width="40" height="40"><use href="#icon-book"/></svg><p class="title-md text-muted">${t('training.empty')}</p></div>`;
       return;
     }
 
-    filtered.forEach((t, i) => {
+    filtered.forEach((tr, i) => {
       const card = createCard({
         type: 'course',
-        title: t.title,
-        instructor: t.instructor,
-        category: t.category,
-        durationLabel: t.durationLabel,
-        level: t.level,
-        progress: t.progress,
-        gradient: t.gradient,
+        title: tr.title,
+        instructor: tr.instructor,
+        category: tr.category,
+        durationLabel: tr.durationLabel,
+        level: tr.level,
+        progress: tr.progress,
+        gradient: tr.gradient,
         revealDelay: i * 80,
       });
       grid.appendChild(card);

@@ -3,6 +3,7 @@
 import { getNoticiasRecentes } from '../data/noticias.js';
 import { beneficios } from '../data/beneficios.js';
 import { createCard } from '../../components/card.js';
+import { t } from '../i18n.js';
 
 export function renderHome(container) {
   const news = getNoticiasRecentes(3);
@@ -21,32 +22,32 @@ export function renderHome(container) {
         </div>
         <div class="hero-content container">
           <div class="hero-text" data-reveal>
-            <span class="chip chip-teal" style="margin-bottom: var(--space-5)">✦ MC1 Global · 2026</span>
+            <span class="chip chip-teal" style="margin-bottom: var(--space-5)">${t('home.chip')}</span>
             <h1 class="display-lg hero-headline">
-              Seu espaço<br>no <em class="hero-accent">MC1 Hub.</em>
+              ${t('home.hero.title1')}<br><em class="hero-accent">${t('home.hero.title2')}</em>
             </h1>
             <p class="hero-sub">
-              Um espaço criado para simplificar, conectar e evoluir a forma como vivemos o dia a dia na empresa.
+              ${t('home.hero.sub')}
             </p>
             <div class="hero-actions" data-reveal data-reveal-delay="200">
               <a href="#/noticias" class="btn btn-primary btn-lg">
-                Ver Novidades
+                ${t('home.hero.cta_news')}
                 <svg width="18" height="18"><use href="#icon-arrow-right"/></svg>
               </a>
-              <a href="#/rh" class="btn btn-ghost btn-lg">Meus Benefícios</a>
+              <a href="#/rh" class="btn btn-ghost btn-lg">${t('home.hero.cta_benefits')}</a>
             </div>
           </div>
           <div class="hero-visual" data-reveal="right" data-reveal-delay="150" aria-hidden="true">
             <div class="hero-card-float hero-card-1">
               <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#004b71,#006494);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700">VF</div>
-                <span style="font-size:13px;font-weight:600;color:white">Bom dia, Vitor!</span>
+                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#004b71,#006494);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700">MC1</div>
+                <span style="font-size:13px;font-weight:600;color:white">${t('home.hero.greeting')}</span>
               </div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.7)">Você tem 1 day off disponível 🎂</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.7)">${t('home.hero.dayoff')}</div>
             </div>
             <div class="hero-card-float hero-card-2">
-              <div style="font-size:11px;font-weight:500;color:#5ba8d4;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase">SINDPD 2026</div>
-              <div style="font-size:13px;font-weight:600;color:white">Reajuste de 4% aprovado</div>
+              <div style="font-size:11px;font-weight:500;color:#5ba8d4;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase">${t('home.hero.sindpd')}</div>
+              <div style="font-size:13px;font-weight:600;color:white">${t('home.hero.sindpd_text')}</div>
             </div>
             <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
             <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
@@ -62,15 +63,15 @@ export function renderHome(container) {
         </div>
         <div class="hero-news-content container">
           <div class="hero-news-inner">
-            <span class="chip chip-teal" style="margin-bottom:var(--space-4)">📰 Última Notícia</span>
+            <span class="chip chip-teal" style="margin-bottom:var(--space-4)">${t('home.hero.slide_news')}</span>
             <p class="label-md" style="color:rgba(255,255,255,0.55); margin-bottom:var(--space-3)">${latestNews.dateLabel} · ${latestNews.tagLabel}</p>
             <h2 class="display-lg hero-headline" style="max-width:20ch">${latestNews.title}</h2>
             <p class="hero-sub">${latestNews.excerpt}</p>
             <div class="hero-actions">
               <a href="#/noticia/${latestNews.id}" class="btn btn-primary btn-lg" style="text-decoration:none">
-                Leia agora <svg width="18" height="18"><use href="#icon-arrow-right"/></svg>
+                ${t('home.hero.read_now')} <svg width="18" height="18"><use href="#icon-arrow-right"/></svg>
               </a>
-              <a href="#/noticias" class="btn btn-ghost btn-lg" style="text-decoration:none">Ver todas</a>
+              <a href="#/noticias" class="btn btn-ghost btn-lg" style="text-decoration:none">${t('home.hero.see_all')}</a>
             </div>
           </div>
         </div>
@@ -78,8 +79,8 @@ export function renderHome(container) {
 
       <!-- Navigation Dots -->
       <div class="hero-dots" role="tablist" aria-label="Navegação do banner">
-        <button class="hero-dot active" data-slide="0" aria-label="Slide boas-vindas"></button>
-        <button class="hero-dot" data-slide="1" aria-label="Slide última notícia"></button>
+        <button class="hero-dot active" data-slide="0" aria-label="${t('home.hero.slide1_label')}"></button>
+        <button class="hero-dot" data-slide="1" aria-label="${t('home.hero.slide2_label')}"></button>
       </div>
 
     </section>
@@ -87,7 +88,7 @@ export function renderHome(container) {
     <!-- ═══ QUICK ACCESS ═══ -->
     <section class="section-sm" style="background: var(--color-surface-container-low);" aria-label="Acesso rápido">
       <div class="container">
-        <p class="label-md" style="color:var(--color-primary); margin-bottom:var(--space-5)">Acesso Rápido</p>
+        <p class="label-md" style="color:var(--color-primary); margin-bottom:var(--space-5)">${t('home.quick.label')}</p>
         <div id="quick-links-grid" class="scroll-row quick-links-row"></div>
       </div>
     </section>
@@ -97,11 +98,11 @@ export function renderHome(container) {
       <div class="container">
         <div class="flex-between section-heading">
           <div>
-            <span class="label-md" style="color:var(--color-primary)">Comunicados</span>
-            <h2 class="headline-lg" id="news-heading">Últimas Notícias</h2>
+            <span class="label-md" style="color:var(--color-primary)">${t('home.news.label')}</span>
+            <h2 class="headline-lg" id="news-heading">${t('home.news.title')}</h2>
           </div>
           <a href="#/noticias" class="btn btn-ghost hover-arrow">
-            Ver todas <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+            ${t('home.news.see_all')} <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
           </a>
         </div>
         <div id="home-news-grid" class="grid grid-3"></div>
@@ -113,11 +114,11 @@ export function renderHome(container) {
       <div class="container">
         <div class="flex-between mb-8">
           <div>
-            <span class="label-md" style="color:var(--color-primary)">Seus Benefícios</span>
-            <h2 class="headline-lg" id="benefits-heading">Bem-estar em primeiro lugar</h2>
+            <span class="label-md" style="color:var(--color-primary)">${t('home.benefits.label')}</span>
+            <h2 class="headline-lg" id="benefits-heading">${t('home.benefits.title')}</h2>
           </div>
           <a href="#/rh" class="btn btn-ghost hover-arrow">
-            Ver todos <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+            ${t('home.benefits.see_all')} <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
           </a>
         </div>
         <div id="home-benefits-row" class="scroll-row"></div>
@@ -132,23 +133,23 @@ export function renderHome(container) {
             <div class="icon-wrap icon-wrap-xl icon-teal" style="margin-bottom: var(--space-5)">
               <svg width="32" height="32"><use href="#icon-calendar"/></svg>
             </div>
-            <span class="label-md" style="color:var(--color-primary); margin-bottom:var(--space-3); display:block">Recurso</span>
-            <h2 class="headline-lg" style="margin-bottom:var(--space-4)">Calendário Corporativo 2026</h2>
+            <span class="label-md" style="color:var(--color-primary); margin-bottom:var(--space-3); display:block">${t('home.calendar.label')}</span>
+            <h2 class="headline-lg" style="margin-bottom:var(--space-4)">${t('home.calendar.title')}</h2>
             <p class="body-lg text-muted" style="max-width:44ch; margin-bottom:var(--space-6)">
-              Feriados nacionais, pontos facultativos e datas importantes do ano já estão disponíveis para consulta e download.
+              ${t('home.calendar.desc')}
             </p>
             <a href="#/politicas" class="btn btn-primary">
-              Acessar Calendário
+              ${t('home.calendar.cta')}
               <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
             </a>
           </div>
           <div class="calendar-callout-visual" aria-hidden="true">
             <div class="calendar-mini">
               <div class="cal-header">
-                <span>Março 2026</span>
+                <span>${t('home.calendar.month')}</span>
               </div>
               <div class="cal-grid">
-                ${['D','S','T','Q','Q','S','S'].map(d => `<span class="cal-day-head">${d}</span>`).join('')}
+                ${t('home.calendar.days').split(',').map(d => `<span class="cal-day-head">${d}</span>`).join('')}
                 ${Array.from({length:35}, (_,i) => {
                   const day = i - 5;
                   if (day < 1 || day > 31) return `<span class="cal-day cal-day-empty"></span>`;
@@ -166,12 +167,12 @@ export function renderHome(container) {
 
   // ─── Quick Links ───
   const quickLinks = [
-    { title: 'Notícias',     icon: 'icon-newspaper', href: '#/noticias',     gradient: 'linear-gradient(135deg,#004b71,#006494)' },
-    { title: 'RH',           icon: 'icon-users',     href: '#/rh',           gradient: 'linear-gradient(135deg,#283593,#3949ab)' },
-    { title: 'Documentos',   icon: 'icon-document',  href: '#/politicas',    gradient: 'linear-gradient(135deg,#d97706,#f59e0b)' },
-    { title: 'Treinamentos', icon: 'icon-book',      href: '#/treinamentos', gradient: 'linear-gradient(135deg,#c62828,#e53935)' },
-    { title: 'Links Úteis',  icon: 'icon-link',      href: '#/links',        gradient: 'linear-gradient(135deg,#00695c,#00897b)' },
-    { title: 'Contato',      icon: 'icon-mail',      href: '#/contato',      gradient: 'linear-gradient(135deg,#4a148c,#6a1b9a)' },
+    { title: t('home.quick.news'),     icon: 'icon-newspaper', href: '#/noticias',     gradient: 'linear-gradient(135deg,#004b71,#006494)' },
+    { title: t('home.quick.rh'),       icon: 'icon-users',     href: '#/rh',           gradient: 'linear-gradient(135deg,#283593,#3949ab)' },
+    { title: t('home.quick.docs'),     icon: 'icon-document',  href: '#/politicas',    gradient: 'linear-gradient(135deg,#d97706,#f59e0b)' },
+    { title: t('home.quick.training'), icon: 'icon-book',      href: '#/treinamentos', gradient: 'linear-gradient(135deg,#c62828,#e53935)' },
+    { title: t('home.quick.links'),    icon: 'icon-link',      href: '#/links',        gradient: 'linear-gradient(135deg,#00695c,#00897b)' },
+    { title: t('home.quick.contact'),  icon: 'icon-mail',      href: '#/contato',      gradient: 'linear-gradient(135deg,#4a148c,#6a1b9a)' },
   ];
 
   const quickGrid = container.querySelector('#quick-links-grid');

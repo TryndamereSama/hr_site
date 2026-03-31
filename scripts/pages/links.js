@@ -2,6 +2,7 @@
 
 import { links, linksCategories } from '../data/links.js';
 import { createCard } from '../../components/card.js';
+import { t } from '../i18n.js';
 
 export function renderLinks(container) {
   let activeCategory = 'Todos';
@@ -10,14 +11,14 @@ export function renderLinks(container) {
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container">
         <nav class="breadcrumb" aria-label="Caminho">
-          <a href="#/">Home</a>
+          <a href="#/">${t('common.home')}</a>
           <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
-          <span>Links Úteis</span>
+          <span>${t('links.breadcrumb')}</span>
         </nav>
         <div class="page-header" style="padding-top:var(--space-6)">
-          <span class="label-md" style="color:var(--color-primary)">Ferramentas</span>
-          <h1>Links Úteis</h1>
-          <p>Acesso rápido a todas as ferramentas e sistemas corporativos.</p>
+          <span class="label-md" style="color:var(--color-primary)">${t('links.label')}</span>
+          <h1>${t('links.title')}</h1>
+          <p>${t('links.subtitle')}</p>
         </div>
         <div class="flex flex-wrap gap-3" id="links-filters" role="group" aria-label="Filtros">
           ${linksCategories.map(cat => `
@@ -42,7 +43,7 @@ export function renderLinks(container) {
     const filtered = filter === 'Todos' ? links : links.filter(l => l.category === filter);
 
     if (!filtered.length) {
-      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><svg width="40" height="40"><use href="#icon-link"/></svg><p class="title-md text-muted">Nenhum link encontrado</p></div>`;
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><svg width="40" height="40"><use href="#icon-link"/></svg><p class="title-md text-muted">${t('links.empty')}</p></div>`;
       return;
     }
 
