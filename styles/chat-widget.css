@@ -562,6 +562,218 @@
   max-width: 260px;
 }
 
+/* ─── Ghost button ─── */
+.chat-btn-ghost {
+  width: 100%;
+  padding: 9px 16px;
+  background: transparent;
+  color: #60686f;
+  border: 1.5px solid rgba(64, 72, 79, 0.18);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.chat-btn-ghost:hover { background: #f6f3f5; border-color: rgba(64,72,79,0.3); }
+.chat-btn-ghost.chat-btn-reopen { color: #b45309; border-color: rgba(180,83,9,0.25); }
+.chat-btn-ghost.chat-btn-reopen:hover { background: #fff7ed; }
+
+/* ─── Ticket status badges ─── */
+.chat-ticket-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+.status-aberto              { background: #fff0f0; color: #dc2626; }
+.status-em-atendimento      { background: #eff6ff; color: #1d4ed8; }
+.status-aguardando          { background: #fffbeb; color: #d97706; }
+.status-resolvido           { background: #f5f3ff; color: #7c3aed; }
+.status-reaberto            { background: #fff7ed; color: #b45309; }
+.status-fechado             { background: #f0fdf4; color: #16a34a; }
+
+/* ─── Tickets list screen ─── */
+.chat-tickets-screen {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+.chat-tickets-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #9ca3af;
+  font-size: 13px;
+  text-align: center;
+  padding: 32px 20px;
+}
+
+/* ─── Ticket card ─── */
+.chat-ticket-card {
+  background: #f6f3f5;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.chat-ticket-card:hover {
+  background: #ede9f0;
+  border-color: rgba(0, 75, 113, 0.12);
+  transform: translateY(-1px);
+}
+.chat-ticket-card-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.chat-ticket-date {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-left: auto;
+}
+.chat-ticket-card-cat {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1b1b1d;
+  margin-bottom: 3px;
+}
+.chat-ticket-card-desc {
+  font-size: 12px;
+  color: #60686f;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+.chat-ticket-card-id {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #004b71;
+  letter-spacing: 0.03em;
+}
+.chat-ticket-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f97316;
+  flex-shrink: 0;
+  animation: chat-pulse 1.5s ease-in-out infinite;
+}
+@keyframes chat-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ─── Ticket detail screen ─── */
+.chat-ticket-detail {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+
+.chat-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #60686f;
+}
+.chat-prio-badge {
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+.chat-prio-alta   { background: #fee2e2; color: #dc2626; }
+.chat-prio-normal { background: #dbeafe; color: #1d4ed8; }
+.chat-prio-baixa  { background: #f1f5f9; color: #475569; }
+
+/* ─── Timeline ─── */
+.chat-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-timeline-item {
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.chat-tl-collab { background: #eff6ff; }
+.chat-tl-rh     { background: #f0fdf4; }
+.chat-tl-system { background: #f6f3f5; }
+
+.chat-tl-meta {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.chat-tl-text {
+  font-size: 13px;
+  color: #1b1b1d;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ─── Action box (reply / rating) ─── */
+.chat-ticket-action-box {
+  background: rgba(0, 75, 113, 0.05);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1.5px solid rgba(0, 75, 113, 0.12);
+}
+.chat-ticket-action-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #004b71;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Star rating ─── */
+.chat-stars {
+  display: flex;
+  gap: 6px;
+}
+.chat-star {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d1d5db;
+  transition: color 0.1s ease, transform 0.1s ease;
+  padding: 0;
+  line-height: 1;
+}
+.chat-star:hover,
+.chat-star.active { color: #f59e0b; }
+.chat-star:hover  { transform: scale(1.15); }
+
 /* ─── Responsive — mobile ─── */
 @media (max-width: 480px) {
   #rh-chat-panel {
