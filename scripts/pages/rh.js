@@ -1,6 +1,6 @@
 // MC1 HUB — RH Page Renderer
 
-import { beneficios } from '../data/beneficios.js';
+import { getLocalizedBeneficios } from '../data/beneficios.js';
 import { contatos, avatarGradients } from '../data/contatos.js';
 import { getLocalizedNoticias } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
@@ -92,7 +92,7 @@ export function renderRH(container) {
 
   // ─── Benefits Grid ───
   const beneficiosGrid = container.querySelector('#beneficios-grid');
-  beneficios.forEach((b, i) => {
+  getLocalizedBeneficios().forEach((b, i) => {
     const card = createCard({
       type: 'benefit',
       name: b.name,

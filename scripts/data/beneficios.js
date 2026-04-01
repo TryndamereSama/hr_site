@@ -1,4 +1,7 @@
 // MC1 HUB — Employee Benefits Data
+import { getLang } from '../i18n.js';
+import { beneficiosTranslations } from './beneficios-i18n.js';
+
 export const beneficios = [
   {
     id: 'vale-refeicao',
@@ -129,3 +132,13 @@ export const beneficios = [
 ];
 
 export const getBeneficio = (id) => beneficios.find(b => b.id === id);
+
+export function getLocalizedBeneficios() {
+  const lang = getLang();
+  if (lang === 'pt') return beneficios;
+  const tr = beneficiosTranslations[lang] || {};
+  return beneficios.map(b => {
+    const override = tr[b.id];
+    return override ? { ...b, ...override } : b;
+  });
+}
