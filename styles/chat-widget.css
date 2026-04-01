@@ -835,6 +835,31 @@
   word-break: break-word;
 }
 
+.chat-tl-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
+.chat-tl-attach-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  background: #fff;
+  border: 1px solid rgba(59, 91, 219, 0.25);
+  border-radius: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #3b5bdb;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.chat-tl-attach-link:hover {
+  background: #eff3ff;
+  border-color: #3b5bdb;
+}
+
 /* ─── Action box (reply / rating) ─── */
 .chat-ticket-action-box {
   background: rgba(0, 75, 113, 0.05);
