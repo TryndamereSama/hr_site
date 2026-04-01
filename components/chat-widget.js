@@ -14,6 +14,9 @@ let _typing = false;
 let _myTickets = [];
 let _currentTicketId = null;
 let _ticketsLoading = false;
+let _chatFile = null;       // File attached to the current chat message
+let _ticketFiles = [];      // Files attached to the new ticket form (max 3)
+let _replyFile = null;      // File attached to the ticket reply
 
 // ─── Root elements ───
 let bubble, panel;
@@ -195,7 +198,14 @@ function _chatHTML() {
       ${msgHTML}
       ${typingHTML}
     </div>
+    ${_chatFile ? `<div class="chat-attach-bar"><div class="chat-attach-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><span>${_escapeHTML(_chatFile.name)}</span><button type="button" id="chat-attach-remove" aria-label="Remover arquivo">×</button></div></div>` : ''}
     <form id="chat-input-form" class="chat-input-bar">
+      <input type="file" id="chat-file-input" style="display:none" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt" />
+      <button type="button" class="chat-attach-btn" id="chat-attach-btn" aria-label="Anexar arquivo" title="Anexar arquivo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+        </svg>
+      </button>
       <input id="chat-input" type="text" placeholder="Digite sua dúvida..." autocomplete="off" maxlength="500" />
       <button type="submit" class="chat-send-btn" aria-label="Enviar">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -232,6 +242,17 @@ function _ticketHTML() {
         <div class="chat-field">
           <label for="ticket-email">E-mail de retorno (opcional)</label>
           <input id="ticket-email" type="email" placeholder="seu@email.com" />
+        </div>
+        <div class="chat-field">
+          <label>Anexos (opcional · máx. 3 · 10 MB cada)</label>
+          <input type="file" id="ticket-file-input" style="display:none" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt" />
+          <div class="chat-attach-zone">
+            <button type="button" id="ticket-attach-btn" class="chat-attach-zone-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              Adicionar arquivo
+            </button>
+            <div id="ticket-attach-list" class="chat-attach-list">${_ticketFilesHTML()}</div>
+          </div>
         </div>
         <div id="chat-ticket-error" class="chat-error" style="display:none"></div>
         <button type="submit" class="chat-submit-btn" id="chat-ticket-btn">Enviar Chamado</button>
@@ -377,8 +398,15 @@ function _ticketDetailHTML() {
           <label for="ticket-reply">Sua resposta</label>
           <textarea id="ticket-reply" rows="3" placeholder="Descreva as informações solicitadas…" maxlength="1000"></textarea>
         </div>
+        <input type="file" id="reply-file-input" style="display:none" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt" />
+        ${_replyFile ? `<div class="chat-attach-bar" style="margin:0"><div class="chat-attach-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><span>${_escapeHTML(_replyFile.name)}</span><button type="button" id="reply-attach-remove" aria-label="Remover arquivo">×</button></div></div>` : ''}
+        <div class="chat-reply-actions">
+          <button type="button" id="reply-attach-btn" class="chat-attach-btn" aria-label="Anexar arquivo" title="Anexar arquivo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          </button>
+          <button id="chat-reply-btn" class="chat-submit-btn" style="flex:1;margin-top:0">Enviar resposta</button>
+        </div>
         <div id="chat-reply-error" class="chat-error" style="display:none"></div>
-        <button id="chat-reply-btn" class="chat-submit-btn">Enviar resposta</button>
       </div>`;
   } else if (t.status === 'Resolvido') {
     actionHTML = `
@@ -417,6 +445,31 @@ function _ticketDetailHTML() {
     </div>`;
 }
 
+// ─── File attachment helpers ───
+function _ticketFilesHTML() {
+  return _ticketFiles.map((f, i) => `
+    <div class="chat-attach-chip">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+      <span>${_escapeHTML(f.name)}</span>
+      <button type="button" class="ticket-file-remove" data-idx="${i}" aria-label="Remover arquivo">×</button>
+    </div>`).join('');
+}
+
+function _refreshTicketAttachList() {
+  const el = panel.querySelector('#ticket-attach-list');
+  if (el) el.innerHTML = _ticketFilesHTML();
+  // Re-bind remove buttons
+  panel.querySelectorAll('.ticket-file-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      _ticketFiles.splice(parseInt(btn.dataset.idx), 1);
+      _refreshTicketAttachList();
+    });
+  });
+  // Hide add button when limit reached
+  const addBtn = panel.querySelector('#ticket-attach-btn');
+  if (addBtn) addBtn.style.display = _ticketFiles.length >= 3 ? 'none' : '';
+}
+
 // ─── Event Binding ───
 function _bindEvents() {
   bubble.addEventListener('click', _togglePanel);
@@ -442,11 +495,31 @@ function _bindPanelEvents() {
     panel.querySelector('#chat-logout-btn')?.addEventListener('click', _handleLogout);
     panel.querySelector('#chat-open-ticket-btn')?.addEventListener('click', _handleOpenTicket);
     panel.querySelector('#chat-tickets-btn')?.addEventListener('click', _handleOpenTickets);
+    // File attach
+    panel.querySelector('#chat-attach-btn')?.addEventListener('click', () => panel.querySelector('#chat-file-input')?.click());
+    panel.querySelector('#chat-file-input')?.addEventListener('change', e => {
+      const f = e.target.files?.[0];
+      if (f && f.size <= 10 * 1024 * 1024) { _chatFile = f; _renderPanel(); }
+      else if (f) alert('Arquivo muito grande. O limite é 10 MB.');
+    });
+    panel.querySelector('#chat-attach-remove')?.addEventListener('click', () => { _chatFile = null; _renderPanel(); });
   }
 
   if (_state === 'ticket') {
     panel.querySelector('#chat-ticket-form')?.addEventListener('submit', _handleTicketSubmit);
-    panel.querySelector('#chat-back-btn')?.addEventListener('click', () => { _state = 'chat'; _renderPanel(); });
+    panel.querySelector('#chat-back-btn')?.addEventListener('click', () => { _ticketFiles = []; _state = 'chat'; _renderPanel(); });
+    // File attach
+    panel.querySelector('#ticket-attach-btn')?.addEventListener('click', () => panel.querySelector('#ticket-file-input')?.click());
+    panel.querySelector('#ticket-file-input')?.addEventListener('change', e => {
+      Array.from(e.target.files || []).forEach(f => {
+        if (_ticketFiles.length >= 3) return;
+        if (f.size > 10 * 1024 * 1024) { alert(`"${f.name}" é muito grande. Limite de 10 MB.`); return; }
+        _ticketFiles.push(f);
+      });
+      _refreshTicketAttachList();
+      e.target.value = '';
+    });
+    _refreshTicketAttachList();
   }
 
   if (_state === 'success') {
@@ -485,6 +558,14 @@ function _bindPanelEvents() {
     panel.querySelector('#chat-reply-btn')?.addEventListener('click', _handleReply);
     panel.querySelector('#chat-rate-btn')?.addEventListener('click', _handleRate);
     panel.querySelector('#chat-reopen-btn')?.addEventListener('click', _handleReopen);
+    // File attach in reply
+    panel.querySelector('#reply-attach-btn')?.addEventListener('click', () => panel.querySelector('#reply-file-input')?.click());
+    panel.querySelector('#reply-file-input')?.addEventListener('change', e => {
+      const f = e.target.files?.[0];
+      if (f && f.size <= 10 * 1024 * 1024) { _replyFile = f; _renderPanel(); }
+      else if (f) alert('Arquivo muito grande. O limite é 10 MB.');
+    });
+    panel.querySelector('#reply-attach-remove')?.addEventListener('click', () => { _replyFile = null; _renderPanel(); });
   }
 }
 
@@ -557,18 +638,28 @@ async function _handleSend(e) {
   const text  = input.value.trim();
   if (!text || _typing) return;
 
+  const fileForSend = _chatFile;
   input.value = '';
-  _messages.push({ role: 'user', text });
+  _chatFile   = null;
+  const displayText = fileForSend ? `${text}${text ? ' ' : ''}[📎 ${fileForSend.name}]` : text;
+  _messages.push({ role: 'user', text: displayText });
   _typing = true;
   _suggestTicket = false;
   _renderPanel();
 
   try {
-    const res = await fetch(`${API_URL}/api/chat`, {
-      method: 'POST', credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text }),
-    });
+    let fetchOptions;
+    if (fileForSend) {
+      const fd = new FormData();
+      fd.append('message', text);
+      fd.append('file', fileForSend);
+      fetchOptions = { method: 'POST', credentials: 'include', body: fd };
+    } else {
+      fetchOptions = { method: 'POST', credentials: 'include',
+                       headers: { 'Content-Type': 'application/json' },
+                       body: JSON.stringify({ message: text }) };
+    }
+    const res = await fetch(`${API_URL}/api/chat`, fetchOptions);
 
     if (res.status === 401) {
       sessionStorage.removeItem(SESSION_KEY);
@@ -597,14 +688,15 @@ async function _handleSend(e) {
 // ─── Clear ───
 async function _handleClear() {
   try { await fetch(`${API_URL}/api/clear`, { method: 'POST', credentials: 'include' }); } catch { }
-  _messages = []; _suggestTicket = false; _typing = false;
+  _messages = []; _suggestTicket = false; _typing = false; _chatFile = null;
   _renderPanel();
 }
 
 // ─── Logout ───
 function _handleLogout() {
   sessionStorage.removeItem(SESSION_KEY);
-  _messages = []; _suggestTicket = false; _typing = false; _myTickets = [];
+  _messages = []; _suggestTicket = false; _typing = false;
+  _myTickets = []; _chatFile = null; _ticketFiles = []; _replyFile = null;
   _state = 'login'; _render();
 }
 
@@ -635,14 +727,21 @@ async function _handleTicketSubmit(e) {
   btn.disabled = true; btn.textContent = 'Enviando…'; _hideError(errEl);
 
   try {
-    const res  = await fetch(`${API_URL}/api/chamado/abrir`, {
-      method: 'POST', credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ categoria: cat, descricao: desc, email }),
-    });
+    let fetchOpts;
+    if (_ticketFiles.length > 0) {
+      const fd = new FormData();
+      fd.append('categoria', cat); fd.append('descricao', desc); fd.append('email', email);
+      _ticketFiles.forEach(f => fd.append('files', f));
+      fetchOpts = { method: 'POST', credentials: 'include', body: fd };
+    } else {
+      fetchOpts = { method: 'POST', credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ categoria: cat, descricao: desc, email }) };
+    }
+    const res  = await fetch(`${API_URL}/api/chamado/abrir`, fetchOpts);
     const data = await res.json();
 
-    if (data.success) { _state = 'success'; _renderPanel(); }
+    if (data.success) { _ticketFiles = []; _state = 'success'; _renderPanel(); }
     else {
       _showError(errEl, data.message || 'Erro ao abrir chamado. Tente novamente.');
       btn.disabled = false; btn.textContent = 'Enviar Chamado';
@@ -691,14 +790,22 @@ async function _handleReply() {
 
   if (!texto || texto.length < 5) { _showError(errEl, 'Escreva sua resposta com pelo menos 5 caracteres.'); return; }
 
+  const fileForReply = _replyFile;
+  _replyFile = null;
   btn.disabled = true; btn.textContent = 'Enviando…'; _hideError(errEl);
 
   try {
-    const res  = await fetch(`${API_URL}/api/chamado/responder`, {
-      method: 'POST', credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: _currentTicketId, texto }),
-    });
+    let fetchOpts;
+    if (fileForReply) {
+      const fd = new FormData();
+      fd.append('id', _currentTicketId); fd.append('texto', texto); fd.append('files', fileForReply);
+      fetchOpts = { method: 'POST', credentials: 'include', body: fd };
+    } else {
+      fetchOpts = { method: 'POST', credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: _currentTicketId, texto }) };
+    }
+    const res  = await fetch(`${API_URL}/api/chamado/responder`, fetchOpts);
     const data = await res.json();
 
     if (data.success) {

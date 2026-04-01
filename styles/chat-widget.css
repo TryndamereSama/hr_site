@@ -562,6 +562,104 @@
   max-width: 260px;
 }
 
+/* ─── Attach button (inside input bar) ─── */
+.chat-attach-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #60686f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.15s ease, background 0.15s ease;
+  padding: 0;
+}
+.chat-attach-btn:hover { color: #004b71; background: rgba(0, 75, 113, 0.07); }
+
+/* ─── Attach bar (file preview row above input) ─── */
+.chat-attach-bar {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px 0;
+  flex-shrink: 0;
+}
+
+/* ─── File chip (shared by chat, ticket, reply) ─── */
+.chat-attach-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 75, 113, 0.08);
+  border: 1px solid rgba(0, 75, 113, 0.18);
+  border-radius: 20px;
+  padding: 3px 8px 3px 7px;
+  font-size: 11.5px;
+  color: #004b71;
+  font-weight: 500;
+  max-width: 240px;
+  overflow: hidden;
+}
+.chat-attach-chip span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+.chat-attach-chip button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #60686f;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  margin-left: 2px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.chat-attach-chip button:hover { color: #c62828; }
+
+/* ─── Attach zone (ticket form) ─── */
+.chat-attach-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.chat-attach-zone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1.5px dashed rgba(0, 75, 113, 0.3);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #004b71;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  align-self: flex-start;
+}
+.chat-attach-zone-btn:hover { border-color: #004b71; background: rgba(0,75,113,0.05); }
+
+.chat-attach-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ─── Reply actions row (attach + send side by side) ─── */
+.chat-reply-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* ─── Ghost button ─── */
 .chat-btn-ghost {
   width: 100%;
