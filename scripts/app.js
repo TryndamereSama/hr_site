@@ -6,6 +6,7 @@ import { initScrollReveal, initCounters, animateProgressBars } from './animation
 import { initNavbar, initFooter } from './navbar.js';
 import { buildSearchIndex } from './search.js';
 import { initSearchOverlay } from '../components/search-overlay.js';
+import { initChatWidget }   from '../components/chat-widget.js';
 
 // Pages
 import { renderHome }        from './pages/home.js';
@@ -62,7 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Router (renders current route)
   initRouter();
 
-  // 5. Language change — update data-i18n elements + rebuild search + re-render current page
+  // 5. Chat widget
+  initChatWidget();
+
+  // 6. Language change — update data-i18n elements + rebuild search + re-render current page
   window.addEventListener('langchange', () => {
     applyTranslations();
     buildSearchIndex(); // refresh search index with translated article titles
