@@ -82,10 +82,8 @@ export function initNavbar() {
             <svg width="16" height="16"><use href="#icon-document"/></svg>
             <span data-i18n="nav.docs">${t('nav.docs')}</span>
           </a></li>
-          <li><a href="#/treinamentos" class="nav-link">
-            <svg width="16" height="16"><use href="#icon-book"/></svg>
-            <span data-i18n="nav.training">${t('nav.training')}</span>
-          </a></li>
+          <!-- training tab hidden temporarily -->
+
           <li><a href="#/links" class="nav-link">
             <svg width="16" height="16"><use href="#icon-link"/></svg>
             <span data-i18n="nav.links">${t('nav.links')}</span>
@@ -214,7 +212,7 @@ export function initNavbar() {
         </div>
 
         <a href="#/politicas"    class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-document"/></svg><span data-i18n="nav.docs">${t('nav.docs')}</span></a>
-        <a href="#/treinamentos" class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-book"/></svg><span data-i18n="nav.training">${t('nav.training')}</span></a>
+        <!-- training tab hidden temporarily -->
         <a href="#/links"        class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-link"/></svg><span data-i18n="nav.links">${t('nav.links')}</span></a>
         <a href="#/contato"      class="mobile-nav-link"><svg width="20" height="20"><use href="#icon-mail"/></svg><span data-i18n="nav.contact">${t('nav.contact')}</span></a>
       </nav>

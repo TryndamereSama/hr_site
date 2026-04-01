@@ -170,7 +170,8 @@ export function renderHome(container) {
     { title: t('home.quick.news'),     icon: 'icon-newspaper', href: '#/noticias',     gradient: 'linear-gradient(135deg,#004b71,#006494)' },
     { title: t('home.quick.rh'),       icon: 'icon-users',     href: '#/rh',           gradient: 'linear-gradient(135deg,#283593,#3949ab)' },
     { title: t('home.quick.docs'),     icon: 'icon-document',  href: '#/politicas',    gradient: 'linear-gradient(135deg,#d97706,#f59e0b)' },
-    { title: t('home.quick.training'), icon: 'icon-book',      href: '#/treinamentos', gradient: 'linear-gradient(135deg,#c62828,#e53935)' },
+    // training hidden temporarily
+
     { title: t('home.quick.links'),    icon: 'icon-link',      href: '#/links',        gradient: 'linear-gradient(135deg,#00695c,#00897b)' },
     { title: t('home.quick.contact'),  icon: 'icon-mail',      href: '#/contato',      gradient: 'linear-gradient(135deg,#4a148c,#6a1b9a)' },
   ];
