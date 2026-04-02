@@ -3,6 +3,48 @@ import { getLang } from '../i18n.js';
 import { noticiasTranslations } from './noticias-i18n.js';
 
 export const noticias = [
+  // ─── 2026-04-02 ───
+  {
+    id: 'aniversariantes-abril-2026',
+    title: 'Parabéns aos Aniversariantes de Abril! 🎂',
+    excerpt: 'Abril chegou cheio de comemorações! Confira os colegas que fazem aniversário este mês e celebre com eles.',
+    body: `
+      <img src="assets/images/Birhtday 04.2026.png" alt="Aniversariantes de Abril 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em abril de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
+      <h3>Aniversariantes do Mês</h3>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li>🇧🇷 <strong>04</strong> — Everton Rodrigues · Infra</li>
+        <li>🇧🇷 <strong>04</strong> — Wislan Lopes Moraes · Infra</li>
+        <li>🇧🇷 <strong>05</strong> — Vanessa Nunes · Gente &amp; Futuro</li>
+        <li>🇧🇷 <strong>06</strong> — Gabriel Mitsuo Haibara · PSG</li>
+        <li>🇧🇷 <strong>08</strong> — Fabio Cabral de Almeida · GST</li>
+        <li>🇲🇽 <strong>16</strong> — David Perez Ruiz · PSG</li>
+        <li>🇧🇷 <strong>17</strong> — Isabelle Lirio · Finanças</li>
+        <li>🇲🇽 <strong>23</strong> — Angeles Martínez · PSG</li>
+        <li>🇧🇷 <strong>23</strong> — Renato Miranda Picchi · Finanças</li>
+        <li>🇲🇽 <strong>24</strong> — Luis Rodrigo Perez · Suporte Pepsico</li>
+        <li>🇲🇽 <strong>24</strong> — Pedro Sandoval · PSG</li>
+        <li>🇲🇽 <strong>26</strong> — Josue David Garcia · PSG</li>
+        <li>🇧🇷 <strong>29</strong> — Ademir Mazzo Junior · Produto Trade e Sales</li>
+        <li>🇧🇷 <strong>29</strong> — Gustavo de Souza · Infra</li>
+        <li>🇧🇷 <strong>30</strong> — Julio Fabio de Oliveira · Lead</li>
+      </ul>
+      <h3>Day Off de Aniversário 🎁</h3>
+      <p>Todo aniversariante ganha um dia livre para comemorar da forma que quiser — basta alinhar a data com sua liderança. Não quer folgar exatamente no dia? Sem problema! Você pode escolher outra data dentro do mesmo ano.</p>
+      <p>E tem mais: no mês do seu aniversário você também recebe um <strong>crédito de R$ 50,00 no cartão Flash</strong> para aproveitar do seu jeito!</p>
+      <p>Que 2026 seja repleto de conquistas, saúde e realizações para todos! 🎉</p>
+    `,
+    category: 'Celebração',
+    tag: 'celebracao',
+    tagLabel: 'Celebração',
+    date: '2026-04-02',
+    dateLabel: '2 de abril de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/Birhtday 04.2026.png',
+    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+    featured: true,
+  },
   // ─── 2026-03-20 ───
   {
     id: 'canal-speak-up-safely-2026',
@@ -265,10 +307,9 @@ export const noticias = [
     body: `
       <img src="assets/images/Birhtday 03.2026.png" alt="Aniversariantes de Março 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
       <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em março de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
-      <h3>Day Off de Aniversário</h3>
-      <p>Nossa política de Day Off de Aniversário garante que cada colaborador possa comemorar seu dia especial com um dia de folga próximo à data. Consulte seu gestor e o RH para agendar o seu day off.</p>
-      <h3>Como funciona o Day Off</h3>
-      <p>O day off de aniversário pode ser utilizado no próprio dia do aniversário ou em até 7 dias úteis antes ou após a data. Basta alinhar com seu gestor e registrar no sistema Ahgora.</p>
+      <h3>Day Off de Aniversário 🎁</h3>
+      <p>Todo aniversariante ganha um dia livre para comemorar da forma que quiser — basta alinhar a data com sua liderança. Não quer folgar exatamente no dia? Sem problema! Você pode escolher outra data dentro do mesmo ano.</p>
+      <p>E tem mais: no mês do seu aniversário você também recebe um <strong>crédito de R$ 50,00 no cartão Flash</strong> para aproveitar do seu jeito!</p>
       <p>Que 2026 seja repleto de conquistas, saúde e realizações para todos! 🎉</p>
     `,
     category: 'Celebração',
@@ -414,10 +455,9 @@ export const noticias = [
     body: `
       <img src="assets/images/Birhtday 02.2026.png" alt="Aniversariantes de Fevereiro 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
       <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em fevereiro de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
-      <h3>Day Off de Aniversário</h3>
-      <p>Nossa política de Day Off de Aniversário garante que cada colaborador possa comemorar seu dia especial com um dia de folga próximo à data. Consulte seu gestor e o RH para agendar o seu day off.</p>
-      <h3>Como funciona o Day Off</h3>
-      <p>O day off de aniversário pode ser utilizado no próprio dia do aniversário ou em até 7 dias úteis antes ou após a data. Basta alinhar com seu gestor e registrar no sistema Ahgora.</p>
+      <h3>Day Off de Aniversário 🎁</h3>
+      <p>Todo aniversariante ganha um dia livre para comemorar da forma que quiser — basta alinhar a data com sua liderança. Não quer folgar exatamente no dia? Sem problema! Você pode escolher outra data dentro do mesmo ano.</p>
+      <p>E tem mais: no mês do seu aniversário você também recebe um <strong>crédito de R$ 50,00 no cartão Flash</strong> para aproveitar do seu jeito!</p>
       <p>Que 2026 seja repleto de conquistas, saúde e realizações para todos! 🎉</p>
     `,
     category: 'Celebração',
@@ -485,10 +525,9 @@ export const noticias = [
     body: `
       <img src="assets/images/Birhtday 01.2026.png" alt="Aniversariantes de Janeiro 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
       <p>A MC1 Global celebra junto com todos os colaboradores que completam mais um ano de vida em janeiro de 2026. Este é um momento especial para reconhecer cada pessoa que faz parte da nossa equipe!</p>
-      <h3>Day Off de Aniversário</h3>
-      <p>Nossa política de Day Off de Aniversário garante que cada colaborador possa comemorar seu dia especial com um dia de folga próximo à data. Consulte seu gestor e o RH para agendar o seu day off.</p>
-      <h3>Como funciona o Day Off</h3>
-      <p>O day off de aniversário pode ser utilizado no próprio dia do aniversário ou em até 7 dias úteis antes ou após a data. Basta alinhar com seu gestor e registrar no sistema Ahgora.</p>
+      <h3>Day Off de Aniversário 🎁</h3>
+      <p>Todo aniversariante ganha um dia livre para comemorar da forma que quiser — basta alinhar a data com sua liderança. Não quer folgar exatamente no dia? Sem problema! Você pode escolher outra data dentro do mesmo ano.</p>
+      <p>E tem mais: no mês do seu aniversário você também recebe um <strong>crédito de R$ 50,00 no cartão Flash</strong> para aproveitar do seu jeito!</p>
       <p>Que 2026 seja repleto de conquistas, saúde e realizações para todos! 🎉</p>
     `,
     category: 'Celebração',

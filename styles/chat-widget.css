@@ -897,6 +897,99 @@
 .chat-star.active { color: #f59e0b; }
 .chat-star:hover  { transform: scale(1.15); }
 
+/* ─── Login icon variants ─── */
+.chat-login-icon-sm {
+  width: 48px;
+  height: 48px;
+}
+.chat-login-icon-sm svg {
+  width: 22px;
+  height: 22px;
+}
+
+.chat-login-icon-activation {
+  background: rgba(5, 150, 105, 0.10);
+  color: #059669;
+}
+
+/* ─── Activation badge (Primeiro Acesso pill) ─── */
+.chat-activation-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  background: linear-gradient(90deg, #059669, #10b981);
+  color: white;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* ─── Activation submit button variant ─── */
+.chat-submit-btn-activation {
+  background: linear-gradient(135deg, #059669, #047857);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.chat-submit-btn-activation:hover:not(:disabled) {
+  background: linear-gradient(135deg, #047857, #065f46);
+}
+
+/* ─── Back link button ─── */
+.chat-back-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 7px 16px;
+  background: transparent;
+  color: #60686f;
+  border: none;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  margin-top: -2px;
+}
+.chat-back-link:hover { color: #004b71; }
+.chat-back-link svg   { color: inherit; }
+
+/* ─── Password strength indicator ─── */
+.chat-pwd-strength {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -4px;
+}
+
+.chat-pwd-strength-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(64, 72, 79, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.chat-pwd-strength-fill {
+  height: 100%;
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.chat-pwd-strength-label {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 64px;
+  text-align: right;
+  transition: color 0.3s ease;
+}
+
 /* ─── Responsive — mobile ─── */
 @media (max-width: 480px) {
   #rh-chat-panel {

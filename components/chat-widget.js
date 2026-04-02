@@ -5,8 +5,11 @@ const API_URL = window.RH_ASSISTANT_API_URL || 'http://localhost:5000';
 const SESSION_KEY = 'rh_chat_authed';
 
 // ─── State ───
-let _state = 'login'; // 'login' | 'chat' | 'ticket' | 'success' | 'tickets' | 'ticket-detail'
+let _state = 'login'; // 'login' | 'login_senha' | 'ativacao' | 'chat' | 'ticket' | 'success' | 'tickets' | 'ticket-detail'
 let _open = false;
+// Armazena CPF e nome durante o fluxo de login em 2 passos
+let _pendingCPF  = '';
+let _pendingNome = '';
 let _messages = []; // { role: 'user'|'bot', text }
 let _suggestTicket = false;
 let _ticketCategories = [];
@@ -95,6 +98,8 @@ function _renderPanel() {
 
   switch (_state) {
     case 'login':         panel.innerHTML = _loginHTML();        break;
+    case 'login_senha':   panel.innerHTML = _loginSenhaHTML();   break;
+    case 'ativacao':      panel.innerHTML = _ativacaoHTML();     break;
     case 'chat':          panel.innerHTML = _chatHTML();         break;
     case 'ticket':        panel.innerHTML = _ticketHTML();       break;
     case 'success':       panel.innerHTML = _successHTML();      break;
@@ -110,8 +115,8 @@ function _renderPanel() {
   }
 }
 
-// ─── Screen: Login ───
-function _loginHTML() {
+// ─── Screen helpers ───
+function _chatLoginHeader() {
   return `
     <div class="chat-header">
       <div class="chat-header-avatar">
@@ -123,26 +128,96 @@ function _loginHTML() {
         <span class="chat-header-name">RH Assistente</span>
         <span class="chat-header-status">MC1 Global</span>
       </div>
-    </div>
+    </div>`;
+}
+
+// ─── Screen: Login — Passo 1 (CPF) ───
+function _loginHTML() {
+  return `
+    ${_chatLoginHeader()}
     <div class="chat-login-screen">
       <div class="chat-login-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
       </div>
       <h3>Assistente de RH</h3>
-      <p>Entre com seu CPF e senha do sistema para acessar o assistente.</p>
-      <form id="chat-login-form" novalidate>
+      <p>Informe seu CPF para continuar.</p>
+      <form id="chat-cpf-form" novalidate>
         <div class="chat-field">
           <label for="chat-cpf">CPF</label>
           <input id="chat-cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" autocomplete="username" />
         </div>
+        <div id="chat-login-error" class="chat-error" style="display:none"></div>
+        <button type="submit" class="chat-submit-btn" id="chat-cpf-btn">
+          Continuar
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </form>
+    </div>`;
+}
+
+// ─── Screen: Login — Passo 2a (Senha para usuário existente) ───
+function _loginSenhaHTML() {
+  const primeiroNome = _pendingNome ? _pendingNome.split(' ')[0] : '';
+  return `
+    ${_chatLoginHeader()}
+    <div class="chat-login-screen">
+      <div class="chat-login-icon chat-login-icon-sm">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      ${primeiroNome ? `<h3>Olá, ${primeiroNome}!</h3><p>Informe sua senha para entrar.</p>` : `<h3>Bem-vindo de volta!</h3><p>Informe sua senha para entrar.</p>`}
+      <form id="chat-pwd-form" novalidate>
         <div class="chat-field">
           <label for="chat-pwd">Senha</label>
           <input id="chat-pwd" type="password" placeholder="Sua senha" autocomplete="current-password" />
         </div>
         <div id="chat-login-error" class="chat-error" style="display:none"></div>
-        <button type="submit" class="chat-submit-btn" id="chat-login-btn">Entrar</button>
+        <button type="submit" class="chat-submit-btn" id="chat-pwd-btn">Entrar</button>
+        <button type="button" class="chat-back-link" id="chat-back-cpf-btn">
+          ${_iconBack()} Trocar CPF
+        </button>
+      </form>
+    </div>`;
+}
+
+// ─── Screen: Ativação — Primeiro Acesso ───
+function _ativacaoHTML() {
+  const primeiroNome = _pendingNome ? _pendingNome.split(' ')[0] : '';
+  return `
+    ${_chatLoginHeader()}
+    <div class="chat-login-screen">
+      <div class="chat-login-icon chat-login-icon-activation">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="chat-activation-badge">Primeiro Acesso</div>
+      <h3>${primeiroNome ? `Olá, ${primeiroNome}! 👋` : 'Bem-vindo(a)!'}</h3>
+      <p>Crie uma senha para ativar sua conta e acessar o Assistente de RH.</p>
+      <form id="chat-activation-form" novalidate>
+        <div class="chat-field">
+          <label for="chat-new-pwd">Criar senha <span style="color:var(--color-text-muted);font-weight:400">(mín. 6 caracteres)</span></label>
+          <input id="chat-new-pwd" type="password" placeholder="Crie uma senha" autocomplete="new-password" />
+        </div>
+        <div class="chat-field">
+          <label for="chat-confirm-pwd">Confirmar senha</label>
+          <input id="chat-confirm-pwd" type="password" placeholder="Repita a senha" autocomplete="new-password" />
+        </div>
+        <div id="chat-pwd-strength" class="chat-pwd-strength" style="display:none">
+          <div class="chat-pwd-strength-bar"><div id="chat-pwd-strength-fill" class="chat-pwd-strength-fill"></div></div>
+          <span id="chat-pwd-strength-label" class="chat-pwd-strength-label"></span>
+        </div>
+        <div id="chat-login-error" class="chat-error" style="display:none"></div>
+        <button type="submit" class="chat-submit-btn chat-submit-btn-activation" id="chat-activation-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Ativar Minha Conta
+        </button>
+        <button type="button" class="chat-back-link" id="chat-back-cpf-btn">
+          ${_iconBack()} Trocar CPF
+        </button>
       </form>
     </div>`;
 }
@@ -493,10 +568,30 @@ function _bindEvents() {
 
 function _bindPanelEvents() {
   if (_state === 'login') {
-    const form     = panel.querySelector('#chat-login-form');
+    const form     = panel.querySelector('#chat-cpf-form');
     const cpfInput = panel.querySelector('#chat-cpf');
-    if (form)     form.addEventListener('submit', _handleLogin);
+    if (form)     form.addEventListener('submit', _handleCpfStep);
     if (cpfInput) cpfInput.addEventListener('input', _formatCPF);
+  }
+
+  if (_state === 'login_senha') {
+    const form    = panel.querySelector('#chat-pwd-form');
+    const backBtn = panel.querySelector('#chat-back-cpf-btn');
+    if (form)    form.addEventListener('submit', _handleSenhaStep);
+    if (backBtn) backBtn.addEventListener('click', () => {
+      _pendingCPF = ''; _pendingNome = ''; _state = 'login'; _renderPanel();
+    });
+  }
+
+  if (_state === 'ativacao') {
+    const form    = panel.querySelector('#chat-activation-form');
+    const backBtn = panel.querySelector('#chat-back-cpf-btn');
+    const pwdIn   = panel.querySelector('#chat-new-pwd');
+    if (form)    form.addEventListener('submit', _handleAtivacaoStep);
+    if (backBtn) backBtn.addEventListener('click', () => {
+      _pendingCPF = ''; _pendingNome = ''; _state = 'login'; _renderPanel();
+    });
+    if (pwdIn) pwdIn.addEventListener('input', _updatePwdStrength);
   }
 
   if (_state === 'chat') {
@@ -587,11 +682,12 @@ function _togglePanel() {
 function _openPanel() {
   _open = true;
   _render();
-  if (_state === 'login') {
-    requestAnimationFrame(() => panel.querySelector('#chat-cpf')?.focus());
-  } else if (_state === 'chat') {
-    requestAnimationFrame(() => panel.querySelector('#chat-input')?.focus());
-  }
+  requestAnimationFrame(() => {
+    if      (_state === 'login')       panel.querySelector('#chat-cpf')?.focus();
+    else if (_state === 'login_senha') panel.querySelector('#chat-pwd')?.focus();
+    else if (_state === 'ativacao')    panel.querySelector('#chat-new-pwd')?.focus();
+    else if (_state === 'chat')        panel.querySelector('#chat-input')?.focus();
+  });
 }
 
 function _closePanel() {
@@ -601,16 +697,58 @@ function _closePanel() {
   panel.setAttribute('aria-hidden', 'true');
 }
 
-// ─── Login ───
-async function _handleLogin(e) {
+// ─── Login — Passo 1: verificar CPF ───
+async function _handleCpfStep(e) {
   e.preventDefault();
   const cpfRaw = panel.querySelector('#chat-cpf').value.replace(/\D/g, '');
-  const pwd    = panel.querySelector('#chat-pwd').value;
   const errEl  = panel.querySelector('#chat-login-error');
-  const btn    = panel.querySelector('#chat-login-btn');
+  const btn    = panel.querySelector('#chat-cpf-btn');
 
   if (cpfRaw.length !== 11) { _showError(errEl, 'Informe um CPF válido com 11 dígitos.'); return; }
-  if (!pwd)                  { _showError(errEl, 'Informe sua senha.'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Verificando…';
+  _hideError(errEl);
+
+  try {
+    const res  = await fetch(`${API_URL}/api/verificar-cpf`, {
+      method: 'POST', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cpf: cpfRaw }),
+    });
+    const data = await res.json();
+
+    if (!data.success) {
+      _showError(errEl, data.message || 'CPF não encontrado.');
+      btn.disabled = false;
+      btn.textContent = 'Continuar';
+      return;
+    }
+
+    _pendingCPF  = cpfRaw;
+    _pendingNome = data.nome || '';
+
+    if (data.status === 'existente') {
+      _state = 'login_senha';
+    } else if (data.status === 'primeiro_acesso') {
+      _state = 'ativacao';
+    }
+    _render();
+  } catch {
+    _showError(errEl, 'Não foi possível conectar ao servidor.');
+    btn.disabled = false;
+    btn.textContent = 'Continuar';
+  }
+}
+
+// ─── Login — Passo 2a: senha para usuário existente ───
+async function _handleSenhaStep(e) {
+  e.preventDefault();
+  const pwd   = panel.querySelector('#chat-pwd').value;
+  const errEl = panel.querySelector('#chat-login-error');
+  const btn   = panel.querySelector('#chat-pwd-btn');
+
+  if (!pwd) { _showError(errEl, 'Informe sua senha.'); return; }
 
   btn.disabled = true;
   btn.textContent = 'Entrando…';
@@ -620,25 +758,103 @@ async function _handleLogin(e) {
     const res  = await fetch(`${API_URL}/api/login`, {
       method: 'POST', credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cpf: cpfRaw, password: pwd }),
+      body: JSON.stringify({ cpf: _pendingCPF, password: pwd }),
     });
     const data = await res.json();
 
     if (data.success) {
       sessionStorage.setItem(SESSION_KEY, '1');
-      _messages = [{ role: 'bot', text: `Olá${data.nome ? ', ' + data.nome.split(' ')[0] : ''}! Sou o assistente de RH da MC1. Como posso te ajudar hoje?` }];
+      const nome = _pendingNome || data.nome || '';
+      _messages = [{ role: 'bot', text: `Olá${nome ? ', ' + nome.split(' ')[0] : ''}! Sou o assistente de RH da MC1. Como posso te ajudar hoje?` }];
       _state = 'chat';
       _render();
     } else {
-      _showError(errEl, data.message || 'CPF ou senha incorretos.');
+      _showError(errEl, data.message || 'Senha incorreta. Tente novamente.');
       btn.disabled = false;
       btn.textContent = 'Entrar';
     }
   } catch {
-    _showError(errEl, 'Não foi possível conectar ao servidor. Verifique se o RH Assistant está rodando.');
+    _showError(errEl, 'Não foi possível conectar ao servidor.');
     btn.disabled = false;
     btn.textContent = 'Entrar';
   }
+}
+
+// ─── Login — Passo 2b: ativar conta (primeiro acesso) ───
+async function _handleAtivacaoStep(e) {
+  e.preventDefault();
+  const pwd     = panel.querySelector('#chat-new-pwd').value;
+  const confirm = panel.querySelector('#chat-confirm-pwd').value;
+  const errEl   = panel.querySelector('#chat-login-error');
+  const btn     = panel.querySelector('#chat-activation-btn');
+
+  if (pwd.length < 6)   { _showError(errEl, 'A senha deve ter no mínimo 6 caracteres.'); return; }
+  if (pwd !== confirm)   { _showError(errEl, 'As senhas não coincidem. Tente novamente.'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Ativando…';
+  _hideError(errEl);
+
+  try {
+    const res  = await fetch(`${API_URL}/api/ativar-acesso`, {
+      method: 'POST', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cpf: _pendingCPF, password: pwd, confirm }),
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      const nome = data.nome || _pendingNome || '';
+      _messages = [{
+        role: 'bot',
+        text: `🎉 Conta ativada com sucesso${nome ? ', ' + nome.split(' ')[0] : ''}! Sou o assistente de RH da MC1. Pode me perguntar sobre férias, salário, benefícios e muito mais. Como posso te ajudar?`
+      }];
+      _state = 'chat';
+      _render();
+    } else {
+      _showError(errEl, data.message || 'Não foi possível ativar a conta.');
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Ativar Minha Conta`;
+    }
+  } catch {
+    _showError(errEl, 'Não foi possível conectar ao servidor.');
+    btn.disabled = false;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Ativar Minha Conta`;
+  }
+}
+
+// ─── Password strength indicator ───
+function _updatePwdStrength() {
+  const pwdIn    = panel.querySelector('#chat-new-pwd');
+  const wrapper  = panel.querySelector('#chat-pwd-strength');
+  const fill     = panel.querySelector('#chat-pwd-strength-fill');
+  const label    = panel.querySelector('#chat-pwd-strength-label');
+  if (!pwdIn || !wrapper || !fill || !label) return;
+
+  const pwd = pwdIn.value;
+  if (!pwd) { wrapper.style.display = 'none'; return; }
+  wrapper.style.display = 'flex';
+
+  let score = 0;
+  if (pwd.length >= 6)  score++;
+  if (pwd.length >= 10) score++;
+  if (/[A-Z]/.test(pwd))  score++;
+  if (/[0-9]/.test(pwd))  score++;
+  if (/[^A-Za-z0-9]/.test(pwd)) score++;
+
+  const levels = [
+    { pct: '20%', color: '#dc2626', text: 'Muito fraca' },
+    { pct: '40%', color: '#f97316', text: 'Fraca'       },
+    { pct: '60%', color: '#eab308', text: 'Razoável'    },
+    { pct: '80%', color: '#22c55e', text: 'Boa'         },
+    { pct: '100%',color: '#16a34a', text: 'Forte'       },
+  ];
+  const lvl = levels[Math.min(score - 1, 4)] || levels[0];
+  fill.style.width          = lvl.pct;
+  fill.style.background     = lvl.color;
+  label.textContent         = lvl.text;
+  label.style.color         = lvl.color;
 }
 
 // ─── Chat send ───

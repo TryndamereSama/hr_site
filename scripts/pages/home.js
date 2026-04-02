@@ -5,9 +5,42 @@ import { beneficios } from '../data/beneficios.js';
 import { createCard } from '../../components/card.js';
 import { t } from '../i18n.js';
 
+// Imagens de fundo curadas para o banner hero — separadas das imagens das notícias
+// Escolhidas para funcionar bem como background com overlay escuro + texto branco
+const HERO_BG = {
+  // Slide 1 — boas-vindas (sempre fixo)
+  slide1: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80',
+
+  // Slide 2 — varia por categoria da notícia em destaque
+  celebracao: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1600&q=80',  // bokeh colorido
+  comunicado: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80',  // workspace escuro moderno
+  sindicato:  'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80',  // reunião profissional
+  pagamento:  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80',  // documentos/finanças
+  saude:      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80',  // saúde/médico
+  'bem-estar':'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1600&q=80',  // bem-estar/academia
+  rh:         'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80',  // equipe/colaboração
+  default:    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80',  // escritório moderno
+};
+
+// Posições espalhadas pelo hero-visual para as 7 bolhas de notícias
+const BUBBLE_POSITIONS = [
+  { top: '4%',  right: '6%',  animDir: 'normal',  delay: '0s'    },
+  { top: '8%',  left:  '4%',  animDir: 'reverse', delay: '1.2s'  },
+  { top: '30%', right: '2%',  animDir: 'normal',  delay: '0.6s'  },
+  { top: '36%', left:  '6%',  animDir: 'reverse', delay: '1.8s'  },
+  { top: '60%', right: '8%',  animDir: 'normal',  delay: '2.4s'  },
+  { top: '62%', left:  '2%',  animDir: 'reverse', delay: '0.9s'  },
+  { top: '83%', left:  '28%', animDir: 'normal',  delay: '1.5s'  },
+];
+
+function _truncate(str, max = 38) {
+  return str.length > max ? str.slice(0, max - 1).trimEnd() + '…' : str;
+}
+
 export function renderHome(container) {
-  const news = getLocalizedNoticiasRecentes(3);
-  const latestNews = news[0];
+  const allBubbleNews = getLocalizedNoticiasRecentes(7);
+  const news = allBubbleNews.slice(0, 3);
+  const latestNews = allBubbleNews[0];
 
   container.innerHTML = `
     <!-- ═══ HERO CAROUSEL ═══ -->
@@ -16,8 +49,7 @@ export function renderHome(container) {
       <!-- Slide 1: Boas-vindas -->
       <div class="hero-slide active" data-slide="0">
         <div class="hero-bg" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
-               alt="" class="hero-bg-img" loading="eager" />
+          <img src="${HERO_BG.slide1}" alt="" class="hero-bg-img" loading="eager" />
           <div class="hero-bg-overlay"></div>
         </div>
         <div class="hero-content container">
@@ -38,17 +70,23 @@ export function renderHome(container) {
             </div>
           </div>
           <div class="hero-visual" data-reveal="right" data-reveal-delay="150" aria-hidden="true">
-            <div class="hero-card-float hero-card-1">
-              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#004b71,#006494);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700">MC1</div>
-                <span style="font-size:13px;font-weight:600;color:white">${t('home.hero.greeting')}</span>
-              </div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.7)">${t('home.hero.dayoff')}</div>
-            </div>
-            <div class="hero-card-float hero-card-2">
-              <div style="font-size:11px;font-weight:500;color:#5ba8d4;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase">${t('home.hero.sindpd')}</div>
-              <div style="font-size:13px;font-weight:600;color:white">${t('home.hero.sindpd_text')}</div>
-            </div>
+            ${allBubbleNews.slice(0, 7).map((n, i) => {
+              const pos = BUBBLE_POSITIONS[i];
+              const posStyle = Object.entries(pos)
+                .filter(([k]) => !['animDir','delay'].includes(k))
+                .map(([k,v]) => `${k}:${v}`)
+                .join(';');
+              return `
+                <a href="#/noticia/${n.id}" class="hero-card-float hero-news-bubble"
+                   style="${posStyle};animation-direction:${pos.animDir};animation-delay:${pos.delay}"
+                   title="${n.title}">
+                  <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px">
+                    <div style="width:6px;height:6px;border-radius:50%;background:${n.gradient.includes('#') ? n.gradient.match(/#[0-9a-fA-F]{6}/)?.[0] ?? '#5ba8d4' : '#5ba8d4'};flex-shrink:0"></div>
+                    <span style="font-size:10px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:.05em;text-transform:uppercase">${n.tagLabel}</span>
+                  </div>
+                  <div style="font-size:12px;font-weight:600;color:white;line-height:1.35">${_truncate(n.title)}</div>
+                </a>`;
+            }).join('')}
             <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
             <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
           </div>
@@ -58,8 +96,8 @@ export function renderHome(container) {
       <!-- Slide 2: Última Notícia -->
       <div class="hero-slide" data-slide="1">
         <div class="hero-bg" aria-hidden="true">
-          ${latestNews.image ? `<img src="${latestNews.image}" alt="" class="hero-bg-img" loading="eager" />` : ''}
-          <div class="hero-bg-overlay hero-bg-overlay-news" style="${!latestNews.image ? `background: ${latestNews.gradient};` : ''}"></div>
+          <img src="${HERO_BG[latestNews.tag] || HERO_BG.default}" alt="" class="hero-bg-img" loading="eager" />
+          <div class="hero-bg-overlay hero-bg-overlay-news"></div>
         </div>
         <div class="hero-news-content container">
           <div class="hero-news-inner">

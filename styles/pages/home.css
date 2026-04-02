@@ -206,17 +206,18 @@
   max-width: 240px;
 }
 
-.hero-card-1 {
-  top: 15%;
-  right: 5%;
+.hero-news-bubble {
   animation: floatUp 4s ease-in-out infinite;
+  max-width: 200px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, outline-color 0.2s, transform 0.2s;
 }
 
-.hero-card-2 {
-  bottom: 20%;
-  left: 5%;
-  animation: floatUp 4s ease-in-out infinite reverse;
-  animation-delay: 1.5s;
+.hero-news-bubble:hover {
+  background: rgba(255,255,255,0.15);
+  outline-color: rgba(255,255,255,0.3);
+  transform: translateY(-2px) scale(1.03);
 }
 
 @keyframes floatUp {

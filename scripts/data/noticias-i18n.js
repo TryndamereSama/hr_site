@@ -1,5 +1,37 @@
 export const noticiasTranslations = {
   es: {
+    'aniversariantes-abril-2026': {
+      title: '¡Feliz Cumpleaños a los Cumpleañeros de Abril! 🎂',
+      excerpt: '¡Abril llegó lleno de celebraciones! Conoce a los colegas que cumplen años este mes y celébralos junto a ellos.',
+      tagLabel: 'Celebración',
+      dateLabel: '2 de abril de 2026',
+      author: 'Equipo RH',
+      body: `<img src="assets/images/Birhtday 04.2026.png" alt="Cumpleañeros de Abril 2026" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+<p>MC1 Global celebra junto a todos los colaboradores que cumplen un año más de vida en abril de 2026. ¡Este es un momento especial para reconocer a cada persona que forma parte de nuestro equipo!</p>
+<h3>Cumpleañeros del Mes</h3>
+<ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+  <li>🇧🇷 <strong>04</strong> — Everton Rodrigues · Infra</li>
+  <li>🇧🇷 <strong>04</strong> — Wislan Lopes Moraes · Infra</li>
+  <li>🇧🇷 <strong>05</strong> — Vanessa Nunes · Gente &amp; Futuro</li>
+  <li>🇧🇷 <strong>06</strong> — Gabriel Mitsuo Haibara · PSG</li>
+  <li>🇧🇷 <strong>08</strong> — Fabio Cabral de Almeida · GST</li>
+  <li>🇲🇽 <strong>16</strong> — David Perez Ruiz · PSG</li>
+  <li>🇧🇷 <strong>17</strong> — Isabelle Lirio · Finanzas</li>
+  <li>🇲🇽 <strong>23</strong> — Angeles Martínez · PSG</li>
+  <li>🇧🇷 <strong>23</strong> — Renato Miranda Picchi · Finanzas</li>
+  <li>🇲🇽 <strong>24</strong> — Luis Rodrigo Perez · Soporte Pepsico</li>
+  <li>🇲🇽 <strong>24</strong> — Pedro Sandoval · PSG</li>
+  <li>🇲🇽 <strong>26</strong> — Josue David Garcia · PSG</li>
+  <li>🇧🇷 <strong>29</strong> — Ademir Mazzo Junior · Producto Trade y Sales</li>
+  <li>🇧🇷 <strong>29</strong> — Gustavo de Souza · Infra</li>
+  <li>🇧🇷 <strong>30</strong> — Julio Fabio de Oliveira · Lead</li>
+</ul>
+<h3>Day Off de Cumpleaños 🎁</h3>
+<p>¡Cada cumpleañero gana un día libre para celebrar a su manera! Solo coordine la fecha con su liderazgo. ¿No quiere tomarlo el día de su cumpleaños? Sin problema — puede elegir otra fecha dentro del mismo año.</p>
+<p>Además, en el mes de su cumpleaños recibirá un <strong>crédito de R$ 50,00 en la tarjeta Flash</strong> para disfrutarlo como prefiera.</p>
+<p>¡Que 2026 esté lleno de logros, salud y realizaciones para todos! 🎉</p>`,
+    },
+
     'canal-speak-up-safely-2026': {
       title: 'Canal Speak Up Safely MC1 — Ya Disponible',
       excerpt: 'El canal de reportes confidenciales Speak Up Safely ya está disponible para todos los colaboradores. Conozca cómo acceder y cuándo utilizarlo.',
@@ -178,8 +210,7 @@ export const noticiasTranslations = {
 <p>MC1 Global celebra junto a todos los colaboradores que cumplen un año más de vida en marzo de 2026. ¡Este es un momento especial para reconocer a cada persona que forma parte de nuestro equipo!</p>
 <h3>Day Off de Cumpleaños</h3>
 <p>Nuestra política de Day Off de Cumpleaños garantiza que cada colaborador pueda celebrar su día especial con un día libre próximo a la fecha. Consulte con su gestor y RH para programar su day off.</p>
-<h3>Cómo funciona el Day Off</h3>
-<p>El day off de cumpleaños puede utilizarse el propio día del cumpleaños o hasta 7 días hábiles antes o después de la fecha. Solo es necesario alinearlo con su gestor y registrarlo en el sistema Ahgora.</p>
+<p>Además, en el mes de su cumpleaños recibirá un <strong>crédito de R$ 50,00 en la tarjeta Flash</strong> para disfrutarlo como prefiera.</p>
 <p>¡Que 2026 esté lleno de logros, salud y realizaciones para todos! 🎉</p>`,
     },
 
@@ -278,8 +309,7 @@ export const noticiasTranslations = {
 <p>MC1 Global celebra junto a todos los colaboradores que cumplen un año más de vida en febrero de 2026. ¡Este es un momento especial para reconocer a cada persona que forma parte de nuestro equipo!</p>
 <h3>Day Off de Cumpleaños</h3>
 <p>Nuestra política de Day Off de Cumpleaños garantiza que cada colaborador pueda celebrar su día especial con un día libre próximo a la fecha. Consulte con su gestor y RH para programar su day off.</p>
-<h3>Cómo funciona el Day Off</h3>
-<p>El day off de cumpleaños puede utilizarse el propio día del cumpleaños o hasta 7 días hábiles antes o después de la fecha. Solo es necesario alinearlo con su gestor y registrarlo en el sistema Ahgora.</p>
+<p>Además, en el mes de su cumpleaños recibirá un <strong>crédito de R$ 50,00 en la tarjeta Flash</strong> para disfrutarlo como prefiera.</p>
 <p>¡Que 2026 esté lleno de logros, salud y realizaciones para todos! 🎉</p>`,
     },
 
@@ -329,8 +359,7 @@ export const noticiasTranslations = {
 <p>MC1 Global celebra junto a todos los colaboradores que cumplen un año más de vida en enero de 2026. ¡Este es un momento especial para reconocer a cada persona que forma parte de nuestro equipo!</p>
 <h3>Day Off de Cumpleaños</h3>
 <p>Nuestra política de Day Off de Cumpleaños garantiza que cada colaborador pueda celebrar su día especial con un día libre próximo a la fecha. Consulte con su gestor y RH para programar su day off.</p>
-<h3>Cómo funciona el Day Off</h3>
-<p>El day off de cumpleaños puede utilizarse el propio día del cumpleaños o hasta 7 días hábiles antes o después de la fecha. Solo es necesario alinearlo con su gestor y registrarlo en el sistema Ahgora.</p>
+<p>Además, en el mes de su cumpleaños recibirá un <strong>crédito de R$ 50,00 en la tarjeta Flash</strong> para disfrutarlo como prefiera.</p>
 <p>¡Que 2026 esté lleno de logros, salud y realizaciones para todos! 🎉</p>`,
     },
 
@@ -359,6 +388,38 @@ export const noticiasTranslations = {
   },
 
   en: {
+    'aniversariantes-abril-2026': {
+      title: 'Happy Birthday to the April Celebrants! 🎂',
+      excerpt: 'April arrived full of celebrations! Meet the colleagues celebrating their birthdays this month and celebrate with them.',
+      tagLabel: 'Celebration',
+      dateLabel: 'April 2, 2026',
+      author: 'HR Team',
+      body: `<img src="assets/images/Birhtday 04.2026.png" alt="April 2026 Birthday Celebrants" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+<p>MC1 Global celebrates together with all employees who are adding another year to their lives in April 2026. This is a special moment to recognize each person who is part of our team!</p>
+<h3>This Month's Celebrants</h3>
+<ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
+  <li>🇧🇷 <strong>04</strong> — Everton Rodrigues · Infra</li>
+  <li>🇧🇷 <strong>04</strong> — Wislan Lopes Moraes · Infra</li>
+  <li>🇧🇷 <strong>05</strong> — Vanessa Nunes · People &amp; Future</li>
+  <li>🇧🇷 <strong>06</strong> — Gabriel Mitsuo Haibara · PSG</li>
+  <li>🇧🇷 <strong>08</strong> — Fabio Cabral de Almeida · GST</li>
+  <li>🇲🇽 <strong>16</strong> — David Perez Ruiz · PSG</li>
+  <li>🇧🇷 <strong>17</strong> — Isabelle Lirio · Finance</li>
+  <li>🇲🇽 <strong>23</strong> — Angeles Martínez · PSG</li>
+  <li>🇧🇷 <strong>23</strong> — Renato Miranda Picchi · Finance</li>
+  <li>🇲🇽 <strong>24</strong> — Luis Rodrigo Perez · Pepsico Support</li>
+  <li>🇲🇽 <strong>24</strong> — Pedro Sandoval · PSG</li>
+  <li>🇲🇽 <strong>26</strong> — Josue David Garcia · PSG</li>
+  <li>🇧🇷 <strong>29</strong> — Ademir Mazzo Junior · Trade &amp; Sales Product</li>
+  <li>🇧🇷 <strong>29</strong> — Gustavo de Souza · Infra</li>
+  <li>🇧🇷 <strong>30</strong> — Julio Fabio de Oliveira · Lead</li>
+</ul>
+<h3>Birthday Day Off 🎁</h3>
+<p>Every birthday employee gets a free day to celebrate however they like — just coordinate the date with your manager. Don't want to take it on your actual birthday? No problem — pick any other date within the same year.</p>
+<p>Plus, in your birthday month you'll also receive a <strong>R$ 50.00 credit on your Flash card</strong> to enjoy however you choose!</p>
+<p>May 2026 be full of achievements, health and fulfillment for everyone! 🎉</p>`,
+    },
+
     'canal-speak-up-safely-2026': {
       title: 'MC1 Speak Up Safely Channel — Now Available',
       excerpt: 'The Speak Up Safely confidential reporting channel is now available for all employees. Learn how to access it and when to use it.',
@@ -535,10 +596,9 @@ export const noticiasTranslations = {
       author: 'HR Team',
       body: `<img src="assets/images/Birhtday 03.2026.png" alt="March 2026 Birthday Celebrants" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
 <p>MC1 Global celebrates together with all employees who are adding another year to their lives in March 2026. This is a special moment to recognize each person who is part of our team!</p>
-<h3>Birthday Day Off</h3>
-<p>Our Birthday Day Off policy ensures that every employee can celebrate their special day with a day off close to the date. Consult your manager and HR to schedule your day off.</p>
-<h3>How the Day Off Works</h3>
-<p>The birthday day off can be used on the actual birthday or up to 7 business days before or after the date. Simply align with your manager and register it in the Ahgora system.</p>
+<h3>Birthday Day Off 🎁</h3>
+<p>Every birthday employee gets a free day to celebrate however they like — just coordinate the date with your manager. Don't want to take it on your actual birthday? No problem — pick any other date within the same year.</p>
+<p>Plus, in your birthday month you'll also receive a <strong>R$ 50.00 credit on your Flash card</strong> to enjoy however you choose!</p>
 <p>May 2026 be full of achievements, health and fulfillment for everyone! 🎉</p>`,
     },
 
@@ -635,10 +695,9 @@ export const noticiasTranslations = {
       author: 'HR Team',
       body: `<img src="assets/images/Birhtday 02.2026.png" alt="February 2026 Birthday Celebrants" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
 <p>MC1 Global celebrates together with all employees who are adding another year to their lives in February 2026. This is a special moment to recognize each person who is part of our team!</p>
-<h3>Birthday Day Off</h3>
-<p>Our Birthday Day Off policy ensures that every employee can celebrate their special day with a day off close to the date. Consult your manager and HR to schedule your day off.</p>
-<h3>How the Day Off Works</h3>
-<p>The birthday day off can be used on the actual birthday or up to 7 business days before or after the date. Simply align with your manager and register it in the Ahgora system.</p>
+<h3>Birthday Day Off 🎁</h3>
+<p>Every birthday employee gets a free day to celebrate however they like — just coordinate the date with your manager. Don't want to take it on your actual birthday? No problem — pick any other date within the same year.</p>
+<p>Plus, in your birthday month you'll also receive a <strong>R$ 50.00 credit on your Flash card</strong> to enjoy however you choose!</p>
 <p>May 2026 be full of achievements, health and fulfillment for everyone! 🎉</p>`,
     },
 
@@ -686,10 +745,9 @@ export const noticiasTranslations = {
       author: 'HR Team',
       body: `<img src="assets/images/Birhtday 01.2026.png" alt="January 2026 Birthday Celebrants" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
 <p>MC1 Global celebrates together with all employees who are adding another year to their lives in January 2026. This is a special moment to recognize each person who is part of our team!</p>
-<h3>Birthday Day Off</h3>
-<p>Our Birthday Day Off policy ensures that every employee can celebrate their special day with a day off close to the date. Consult your manager and HR to schedule your day off.</p>
-<h3>How the Day Off Works</h3>
-<p>The birthday day off can be used on the actual birthday or up to 7 business days before or after the date. Simply align with your manager and register it in the Ahgora system.</p>
+<h3>Birthday Day Off 🎁</h3>
+<p>Every birthday employee gets a free day to celebrate however they like — just coordinate the date with your manager. Don't want to take it on your actual birthday? No problem — pick any other date within the same year.</p>
+<p>Plus, in your birthday month you'll also receive a <strong>R$ 50.00 credit on your Flash card</strong> to enjoy however you choose!</p>
 <p>May 2026 be full of achievements, health and fulfillment for everyone! 🎉</p>`,
     },
 
