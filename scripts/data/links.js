@@ -32,6 +32,16 @@ export const links = [
     gradient: 'linear-gradient(135deg, #0052cc, #0065ff)',
   },
   {
+    id: 'mariproject',
+    name: 'MariProject',
+    url: 'https://mari.mc1.com.br/MariProject/MARIProject.aspx?tab=tu1qXblXH0GlZXXIJCwJ4Q',
+    description: 'Gestão de projetos internos MC1. Acompanhe status, cronogramas e entregas dos projetos.',
+    category: 'Sistemas',
+    isExternal: true,
+    icon: 'icon-document',
+    gradient: 'linear-gradient(135deg, #b91c1c, #dc2626)',
+  },
+  {
     id: 'confluence',
     name: 'Confluence',
     url: 'https://mc1global.atlassian.net/wiki',
@@ -44,8 +54,8 @@ export const links = [
   // RH
   {
     id: 'ticket-beneficios',
-    name: 'Ticket Benefícios',
-    url: 'https://www.ticket.com.br',
+    name: 'Flash Benefícios',
+    url: 'https://www.flashapp.com.br',
     description: 'Consulte saldo do vale refeição e alimentação, extrato e estabelecimentos aceitos.',
     category: 'RH',
     isExternal: true,
@@ -83,27 +93,7 @@ export const links = [
     icon: 'icon-document',
     gradient: 'linear-gradient(135deg, #00695c, #00897b)',
   },
-  {
-    id: 'nota-fiscal',
-    name: 'Emissão de NF',
-    url: '#',
-    description: 'Sistema de emissão e gestão de notas fiscais para fornecedores e prestadores.',
-    category: 'Financeiro',
-    isExternal: false,
-    icon: 'icon-external-link',
-    gradient: 'linear-gradient(135deg, #2e7d32, #388e3c)',
-  },
   // Comunicação
-  {
-    id: 'slack',
-    name: 'Slack',
-    url: 'https://mc1global.slack.com',
-    description: 'Principal canal de comunicação interna. Acesse canais da empresa, squads e DMs.',
-    category: 'Comunicação',
-    isExternal: true,
-    icon: 'icon-mail',
-    gradient: 'linear-gradient(135deg, #4a154b, #611f69)',
-  },
   {
     id: 'gmail-corp',
     name: 'Gmail Corporativo',
