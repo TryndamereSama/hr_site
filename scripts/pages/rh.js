@@ -162,7 +162,11 @@ function openBenefitModal(b) {
         <p class="body-md" style="color:var(--color-on-surface)">${b.howToAccess}</p>
       </div>
     `,
-    footer: ``,
+    footer: `
+      <a href="https://drive.google.com/drive/u/0/folders/1gzJQIwfm2LnXdfFKP33Hsg-PIu6Yddk1" target="_blank" rel="noopener" class="btn btn-primary">
+        <svg width="14" height="14"><use href="#icon-download"/></svg>${t('common.download')}
+      </a>
+    `,
     size: 'md',
   });
 }

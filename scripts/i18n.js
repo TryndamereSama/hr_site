@@ -45,7 +45,7 @@ const translations = {
     'common.see_all': 'Ver todos',
     'common.see_all_f': 'Ver todas',
     'common.filter_all': 'Todos',
-    'common.download': 'Baixar PDF',
+    'common.download': 'Ver documentos no Drive',
     'common.download_soon': 'Download disponível em breve.',
 
     // Search overlay
@@ -208,7 +208,7 @@ const translations = {
     'common.see_all': 'Ver todos',
     'common.see_all_f': 'Ver todas',
     'common.filter_all': 'Todos',
-    'common.download': 'Descargar PDF',
+    'common.download': 'Ver documentos en Drive',
     'common.download_soon': 'Descarga disponible próximamente.',
 
     // Search overlay
@@ -371,7 +371,7 @@ const translations = {
     'common.see_all': 'See all',
     'common.see_all_f': 'See all',
     'common.filter_all': 'All',
-    'common.download': 'Download PDF',
+    'common.download': 'View documents on Drive',
     'common.download_soon': 'Download coming soon.',
 
     // Search overlay
