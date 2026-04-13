@@ -547,8 +547,8 @@
   vertical-align: middle;
 }
 
-/* ─── Country Switcher ─── */
-.country-switcher {
+/* ─── Locale Switcher (country + language combined) ─── */
+.locale-switcher {
   display: flex;
   align-items: center;
   gap: 2px;
@@ -557,7 +557,10 @@
   padding: 3px;
 }
 
-.country-btn {
+.locale-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   padding: 4px 9px;
   border-radius: calc(var(--radius-md) - 1px);
   border: none;
@@ -567,23 +570,33 @@
   font-size: var(--text-label-md);
   font-weight: var(--weight-semibold);
   color: var(--color-on-surface-muted);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   line-height: 1;
   transition: background var(--transition-fast), color var(--transition-fast);
   white-space: nowrap;
 }
 
-.country-btn:hover {
+.locale-btn:hover {
   background: var(--color-surface-lowest);
   color: var(--color-on-surface);
 }
 
-.country-btn.active {
+.locale-btn.active {
   background: var(--color-primary);
   color: #ffffff;
 }
 
-.country-switcher-mobile {
+.locale-flag {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+/* Mobile: stack vertically */
+.locale-switcher-mobile {
   flex-direction: column;
   background: transparent;
   padding: 0;
@@ -591,7 +604,7 @@
   margin-bottom: var(--space-2);
 }
 
-.country-switcher-mobile .country-btn {
+.locale-switcher-mobile .locale-btn {
   width: 100%;
   text-align: left;
   padding: var(--space-3) var(--space-4);
@@ -601,80 +614,12 @@
   color: var(--color-on-surface-variant);
 }
 
-.country-switcher-mobile .country-btn:hover {
-  background: rgba(0,75,113,0.06);
+.locale-switcher-mobile .locale-btn:hover {
+  background: rgba(0, 75, 113, 0.06);
   color: var(--color-on-surface);
 }
 
-.country-switcher-mobile .country-btn.active {
-  background: var(--color-primary);
-  color: #ffffff;
-}
-
-/* ─── Language Switcher ─── */
-.lang-switcher {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  background: var(--color-surface-container-low);
-  border-radius: var(--radius-md);
-  padding: 3px;
-}
-
-.lang-btn {
-  padding: 4px 9px;
-  border-radius: calc(var(--radius-md) - 1px);
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: var(--text-label-md);
-  font-weight: var(--weight-semibold);
-  color: var(--color-on-surface-muted);
-  letter-spacing: 0.05em;
-  line-height: 1;
-  transition:
-    background var(--transition-fast),
-    color      var(--transition-fast);
-  white-space: nowrap;
-}
-
-.lang-btn:hover {
-  background: var(--color-surface-lowest);
-  color: var(--color-on-surface);
-}
-
-.lang-btn.active {
-  background: var(--color-primary);
-  color: #ffffff;
-}
-
-/* Mobile override: stack vertically with full-width buttons */
-.lang-switcher-mobile {
-  flex-direction: column;
-  background: transparent;
-  padding: 0;
-  gap: var(--space-2);
-  margin-bottom: var(--space-2);
-}
-
-.lang-switcher-mobile .lang-btn {
-  width: 100%;
-  text-align: left;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-lg);
-  font-size: var(--text-sm);
-  background: var(--color-surface-container-low);
-  color: var(--color-on-surface-variant);
-  letter-spacing: 0.02em;
-}
-
-.lang-switcher-mobile .lang-btn:hover {
-  background: rgba(0,75,113,0.06);
-  color: var(--color-on-surface);
-}
-
-.lang-switcher-mobile .lang-btn.active {
+.locale-switcher-mobile .locale-btn.active {
   background: var(--color-primary);
   color: #ffffff;
 }

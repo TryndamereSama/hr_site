@@ -554,12 +554,8 @@ export function applyTranslations() {
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
   });
-  // Sync lang-btn active state
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === getLang());
-  });
-  // Sync country-btn active state
-  document.querySelectorAll('.country-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.country === getCountry());
+  // Sync locale-btn active state (determined by current language)
+  document.querySelectorAll('.locale-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.localeLang === getLang());
   });
 }

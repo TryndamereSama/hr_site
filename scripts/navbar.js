@@ -98,17 +98,17 @@ export function initNavbar() {
 
       <!-- Actions -->
       <div class="nav-actions">
-        <!-- Country Switcher -->
-        <div class="country-switcher" id="nav-country-switcher" role="group" aria-label="País / Country">
-          <button class="country-btn ${country === 'BR' ? 'active' : ''}" data-country="BR" title="Brasil">🇧🇷 BR</button>
-          <button class="country-btn ${country === 'MX' ? 'active' : ''}" data-country="MX" title="México">🇲🇽 MX</button>
-        </div>
-
-        <!-- Language Switcher -->
-        <div class="lang-switcher" id="nav-lang-switcher" role="group" aria-label="Language / Idioma">
-          <button class="lang-btn ${lang === 'pt' ? 'active' : ''}" data-lang="pt" title="Português">PT</button>
-          <button class="lang-btn ${lang === 'es' ? 'active' : ''}" data-lang="es" title="Español">ES</button>
-          <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en" title="English">EN</button>
+        <!-- Locale Switcher (country + language combined) -->
+        <div class="locale-switcher" id="nav-locale-switcher" role="group" aria-label="Idioma e País">
+          <button class="locale-btn ${lang === 'pt' ? 'active' : ''}" data-locale-country="BR" data-locale-lang="pt" title="Brasil — Português">
+            <img src="assets/images/flags/br.svg" alt="Brasil" class="locale-flag"> PT
+          </button>
+          <button class="locale-btn ${lang === 'es' ? 'active' : ''}" data-locale-country="MX" data-locale-lang="es" title="México — Español">
+            <img src="assets/images/flags/es.svg" alt="España" class="locale-flag"> ES
+          </button>
+          <button class="locale-btn ${lang === 'en' ? 'active' : ''}" data-locale-lang="en" title="English">
+            <img src="assets/images/flags/gb.svg" alt="UK" class="locale-flag"> EN
+          </button>
         </div>
 
         <!-- Search -->
@@ -132,18 +132,12 @@ export function initNavbar() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // ─── Country Switcher ───
-  document.getElementById('nav-country-switcher')?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.country-btn');
+  // ─── Locale Switcher (country + language combined) ───
+  document.getElementById('nav-locale-switcher')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.locale-btn');
     if (!btn) return;
-    setCountry(btn.dataset.country);
-  });
-
-  // ─── Language Switcher ───
-  document.getElementById('nav-lang-switcher')?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.lang-btn');
-    if (!btn) return;
-    setLang(btn.dataset.lang);
+    if (btn.dataset.localeCountry) setCountry(btn.dataset.localeCountry);
+    if (btn.dataset.localeLang) setLang(btn.dataset.localeLang);
   });
 
   // ─── Dropdown (desktop) ───
@@ -198,17 +192,17 @@ export function initNavbar() {
         </button>
       </div>
 
-      <!-- Country switcher mobile -->
-      <div class="country-switcher country-switcher-mobile" id="mobile-country-switcher" role="group" aria-label="País / Country">
-        <button class="country-btn ${country === 'BR' ? 'active' : ''}" data-country="BR">🇧🇷 Brasil</button>
-        <button class="country-btn ${country === 'MX' ? 'active' : ''}" data-country="MX">🇲🇽 México</button>
-      </div>
-
-      <!-- Language switcher mobile -->
-      <div class="lang-switcher lang-switcher-mobile" id="mobile-lang-switcher" role="group" aria-label="Language / Idioma">
-        <button class="lang-btn ${lang === 'pt' ? 'active' : ''}" data-lang="pt">PT — Português</button>
-        <button class="lang-btn ${lang === 'es' ? 'active' : ''}" data-lang="es">ES — Español</button>
-        <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">EN — English</button>
+      <!-- Locale switcher mobile -->
+      <div class="locale-switcher locale-switcher-mobile" id="mobile-locale-switcher" role="group" aria-label="Idioma e País">
+        <button class="locale-btn ${lang === 'pt' ? 'active' : ''}" data-locale-country="BR" data-locale-lang="pt">
+          <img src="assets/images/flags/br.svg" alt="Brasil" class="locale-flag"> Brasil — PT
+        </button>
+        <button class="locale-btn ${lang === 'es' ? 'active' : ''}" data-locale-country="MX" data-locale-lang="es">
+          <img src="assets/images/flags/es.svg" alt="España" class="locale-flag"> México — ES
+        </button>
+        <button class="locale-btn ${lang === 'en' ? 'active' : ''}" data-locale-lang="en">
+          <img src="assets/images/flags/gb.svg" alt="UK" class="locale-flag"> English — EN
+        </button>
       </div>
 
       <nav aria-label="Navegação mobile">
@@ -245,18 +239,12 @@ export function initNavbar() {
     `;
   }
 
-  // ─── Mobile country switcher ───
-  document.getElementById('mobile-country-switcher')?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.country-btn');
+  // ─── Mobile locale switcher ───
+  document.getElementById('mobile-locale-switcher')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.locale-btn');
     if (!btn) return;
-    setCountry(btn.dataset.country);
-  });
-
-  // ─── Mobile lang switcher ───
-  document.getElementById('mobile-lang-switcher')?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.lang-btn');
-    if (!btn) return;
-    setLang(btn.dataset.lang);
+    if (btn.dataset.localeCountry) setCountry(btn.dataset.localeCountry);
+    if (btn.dataset.localeLang) setLang(btn.dataset.localeLang);
   });
 
   // ─── Mobile Departamentos accordion ───
