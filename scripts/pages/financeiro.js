@@ -1,4 +1,4 @@
-// MC1 HUB — Financeiro Page (Placeholder)
+// MC1 HUB — Financeiro Page
 
 import { t } from '../i18n.js';
 
@@ -22,36 +22,97 @@ export function renderFinanceiro(container) {
     <section class="section">
       <div class="container">
         <div style="
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          padding: var(--space-20) var(--space-8);
-          background: var(--color-surface-lowest);
-          border-radius: var(--radius-2xl);
-          box-shadow: var(--shadow-sm);
-          max-width: 560px;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: var(--space-6);
+          max-width: 720px;
           margin: 0 auto;
-        " data-reveal>
-          <div class="icon-wrap icon-wrap-xl" style="
-            background: linear-gradient(135deg, #059669, #10b981);
-            color: white;
-            margin-bottom: var(--space-6);
-          ">
-            <svg width="36" height="36"><use href="#icon-document"/></svg>
-          </div>
-          <span class="chip chip-primary" style="margin-bottom: var(--space-4)">${t('common.coming_soon')}</span>
-          <h2 class="headline-lg" style="margin-bottom: var(--space-4)">${t('common.page_building')}</h2>
-          <p class="body-lg text-muted" style="max-width: 38ch; margin-bottom: var(--space-8)">
-            ${t('finance.coming_soon_desc')}
-          </p>
-          <div style="display:flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center;">
-            <a href="#/" class="btn btn-primary">
-              <svg width="16" height="16"><use href="#icon-home"/></svg>
-              ${t('common.back_home')}
-            </a>
-          </div>
+        ">
+
+          <!-- Políticas de Compras -->
+          <a href="#/financeiro/compras" style="text-decoration: none;" data-reveal>
+            <div style="
+              background: var(--color-surface-lowest);
+              border-radius: var(--radius-2xl);
+              box-shadow: var(--shadow-sm);
+              padding: var(--space-8);
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: var(--space-4);
+              transition: box-shadow var(--transition-base), transform var(--transition-base);
+              cursor: pointer;
+              height: 100%;
+            " onmouseenter="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-2px)'"
+               onmouseleave="this.style.boxShadow='var(--shadow-sm)';this.style.transform='translateY(0)'">
+              <div class="icon-wrap icon-wrap-lg" style="
+                background: linear-gradient(135deg, #059669, #10b981);
+                color: white;
+              ">
+                <svg width="24" height="24"><use href="#icon-document"/></svg>
+              </div>
+              <div>
+                <span class="chip chip-primary" style="margin-bottom: var(--space-2)">${t('common.coming_soon')}</span>
+                <h2 class="title-lg" style="margin-bottom: var(--space-2)">${t('finance.compras')}</h2>
+                <p class="body-md text-muted">${t('finance.compras.sub')}</p>
+              </div>
+              <span style="
+                display: inline-flex;
+                align-items: center;
+                gap: var(--space-2);
+                font-size: var(--text-sm);
+                font-weight: var(--weight-semibold);
+                color: var(--color-primary);
+                margin-top: auto;
+              ">
+                Ver página
+                <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Políticas de Viagens -->
+          <a href="#/financeiro/viagens" style="text-decoration: none;" data-reveal>
+            <div style="
+              background: var(--color-surface-lowest);
+              border-radius: var(--radius-2xl);
+              box-shadow: var(--shadow-sm);
+              padding: var(--space-8);
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: var(--space-4);
+              transition: box-shadow var(--transition-base), transform var(--transition-base);
+              cursor: pointer;
+              height: 100%;
+            " onmouseenter="this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-2px)'"
+               onmouseleave="this.style.boxShadow='var(--shadow-sm)';this.style.transform='translateY(0)'">
+              <div class="icon-wrap icon-wrap-lg" style="
+                background: linear-gradient(135deg, #0284c7, #38bdf8);
+                color: white;
+              ">
+                <svg width="24" height="24"><use href="#icon-link"/></svg>
+              </div>
+              <div>
+                <span class="chip chip-primary" style="margin-bottom: var(--space-2)">${t('common.coming_soon')}</span>
+                <h2 class="title-lg" style="margin-bottom: var(--space-2)">${t('finance.viagens')}</h2>
+                <p class="body-md text-muted">${t('finance.viagens.sub')}</p>
+              </div>
+              <span style="
+                display: inline-flex;
+                align-items: center;
+                gap: var(--space-2);
+                font-size: var(--text-sm);
+                font-weight: var(--weight-semibold);
+                color: var(--color-primary);
+                margin-top: auto;
+              ">
+                Ver página
+                <svg width="14" height="14"><use href="#icon-chevron-right"/></svg>
+              </span>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>

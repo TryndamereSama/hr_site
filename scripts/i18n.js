@@ -160,6 +160,14 @@ const translations = {
     'finance.title': 'Financeiro',
     'finance.subtitle': 'Informações, comunicados e recursos do departamento Financeiro.',
     'finance.coming_soon_desc': 'O conteúdo do departamento Financeiro está sendo preparado e estará disponível em breve.',
+    'finance.compras': 'Políticas de Compras',
+    'finance.compras.sub': 'Diretrizes, processos e aprovações para aquisições.',
+    'finance.compras.breadcrumb': 'Políticas de Compras',
+    'finance.compras.coming_soon_desc': 'As políticas de compras estão sendo preparadas e estarão disponíveis em breve.',
+    'finance.viagens': 'Políticas de Viagens',
+    'finance.viagens.sub': 'Regras, limites e reembolsos para viagens corporativas.',
+    'finance.viagens.breadcrumb': 'Políticas de Viagens',
+    'finance.viagens.coming_soon_desc': 'As políticas de viagens estão sendo preparadas e estarão disponíveis em breve.',
 
     // Governance
     'governance.breadcrumb': 'Governança',
@@ -330,6 +338,14 @@ const translations = {
     'finance.title': 'Financiero',
     'finance.subtitle': 'Información, comunicados y recursos del departamento Financiero.',
     'finance.coming_soon_desc': 'El contenido del departamento Financiero está siendo preparado y estará disponible próximamente.',
+    'finance.compras': 'Políticas de Compras',
+    'finance.compras.sub': 'Directrices, procesos y aprobaciones para adquisiciones.',
+    'finance.compras.breadcrumb': 'Políticas de Compras',
+    'finance.compras.coming_soon_desc': 'Las políticas de compras están siendo preparadas y estarán disponibles próximamente.',
+    'finance.viagens': 'Políticas de Viajes',
+    'finance.viagens.sub': 'Reglas, límites y reembolsos para viajes corporativos.',
+    'finance.viagens.breadcrumb': 'Políticas de Viajes',
+    'finance.viagens.coming_soon_desc': 'Las políticas de viajes están siendo preparadas y estarán disponibles próximamente.',
 
     // Governance
     'governance.breadcrumb': 'Gobernanza',
@@ -500,6 +516,14 @@ const translations = {
     'finance.title': 'Finance',
     'finance.subtitle': 'Information, communications and resources from the Finance department.',
     'finance.coming_soon_desc': 'The Finance department content is being prepared and will be available soon.',
+    'finance.compras': 'Purchasing Policies',
+    'finance.compras.sub': 'Guidelines, processes and approvals for acquisitions.',
+    'finance.compras.breadcrumb': 'Purchasing Policies',
+    'finance.compras.coming_soon_desc': 'The purchasing policies are being prepared and will be available soon.',
+    'finance.viagens': 'Travel Policies',
+    'finance.viagens.sub': 'Rules, limits and reimbursements for corporate travel.',
+    'finance.viagens.breadcrumb': 'Travel Policies',
+    'finance.viagens.coming_soon_desc': 'The travel policies are being prepared and will be available soon.',
 
     // Governance
     'governance.breadcrumb': 'Governance',
