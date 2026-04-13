@@ -32,6 +32,16 @@ export const links = [
     gradient: 'linear-gradient(135deg, #0052cc, #0065ff)',
   },
   {
+    id: 'sesame',
+    name: 'Sesame',
+    url: 'https://app.sesametime.com/login',
+    description: 'Gestão de tempo e presença. Registre jornada, ausências e férias de forma simples.',
+    category: 'Sistemas',
+    isExternal: true,
+    icon: 'icon-calendar',
+    gradient: 'linear-gradient(135deg, #0891b2, #06b6d4)',
+  },
+  {
     id: 'mariproject',
     name: 'MariProject',
     url: 'https://mari.mc1.com.br/MariProject/MARIProject.aspx?tab=tu1qXblXH0GlZXXIJCwJ4Q',
