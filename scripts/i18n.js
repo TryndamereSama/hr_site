@@ -1,6 +1,8 @@
-// MC1 HUB — Internationalisation (PT · ES · EN)
+// MC1 HUB — Internationalisation (PT · ES · EN) + Country (BR · MX)
 
-const STORAGE_KEY = 'mc1-lang';
+const STORAGE_KEY   = 'mc1-lang';
+const COUNTRY_KEY   = 'mc1-country';
+const VALID_COUNTRIES = ['BR', 'MX'];
 
 const translations = {
   // ─────────────────────────────────────────────────────
@@ -164,6 +166,13 @@ const translations = {
     'governance.title': 'Governança',
     'governance.subtitle': 'Políticas, compliance e recursos do departamento de Governança.',
     'governance.coming_soon_desc': 'O conteúdo do departamento de Governança está sendo preparado e estará disponível em breve.',
+
+    // Country
+    'country.label': 'País',
+    'country.BR': 'Brasil',
+    'country.MX': 'México',
+    'country.no_benefits': 'Nenhum benefício disponível para o país selecionado.',
+    'country.no_news': 'Nenhuma notícia disponível para o país selecionado.',
   },
 
   // ─────────────────────────────────────────────────────
@@ -327,6 +336,13 @@ const translations = {
     'governance.title': 'Gobernanza',
     'governance.subtitle': 'Políticas, cumplimiento y recursos del departamento de Gobernanza.',
     'governance.coming_soon_desc': 'El contenido del departamento de Gobernanza está siendo preparado y estará disponible próximamente.',
+
+    // Country
+    'country.label': 'País',
+    'country.BR': 'Brasil',
+    'country.MX': 'México',
+    'country.no_benefits': 'No hay beneficios disponibles para el país seleccionado.',
+    'country.no_news': 'No hay noticias disponibles para el país seleccionado.',
   },
 
   // ─────────────────────────────────────────────────────
@@ -490,6 +506,13 @@ const translations = {
     'governance.title': 'Governance',
     'governance.subtitle': 'Policies, compliance and resources from the Governance department.',
     'governance.coming_soon_desc': 'The Governance department content is being prepared and will be available soon.',
+
+    // Country
+    'country.label': 'Country',
+    'country.BR': 'Brazil',
+    'country.MX': 'Mexico',
+    'country.no_benefits': 'No benefits available for the selected country.',
+    'country.no_news': 'No news available for the selected country.',
   },
 };
 
@@ -503,6 +526,17 @@ export function setLang(lang) {
   if (!['pt', 'es', 'en'].includes(lang)) return;
   localStorage.setItem(STORAGE_KEY, lang);
   window.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
+}
+
+export function getCountry() {
+  const stored = localStorage.getItem(COUNTRY_KEY);
+  return VALID_COUNTRIES.includes(stored) ? stored : 'BR';
+}
+
+export function setCountry(country) {
+  if (!VALID_COUNTRIES.includes(country)) return;
+  localStorage.setItem(COUNTRY_KEY, country);
+  window.dispatchEvent(new CustomEvent('countrychange', { detail: { country } }));
 }
 
 /** Translate a key for the current language (falls back to PT, then the key itself) */
@@ -523,5 +557,9 @@ export function applyTranslations() {
   // Sync lang-btn active state
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === getLang());
+  });
+  // Sync country-btn active state
+  document.querySelectorAll('.country-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.country === getCountry());
   });
 }

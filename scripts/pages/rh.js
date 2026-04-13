@@ -92,18 +92,27 @@ export function renderRH(container) {
 
   // ─── Benefits Grid ───
   const beneficiosGrid = container.querySelector('#beneficios-grid');
-  getLocalizedBeneficios().forEach((b, i) => {
-    const card = createCard({
-      type: 'benefit',
-      name: b.name,
-      shortDesc: b.shortDesc,
-      icon: b.icon,
-      gradient: b.gradient,
-      revealDelay: i * 60,
-      onClick: () => openBenefitModal(b),
+  const benefList = getLocalizedBeneficios();
+  if (benefList.length === 0) {
+    beneficiosGrid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <svg width="48" height="48"><use href="#icon-heart"/></svg>
+        <p class="title-md text-muted">${t('country.no_benefits')}</p>
+      </div>`;
+  } else {
+    benefList.forEach((b, i) => {
+      const card = createCard({
+        type: 'benefit',
+        name: b.name,
+        shortDesc: b.shortDesc,
+        icon: b.icon,
+        gradient: b.gradient,
+        revealDelay: i * 60,
+        onClick: () => openBenefitModal(b),
+      });
+      beneficiosGrid.appendChild(card);
     });
-    beneficiosGrid.appendChild(card);
-  });
+  }
 
   // ─── Comunicados Grid ───
   const comunicadosGrid = container.querySelector('#comunicados-grid');

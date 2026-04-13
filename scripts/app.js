@@ -69,7 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Language change — update data-i18n elements + rebuild search + re-render current page
   window.addEventListener('langchange', () => {
     applyTranslations();
-    buildSearchIndex(); // refresh search index with translated article titles
+    buildSearchIndex();
+    window.dispatchEvent(new Event('hashchange'));
+  });
+
+  // 7. Country change — rebuild search + re-render current page
+  window.addEventListener('countrychange', () => {
+    applyTranslations();
+    buildSearchIndex();
     window.dispatchEvent(new Event('hashchange'));
   });
 });

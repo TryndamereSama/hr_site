@@ -1,5 +1,5 @@
 // MC1 HUB — Employee Benefits Data
-import { getLang } from '../i18n.js';
+import { getLang, getCountry } from '../i18n.js';
 import { beneficiosTranslations } from './beneficios-i18n.js';
 
 export const beneficios = [
@@ -16,6 +16,7 @@ export const beneficios = [
     provider: 'Flash',
     howToAccess: 'Você receberá um e-mail da Flash ("Flash | Seja Bem Vindo!") com sua senha. Baixe o app Flash, faça login e use sempre na função crédito. O cartão físico chega pelo Correios em até 10 dias úteis.',
     gradient: 'linear-gradient(135deg, #004b71, #006494)',
+    countries: ['BR'],
   },
   {
     id: 'vale-transporte',
@@ -30,6 +31,7 @@ export const beneficios = [
     provider: 'Bilhete Único / Cartão CPF',
     howToAccess: 'Informe seu endereço e linha de transporte ao RH no momento da admissão. O crédito é carregado direto no cartão vinculado ao seu CPF. Atualize seus dados sempre que mudar de endereço ou trajeto.',
     gradient: 'linear-gradient(135deg, #1a3460, #2550a0)',
+    countries: ['BR'],
   },
   {
     id: 'assistencia-medica',
@@ -44,6 +46,7 @@ export const beneficios = [
     provider: 'SulAmérica',
     howToAccess: 'Você receberá a carteirinha digital por e-mail em até 7 dias úteis. Para incluir dependentes, entre em contato com o RH em até 30 dias da admissão. Acesse a rede credenciada pelo app SulAmérica ou pelo site.',
     gradient: 'linear-gradient(135deg, #c62828, #e53935)',
+    countries: ['BR'],
   },
   {
     id: 'assistencia-odontologica',
@@ -58,6 +61,7 @@ export const beneficios = [
     provider: 'SulAmérica',
     howToAccess: 'Você receberá a carteirinha digital por e-mail em até 7 dias úteis. Para incluir dependentes, solicite ao RH em até 30 dias da admissão. Busque dentistas credenciados pelo app SulAmérica.',
     gradient: 'linear-gradient(135deg, #283593, #3949ab)',
+    countries: ['BR'],
   },
   {
     id: 'seguro-vida',
@@ -72,6 +76,7 @@ export const beneficios = [
     provider: 'SulAmérica',
     howToAccess: 'A adesão é automática na admissão. Para atualizar beneficiários ou consultar apólice, fale com o RH pelo e-mail rh@mc1global.com.',
     gradient: 'linear-gradient(135deg, #00695c, #00897b)',
+    countries: ['BR'],
   },
   {
     id: 'wellhub',
@@ -86,6 +91,7 @@ export const beneficios = [
     provider: 'Wellhub',
     howToAccess: 'Acesse o app ou site do Wellhub, busque pelo nome da sua empresa (MC1), selecione, preencha suas informações e escolha seu plano. Você tem 7 dias grátis para explorar antes de ativar.',
     gradient: 'linear-gradient(135deg, #4a148c, #6a1b9a)',
+    countries: ['BR'],
   },
   {
     id: 'auxilio-creche',
@@ -100,6 +106,7 @@ export const beneficios = [
     provider: 'MC1 Global',
     howToAccess: 'Solicite o benefício por e-mail para rh@mc1global.com. Envie o comprovante de pagamento da creche/cuidador até o dia 15 de cada mês. O reembolso cai na folha no dia 25.',
     gradient: 'linear-gradient(135deg, #e65100, #f57c00)',
+    countries: ['BR'],
   },
   {
     id: 'day-off-aniversario',
@@ -114,6 +121,7 @@ export const beneficios = [
     provider: 'MC1 Global',
     howToAccess: 'Alinhe com sua liderança a data do day off. Não quer folgar no dia do aniversário? Escolha outra data (válido por 1 ano). O crédito de R$ 50,00 é creditado no Flash automaticamente no mês do seu aniversário.',
     gradient: 'linear-gradient(135deg, #880e4f, #c2185b)',
+    countries: ['BR'],
   },
   {
     id: 'zenklub',
@@ -128,17 +136,23 @@ export const beneficios = [
     provider: 'ZenKlub',
     howToAccess: 'Baixe o app ou acesse o site do Zenklub. Cadastre-se com seu e-mail corporativo MC1 e insira o código de ativação fornecido pelo RH. Pronto — agende suas sessões e acesse todos os conteúdos.',
     gradient: 'linear-gradient(135deg, #1b5e20, #2e7d32)',
+    countries: ['BR'],
   },
 ];
 
 export const getBeneficio = (id) => beneficios.find(b => b.id === id);
 
 export function getLocalizedBeneficios() {
-  const lang = getLang();
-  if (lang === 'pt') return beneficios;
-  const tr = beneficiosTranslations[lang] || {};
-  return beneficios.map(b => {
-    const override = tr[b.id];
-    return override ? { ...b, ...override } : b;
-  });
+  const lang    = getLang();
+  const country = getCountry();
+  const base = lang === 'pt' ? beneficios : (() => {
+    const tr = beneficiosTranslations[lang] || {};
+    return beneficios.map(b => {
+      const override = tr[b.id];
+      return override ? { ...b, ...override } : b;
+    });
+  })();
+  return base.filter(b =>
+    !b.countries || b.countries.includes('ALL') || b.countries.includes(country)
+  );
 }

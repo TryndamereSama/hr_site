@@ -1,5 +1,5 @@
 // MC1 HUB — News Articles Data
-import { getLang } from '../i18n.js';
+import { getLang, getCountry } from '../i18n.js';
 import { noticiasTranslations } from './noticias-i18n.js';
 
 export const noticias = [
@@ -44,6 +44,7 @@ export const noticias = [
     image: 'assets/images/Birhtday 04.2026.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: true,
+    countries: ['ALL'],
   },
   // ─── 2026-03-20 ───
   {
@@ -73,6 +74,7 @@ export const noticias = [
     image: 'assets/images/17- Canal Speak Up Safely MC1.png',
     gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-03-19 ───
   {
@@ -103,6 +105,7 @@ export const noticias = [
     image: 'assets/images/16- Speak Up Safely MC1.png',
     gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-03-16 ───
   {
@@ -132,6 +135,7 @@ export const noticias = [
     image: 'assets/images/15- Palestra Saúde da Mulher.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-03-15 ───
   {
@@ -178,6 +182,7 @@ export const noticias = [
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80',
     gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: true,
+    countries: ['BR'],
   },
   // ─── 2026-03-13 ───
   {
@@ -208,6 +213,7 @@ export const noticias = [
     image: 'assets/images/14- Boas-Vindas Gilberto Márquez.png',
     gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   {
     id: 'novo-informe-rendimentos-2025',
@@ -247,6 +253,7 @@ export const noticias = [
     image: 'assets/images/13- ATENÇÃO NOVO Informe de Rendimentos 2025 (image1).png',
     gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
     featured: false,
+    countries: ['BR'],
   },
   // ─── 2026-03-10 ───
   {
@@ -275,6 +282,7 @@ export const noticias = [
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
     gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
     featured: true,
+    countries: ['BR'],
   },
   // ─── 2026-03-06 ───
   {
@@ -298,6 +306,7 @@ export const noticias = [
     image: 'assets/images/11- Feliz dia da Mulher.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-03-05 ───
   {
@@ -322,6 +331,7 @@ export const noticias = [
     image: 'assets/images/Birhtday 03.2026.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   {
     id: 'programa-indicacao-2026',
@@ -354,6 +364,7 @@ export const noticias = [
     image: 'assets/images/12- Programa Indicação Amiga MC1 v2.png',
     gradient: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-02-27 ───
   {
@@ -386,6 +397,7 @@ export const noticias = [
     image: 'assets/images/10 - Informe de Rendimentos 2025 (image1).png',
     gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
     featured: false,
+    countries: ['BR'],
   },
   // ─── 2026-02-25 ───
   {
@@ -418,6 +430,7 @@ export const noticias = [
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
     gradient: 'linear-gradient(135deg, #1d6b8a 0%, #004b71 100%)',
     featured: false,
+    countries: ['BR'],
   },
   // ─── 2026-02-13 ───
   {
@@ -446,6 +459,7 @@ export const noticias = [
     image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1400&q=80',
     gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
     featured: false,
+    countries: ['BR'],
   },
   // ─── 2026-02-05 ───
   {
@@ -470,6 +484,7 @@ export const noticias = [
     image: 'assets/images/Birhtday 02.2026.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-01-29 ───
   {
@@ -516,6 +531,7 @@ export const noticias = [
     image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1400&q=80',
     gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
     featured: false,
+    countries: ['BR'],
   },
   // ─── 2026-01-08 ───
   {
@@ -540,6 +556,7 @@ export const noticias = [
     image: 'assets/images/Birhtday 01.2026.png',
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
     featured: false,
+    countries: ['ALL'],
   },
   // ─── 2026-01-02 ───
   {
@@ -573,6 +590,7 @@ export const noticias = [
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80',
     gradient: 'linear-gradient(135deg, #004b71 0%, #006494 100%)',
     featured: false,
+    countries: ['BR'],
   },
 ];
 
@@ -581,23 +599,41 @@ export const getNoticiasFeatured = () => noticias.filter(n => n.featured).slice(
 export const getNoticiasRecentes = (limit = 3) => [...noticias].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, limit);
 
 // ─── Locale-aware helpers ───────────────────────────────
-/** Returns all articles with text fields in the current language */
+
+/** Checks if an article is visible for a given country code */
+function _matchesCountry(n, country) {
+  if (!n.countries || n.countries.length === 0) return true;
+  return n.countries.includes('ALL') || n.countries.includes(country);
+}
+
+/** Returns all articles with text fields in the current language, filtered by country */
 export function getLocalizedNoticias() {
-  const lang = getLang();
-  if (lang === 'pt') return noticias;
-  const tr = noticiasTranslations[lang] || {};
-  return noticias.map(n => {
-    const override = tr[n.id];
-    return override ? { ...n, ...override } : n;
-  });
+  const lang    = getLang();
+  const country = getCountry();
+  const base = lang === 'pt' ? noticias : (() => {
+    const tr = noticiasTranslations[lang] || {};
+    return noticias.map(n => {
+      const override = tr[n.id];
+      return override ? { ...n, ...override } : n;
+    });
+  })();
+  return base.filter(n => _matchesCountry(n, country));
 }
 
-/** Returns a single article by id in the current language */
+/** Returns a single article by id in the current language (no country filter — direct access) */
 export function getLocalizedNoticia(id) {
-  return getLocalizedNoticias().find(n => n.id === id);
+  const lang = getLang();
+  const base = lang === 'pt' ? noticias : (() => {
+    const tr = noticiasTranslations[lang] || {};
+    return noticias.map(n => {
+      const override = tr[n.id];
+      return override ? { ...n, ...override } : n;
+    });
+  })();
+  return base.find(n => n.id === id);
 }
 
-/** Returns the N most recent articles in the current language */
+/** Returns the N most recent articles in the current language, filtered by country */
 export function getLocalizedNoticiasRecentes(limit = 3) {
   return [...getLocalizedNoticias()]
     .sort((a, b) => new Date(b.date) - new Date(a.date))

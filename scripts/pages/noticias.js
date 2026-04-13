@@ -3,6 +3,7 @@
 import { getLocalizedNoticias, getLocalizedNoticia } from '../data/noticias.js';
 import { createCard } from '../../components/card.js';
 import { t } from '../i18n.js';
+import { getCountry } from '../i18n.js';
 
 // ─── All News Page ───
 export function renderNoticias(container) {
@@ -48,10 +49,11 @@ export function renderNoticias(container) {
     const filtered = filter === allLabel ? noticias : noticias.filter(n => n.tagLabel === filter);
 
     if (filtered.length === 0) {
+      const msg = noticias.length === 0 ? t('country.no_news') : t('news.empty');
       grid.innerHTML = `
         <div class="empty-state" style="grid-column:1/-1">
           <svg width="48" height="48"><use href="#icon-newspaper"/></svg>
-          <p class="title-md text-muted">${t('news.empty')}</p>
+          <p class="title-md text-muted">${msg}</p>
         </div>`;
       return;
     }

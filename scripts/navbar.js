@@ -1,7 +1,7 @@
 // MC1 HUB — Navbar Component
 
 import { navigate } from './router.js';
-import { getLang, setLang, t, applyTranslations } from './i18n.js';
+import { getLang, setLang, getCountry, setCountry, t, applyTranslations } from './i18n.js';
 
 export function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -10,7 +10,8 @@ export function initNavbar() {
 
   if (!navbar) return;
 
-  const lang = getLang();
+  const lang    = getLang();
+  const country = getCountry();
 
   // ─── Render navbar HTML ───
   navbar.innerHTML = `
@@ -97,6 +98,12 @@ export function initNavbar() {
 
       <!-- Actions -->
       <div class="nav-actions">
+        <!-- Country Switcher -->
+        <div class="country-switcher" id="nav-country-switcher" role="group" aria-label="País / Country">
+          <button class="country-btn ${country === 'BR' ? 'active' : ''}" data-country="BR" title="Brasil">🇧🇷 BR</button>
+          <button class="country-btn ${country === 'MX' ? 'active' : ''}" data-country="MX" title="México">🇲🇽 MX</button>
+        </div>
+
         <!-- Language Switcher -->
         <div class="lang-switcher" id="nav-lang-switcher" role="group" aria-label="Language / Idioma">
           <button class="lang-btn ${lang === 'pt' ? 'active' : ''}" data-lang="pt" title="Português">PT</button>
@@ -124,6 +131,13 @@ export function initNavbar() {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ─── Country Switcher ───
+  document.getElementById('nav-country-switcher')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.country-btn');
+    if (!btn) return;
+    setCountry(btn.dataset.country);
+  });
 
   // ─── Language Switcher ───
   document.getElementById('nav-lang-switcher')?.addEventListener('click', (e) => {
@@ -184,6 +198,12 @@ export function initNavbar() {
         </button>
       </div>
 
+      <!-- Country switcher mobile -->
+      <div class="country-switcher country-switcher-mobile" id="mobile-country-switcher" role="group" aria-label="País / Country">
+        <button class="country-btn ${country === 'BR' ? 'active' : ''}" data-country="BR">🇧🇷 Brasil</button>
+        <button class="country-btn ${country === 'MX' ? 'active' : ''}" data-country="MX">🇲🇽 México</button>
+      </div>
+
       <!-- Language switcher mobile -->
       <div class="lang-switcher lang-switcher-mobile" id="mobile-lang-switcher" role="group" aria-label="Language / Idioma">
         <button class="lang-btn ${lang === 'pt' ? 'active' : ''}" data-lang="pt">PT — Português</button>
@@ -224,6 +244,13 @@ export function initNavbar() {
       </div>
     `;
   }
+
+  // ─── Mobile country switcher ───
+  document.getElementById('mobile-country-switcher')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.country-btn');
+    if (!btn) return;
+    setCountry(btn.dataset.country);
+  });
 
   // ─── Mobile lang switcher ───
   document.getElementById('mobile-lang-switcher')?.addEventListener('click', (e) => {
