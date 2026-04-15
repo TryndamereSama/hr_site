@@ -3,6 +3,72 @@ import { getLang, getCountry } from '../i18n.js';
 import { noticiasTranslations } from './noticias-i18n.js';
 
 export const noticias = [
+  // ─── 2026-04-15 ───
+  {
+    id: 'zenklub-ative-beneficio',
+    title: 'Ative seu Benefício Zenklub! 🧠',
+    excerpt: 'Com a MC1 você tem acesso ao Zenklub — plataforma de saúde mental com sessões gratuitas de psicólogo e nutricionista todo mês. Saiba como ativar!',
+    body: `
+      <img src="assets/images/zenklub-beneficio-p1.jpg" alt="Como começar a usar seu benefício Zenklub" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+
+      <h3>Como começar a usar seu benefício?</h3>
+      <ol style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li>Selecione <strong>"Ativar Benefício"</strong> no aplicativo</li>
+        <li>Responda perguntas simples para se cadastrar</li>
+        <li>Conheça todas as possibilidades que o Zenklub pode lhe oferecer</li>
+        <li>Defina qual será o seu objetivo</li>
+        <li><strong>Prontinho!</strong> 🎉</li>
+      </ol>
+
+      <p style="margin: 1.5rem 0; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid #7c3aed; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Baixe o aplicativo do <strong>Zenklub</strong> e faça o passo a passo da ativação agora!
+      </p>
+
+      <img src="assets/images/zenklub-beneficio-p2.jpg" alt="O que você tem acesso com a MC1 no Zenklub" style="width:100%; border-radius:12px; margin: 1.5rem 0;" />
+
+      <h3>Com a MC1, você tem acesso a:</h3>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1rem 0;">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="font-size: 1.5rem; font-weight: 800; color: #7c3aed; min-width: 2rem;">01</span>
+          <div>
+            <p style="margin: 0;"><strong>2 sessões gratuitas por mês</strong> (50 minutos cada)</p>
+            <p style="margin: 0.25rem 0 0; color: var(--color-on-surface-muted);">2 sessões com psicólogo(a), ou 1 sessão com psicólogo(a) + 1 com nutricionista</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="font-size: 1.5rem; font-weight: 800; color: #7c3aed; min-width: 2rem;">02</span>
+          <div>
+            <p style="margin: 0;">Acesso a <strong>conteúdos de bem-estar</strong>, trilhas personalizadas, testes e exercícios guiados</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="font-size: 1.5rem; font-weight: 800; color: #7c3aed; min-width: 2rem;">03</span>
+          <div>
+            <p style="margin: 0;"><strong>Acompanhamento com especialistas</strong> para temas como ansiedade, estresse, foco, autoestima, alimentação e muito mais</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Sobre a Zenklub</h3>
+      <p>Você tem o benefício do Zenklub para ser seu <strong>EPI de saúde mental</strong> em casos como: estresse excessivo, ansiedade, sintomas de depressão ou só para se conhecer mais e viver melhor.</p>
+
+      <p style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--color-surface-container-low); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'Benefício',
+    tag: 'beneficio',
+    tagLabel: 'Benefício',
+    date: '2026-04-15',
+    dateLabel: '15 de abril de 2026',
+    author: 'Equipe RH',
+    readTime: '2 min',
+    image: 'assets/images/zenklub-beneficio-p1.jpg',
+    gradient: 'linear-gradient(135deg, #6d28d9 0%, #a855f7 100%)',
+    featured: false,
+    countries: ['BR'],
+  },
   // ─── 2026-04-02 ───
   {
     id: 'aniversariantes-abril-2026',
