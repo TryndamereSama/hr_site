@@ -9,7 +9,7 @@ export const noticias = [
     title: 'Ative seu Benefício Zenklub! 🧠',
     excerpt: 'Com a MC1 você tem acesso ao Zenklub — plataforma de saúde mental com sessões gratuitas de psicólogo e nutricionista todo mês. Saiba como ativar!',
     body: `
-      <img src="assets/images/zenklub-beneficio-p2.jpg" alt="Como começar a usar seu benefício Zenklub" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+      <img src="assets/images/zenklub-como-comecar.jpg" alt="Como começar a usar seu benefício Zenklub" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
 
       <h3>Como começar a usar seu benefício?</h3>
       <ol style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.75rem;">
@@ -24,7 +24,7 @@ export const noticias = [
         Baixe o aplicativo do <strong>Zenklub</strong> e faça o passo a passo da ativação agora!
       </p>
 
-      <img src="assets/images/zenklub-beneficio-p1.jpg" alt="O que você tem acesso com a MC1 no Zenklub" style="width:100%; border-radius:12px; margin: 1.5rem 0;" />
+      <img src="assets/images/zenklub-voce-sabia.jpg" alt="O que você tem acesso com a MC1 no Zenklub" style="width:100%; border-radius:12px; margin: 1.5rem 0;" />
 
       <h3>Com a MC1, você tem acesso a:</h3>
 
@@ -64,7 +64,7 @@ export const noticias = [
     dateLabel: '15 de abril de 2026',
     author: 'Equipe RH',
     readTime: '2 min',
-    image: 'assets/images/zenklub-beneficio-p1.jpg',
+    image: 'assets/images/zenklub-voce-sabia.jpg',
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #a855f7 100%)',
     featured: false,
     countries: ['BR'],
