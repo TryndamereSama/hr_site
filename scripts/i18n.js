@@ -181,6 +181,23 @@ const translations = {
     'country.MX': 'México',
     'country.no_benefits': 'Nenhum benefício disponível para o país selecionado.',
     'country.no_news': 'Nenhuma notícia disponível para o país selecionado.',
+
+    // Operacional
+    'nav.operacional': 'Operacional',
+    'nav.operacional.sobre': 'Sobre a MC1',
+    'nav.operacional.sobre.sub': 'Conheça a MC1 Global',
+    'nav.operacional.sobre.coming_soon_desc': 'As informações sobre a MC1 Global estão sendo preparadas e estarão disponíveis em breve.',
+    'nav.operacional.clientes': 'Clientes MC1',
+    'nav.operacional.clientes.sub': 'Nossos clientes e parcerias',
+    'nav.operacional.clientes.coming_soon_desc': 'As informações sobre os clientes MC1 estão sendo preparadas e estarão disponíveis em breve.',
+    'nav.operacional.avisos': 'Avisos Operacionais',
+    'nav.operacional.avisos.sub': 'Comunicados e atualizações',
+    'nav.operacional.avisos.coming_soon_desc': 'Os avisos operacionais estão sendo preparados e estarão disponíveis em breve.',
+
+    // Marketing
+    'nav.marketing': 'Marketing',
+    'nav.marketing.sub': 'Em breve',
+    'nav.marketing.coming_soon_desc': 'O conteúdo do departamento de Marketing está sendo preparado e estará disponível em breve.',
   },
 
   // ─────────────────────────────────────────────────────
@@ -359,6 +376,23 @@ const translations = {
     'country.MX': 'México',
     'country.no_benefits': 'No hay beneficios disponibles para el país seleccionado.',
     'country.no_news': 'No hay noticias disponibles para el país seleccionado.',
+
+    // Operacional
+    'nav.operacional': 'Operacional',
+    'nav.operacional.sobre': 'Sobre la MC1',
+    'nav.operacional.sobre.sub': 'Conozca la MC1 Global',
+    'nav.operacional.sobre.coming_soon_desc': 'La información sobre MC1 Global está siendo preparada y estará disponible próximamente.',
+    'nav.operacional.clientes': 'Clientes MC1',
+    'nav.operacional.clientes.sub': 'Nuestros clientes y alianzas',
+    'nav.operacional.clientes.coming_soon_desc': 'La información sobre los clientes MC1 está siendo preparada y estará disponible próximamente.',
+    'nav.operacional.avisos': 'Avisos Operacionales',
+    'nav.operacional.avisos.sub': 'Comunicados y actualizaciones',
+    'nav.operacional.avisos.coming_soon_desc': 'Los avisos operacionales están siendo preparados y estarán disponibles próximamente.',
+
+    // Marketing
+    'nav.marketing': 'Marketing',
+    'nav.marketing.sub': 'Próximamente',
+    'nav.marketing.coming_soon_desc': 'El contenido del departamento de Marketing está siendo preparado y estará disponible próximamente.',
   },
 
   // ─────────────────────────────────────────────────────
@@ -537,6 +571,23 @@ const translations = {
     'country.MX': 'Mexico',
     'country.no_benefits': 'No benefits available for the selected country.',
     'country.no_news': 'No news available for the selected country.',
+
+    // Operacional
+    'nav.operacional': 'Operational',
+    'nav.operacional.sobre': 'About MC1',
+    'nav.operacional.sobre.sub': 'Get to know MC1 Global',
+    'nav.operacional.sobre.coming_soon_desc': 'Information about MC1 Global is being prepared and will be available soon.',
+    'nav.operacional.clientes': 'MC1 Clients',
+    'nav.operacional.clientes.sub': 'Our clients and partnerships',
+    'nav.operacional.clientes.coming_soon_desc': 'Information about MC1 clients is being prepared and will be available soon.',
+    'nav.operacional.avisos': 'Operational Notices',
+    'nav.operacional.avisos.sub': 'Communications and updates',
+    'nav.operacional.avisos.coming_soon_desc': 'Operational notices are being prepared and will be available soon.',
+
+    // Marketing
+    'nav.marketing': 'Marketing',
+    'nav.marketing.sub': 'Coming soon',
+    'nav.marketing.coming_soon_desc': 'The Marketing department content is being prepared and will be available soon.',
   },
 };
 

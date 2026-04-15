@@ -74,6 +74,57 @@ export function initNavbar() {
                       <small data-i18n="nav.governance.sub">${t('nav.governance.sub')}</small>
                     </span>
                   </a>
+                  <a href="#/marketing" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#db2777,#ec4899)">
+                      <svg width="16" height="16"><use href="#icon-star"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong data-i18n="nav.marketing">${t('nav.marketing')}</strong>
+                      <small data-i18n="nav.marketing.sub">${t('nav.marketing.sub')}</small>
+                    </span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Operacional Dropdown -->
+          <li class="nav-item-dropdown" id="nav-ops-item">
+            <button class="nav-dropdown-trigger" id="nav-ops-trigger" aria-haspopup="true" aria-expanded="false">
+              <svg width="16" height="16"><use href="#icon-zap"/></svg>
+              <span data-i18n="nav.operacional">${t('nav.operacional')}</span>
+              <svg class="dropdown-chevron" width="13" height="13"><use href="#icon-chevron-right"/></svg>
+            </button>
+            <ul class="nav-dropdown" id="nav-ops-menu" role="menu">
+              <li role="none">
+                <div class="nav-dropdown-card">
+                  <a href="#/operacional/sobre" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#1e40af,#3b82f6)">
+                      <svg width="16" height="16"><use href="#icon-book"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong data-i18n="nav.operacional.sobre">${t('nav.operacional.sobre')}</strong>
+                      <small data-i18n="nav.operacional.sobre.sub">${t('nav.operacional.sobre.sub')}</small>
+                    </span>
+                  </a>
+                  <a href="#/operacional/clientes" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">
+                      <svg width="16" height="16"><use href="#icon-users"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong data-i18n="nav.operacional.clientes">${t('nav.operacional.clientes')}</strong>
+                      <small data-i18n="nav.operacional.clientes.sub">${t('nav.operacional.clientes.sub')}</small>
+                    </span>
+                  </a>
+                  <a href="#/operacional/avisos" class="nav-link nav-dropdown-item" role="menuitem">
+                    <div class="nav-dropdown-icon" style="background:linear-gradient(135deg,#ea580c,#f97316)">
+                      <svg width="16" height="16"><use href="#icon-newspaper"/></svg>
+                    </div>
+                    <span class="nav-dropdown-label">
+                      <strong data-i18n="nav.operacional.avisos">${t('nav.operacional.avisos')}</strong>
+                      <small data-i18n="nav.operacional.avisos.sub">${t('nav.operacional.avisos.sub')}</small>
+                    </span>
+                  </a>
                 </div>
               </li>
             </ul>
@@ -140,46 +191,54 @@ export function initNavbar() {
     if (btn.dataset.localeLang) setLang(btn.dataset.localeLang);
   });
 
-  // ─── Dropdown (desktop) ───
-  const deptItem    = document.getElementById('nav-dept-item');
-  const deptTrigger = document.getElementById('nav-dept-trigger');
-  const deptMenu    = document.getElementById('nav-dept-menu');
-  let closeTimer    = null;
+  // ─── Dropdown (desktop) — generic factory ───
+  function makeDropdown(itemId, triggerId, menuId) {
+    const item    = document.getElementById(itemId);
+    const trigger = document.getElementById(triggerId);
+    const menu    = document.getElementById(menuId);
+    let timer     = null;
 
-  const openDropdown = () => {
-    clearTimeout(closeTimer);
-    deptItem.classList.add('open');
-    deptTrigger.setAttribute('aria-expanded', 'true');
-  };
+    const closeAll = () => {
+      document.querySelectorAll('.nav-item-dropdown.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.nav-dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+    };
 
-  const closeDropdown = () => {
-    deptItem.classList.remove('open');
-    deptTrigger.setAttribute('aria-expanded', 'false');
-  };
+    const open = () => {
+      clearTimeout(timer);
+      closeAll();
+      item?.classList.add('open');
+      trigger?.setAttribute('aria-expanded', 'true');
+    };
 
-  const scheduleClose = () => {
-    closeTimer = setTimeout(closeDropdown, 120);
-  };
+    const close = () => {
+      item?.classList.remove('open');
+      trigger?.setAttribute('aria-expanded', 'false');
+    };
 
-  deptTrigger?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    deptItem.classList.contains('open') ? closeDropdown() : openDropdown();
-  });
+    const scheduleClose = () => { timer = setTimeout(close, 120); };
 
-  deptItem?.addEventListener('mouseenter', openDropdown);
-  deptItem?.addEventListener('mouseleave', scheduleClose);
-  deptMenu?.addEventListener('mouseenter', openDropdown);
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      item?.classList.contains('open') ? close() : open();
+    });
 
-  document.addEventListener('click', (e) => {
-    if (!deptItem?.contains(e.target)) closeDropdown();
-  });
+    item?.addEventListener('mouseenter', open);
+    item?.addEventListener('mouseleave', scheduleClose);
+    menu?.addEventListener('mouseenter', () => clearTimeout(timer));
+    menu?.addEventListener('mouseleave', scheduleClose);
+    menu?.querySelectorAll('.nav-dropdown-item').forEach(el => el.addEventListener('click', close));
 
+    return { open, close };
+  }
+
+  const deptDrop = makeDropdown('nav-dept-item', 'nav-dept-trigger', 'nav-dept-menu');
+  const opsDrop  = makeDropdown('nav-ops-item',  'nav-ops-trigger',  'nav-ops-menu');
+
+  document.addEventListener('click', () => { deptDrop.close(); opsDrop.close(); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDropdown();
-  });
-
-  deptMenu?.querySelectorAll('.nav-dropdown-item').forEach(item => {
-    item.addEventListener('click', closeDropdown);
+    if (e.key === 'Escape') { deptDrop.close(); opsDrop.close(); }
   });
 
   // ─── Mobile Menu ───
@@ -222,6 +281,23 @@ export function initNavbar() {
             <a href="#/rh"         class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-heart"/></svg><span data-i18n="nav.rh">${t('nav.rh')}</span></a>
             <a href="#/financeiro" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-document"/></svg><span data-i18n="nav.finance">${t('nav.finance')}</span></a>
             <a href="#/governanca" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-shield"/></svg><span data-i18n="nav.governance">${t('nav.governance')}</span></a>
+            <a href="#/marketing"  class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-star"/></svg><span data-i18n="nav.marketing">${t('nav.marketing')}</span></a>
+          </div>
+        </div>
+
+        <!-- Operacional accordion -->
+        <div class="mobile-nav-group" id="mobile-ops-group">
+          <button class="mobile-nav-group-trigger" id="mobile-ops-trigger" aria-expanded="false">
+            <span style="display:flex;align-items:center;gap:var(--space-3)">
+              <svg width="20" height="20"><use href="#icon-zap"/></svg>
+              <span data-i18n="nav.operacional">${t('nav.operacional')}</span>
+            </span>
+            <svg class="mobile-group-chevron" width="16" height="16"><use href="#icon-chevron-right"/></svg>
+          </button>
+          <div class="mobile-nav-sub" id="mobile-ops-sub" hidden>
+            <a href="#/operacional/sobre"    class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-book"/></svg><span data-i18n="nav.operacional.sobre">${t('nav.operacional.sobre')}</span></a>
+            <a href="#/operacional/clientes" class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-users"/></svg><span data-i18n="nav.operacional.clientes">${t('nav.operacional.clientes')}</span></a>
+            <a href="#/operacional/avisos"   class="mobile-nav-link mobile-nav-sublink"><svg width="18" height="18"><use href="#icon-newspaper"/></svg><span data-i18n="nav.operacional.avisos">${t('nav.operacional.avisos')}</span></a>
           </div>
         </div>
 
@@ -247,16 +323,20 @@ export function initNavbar() {
     if (btn.dataset.localeLang) setLang(btn.dataset.localeLang);
   });
 
-  // ─── Mobile Departamentos accordion ───
-  const mobileDeptTrigger = document.getElementById('mobile-dept-trigger');
-  const mobileDeptSub     = document.getElementById('mobile-dept-sub');
+  // ─── Mobile accordion factory ───
+  function makeMobileAccordion(triggerId, subId) {
+    const trigger = document.getElementById(triggerId);
+    const sub     = document.getElementById(subId);
+    trigger?.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      if (sub) sub.hidden = isOpen;
+      trigger.classList.toggle('open', !isOpen);
+    });
+  }
 
-  mobileDeptTrigger?.addEventListener('click', () => {
-    const isOpen = mobileDeptTrigger.getAttribute('aria-expanded') === 'true';
-    mobileDeptTrigger.setAttribute('aria-expanded', String(!isOpen));
-    mobileDeptSub.hidden = isOpen;
-    mobileDeptTrigger.classList.toggle('open', !isOpen);
-  });
+  makeMobileAccordion('mobile-dept-trigger', 'mobile-dept-sub');
+  makeMobileAccordion('mobile-ops-trigger',  'mobile-ops-sub');
 
   // ─── Hamburger toggle ───
   const hamburger = document.getElementById('nav-hamburger');
