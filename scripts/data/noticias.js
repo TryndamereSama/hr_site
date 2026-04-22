@@ -300,7 +300,7 @@ export const noticias = [
       <h3>Como acessar o novo Informe</h3>
       <p>Acesse pelo mesmo portal Apdata:</p>
       <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+        <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
         <li><strong>Usuário:</strong> Seu CPF</li>
         <li><strong>Senha:</strong> Mesma do holerite</li>
         <li><strong>Caminho:</strong> Dados Contratuais → Informe de Rendimentos → Ano: 2025</li>
@@ -443,7 +443,7 @@ export const noticias = [
       <p>O <strong>Informe de Rendimentos 2025</strong> já está disponível para todos os colaboradores no portal Apdata. Utilize este documento para sua declaração do Imposto de Renda.</p>
       <h3>Como acessar</h3>
       <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+        <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
         <li><strong>Usuário:</strong> Seu CPF</li>
         <li><strong>Senha:</strong> Mesma utilizada para acessar o holerite</li>
         <li><strong>Caminho no menu:</strong> Dados Contratuais → Informe de Rendimentos</li>

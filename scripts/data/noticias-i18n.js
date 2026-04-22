@@ -159,7 +159,7 @@ export const noticiasTranslations = {
 <h3>Cómo acceder al nuevo Informe</h3>
 <p>Acceda por el mismo portal Apdata:</p>
 <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
   <li><strong>Usuario:</strong> Su CPF</li>
   <li><strong>Contraseña:</strong> La misma del recibo de sueldo</li>
   <li><strong>Ruta:</strong> Datos Contractuales → Informe de Rendimientos → Año: 2025</li>
@@ -248,7 +248,7 @@ export const noticiasTranslations = {
 <p>El <strong>Informe de Rendimientos 2025</strong> ya está disponible para todos los colaboradores en el portal Apdata. Utilice este documento para su declaración del Impuesto a la Renta.</p>
 <h3>Cómo acceder</h3>
 <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
   <li><strong>Usuario:</strong> Su CPF</li>
   <li><strong>Contraseña:</strong> La misma utilizada para acceder al recibo de sueldo</li>
   <li><strong>Ruta en el menú:</strong> Datos Contractuales → Informe de Rendimientos</li>
@@ -547,7 +547,7 @@ export const noticiasTranslations = {
 <h3>How to access the new Statement</h3>
 <p>Access through the same Apdata portal:</p>
 <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
   <li><strong>Username:</strong> Your CPF</li>
   <li><strong>Password:</strong> Same as your payslip</li>
   <li><strong>Path:</strong> Contract Data → Income Statement → Year: 2025</li>
@@ -636,7 +636,7 @@ export const noticiasTranslations = {
 <p>The <strong>2025 Income Statement</strong> is now available for all employees on the Apdata portal. Use this document for your Income Tax return.</p>
 <h3>How to access</h3>
 <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
+  <li><strong>Portal:</strong> <a href="https://cliente.apdata.com.br/mc1/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">https://cliente.apdata.com.br/mc1/</a></li>
   <li><strong>Username:</strong> Your CPF</li>
   <li><strong>Password:</strong> Same as the one used to access your payslip</li>
   <li><strong>Menu path:</strong> Contract Data → Income Statement</li>

@@ -172,7 +172,7 @@ function openBenefitModal(b) {
       </div>
     `,
     footer: `
-      <a href="https://drive.google.com/drive/u/0/folders/1gzJQIwfm2LnXdfFKP33Hsg-PIu6Yddk1" target="_blank" rel="noopener" class="btn btn-primary">
+      <a href="https://drive.google.com/drive/u/0/folders/1gzJQIwfm2LnXdfFKP33Hsg-PIu6Yddk1" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
         <svg width="14" height="14"><use href="#icon-download"/></svg>${t('common.download')}
       </a>
     `,
