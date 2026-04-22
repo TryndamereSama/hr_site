@@ -294,8 +294,7 @@ export function renderSobreMC1(container) {
           <div class="sobre-metric-label">operações ativas em toda a América Latina</div>
         </div>
         <div class="sobre-metric" data-reveal>
-          <div class="sobre-metric-num">100+</div>
-          <div class="sobre-metric-label">Presente na operação das maiores empresas de consumo do mundo</div>
+          <div class="sobre-metric-label" style="font-size:0.95rem; font-weight:600; color:#004b71; line-height:1.5; margin-top:0">Presente na operação das maiores empresas de consumo do mundo</div>
         </div>
       </div>
 
