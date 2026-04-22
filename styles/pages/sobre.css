@@ -1,0 +1,241 @@
+/* MC1 HUB — Sobre a MC1 Page Styles */
+
+.sobre-page {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  color: var(--color-on-surface);
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+.sobre-page .s-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Hero ─── */
+.sobre-hero {
+  padding: 3.5rem 2rem 3rem;
+  border-bottom: 1px solid var(--color-outline-subtle);
+}
+.sobre-hero-title {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  max-width: 680px;
+  margin-bottom: 1.25rem;
+  color: var(--color-on-surface);
+}
+.sobre-hero-title strong { color: #004b71; font-weight: 800; }
+.sobre-hero-sub {
+  font-size: 1rem;
+  color: var(--color-on-surface-muted);
+  max-width: 540px;
+  line-height: 1.75;
+}
+.sobre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.75rem;
+}
+.sobre-tag {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 100px;
+  color: var(--color-on-surface-muted);
+}
+
+/* ─── Metrics bar ─── */
+.sobre-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-outline-subtle);
+  border-bottom: 1px solid var(--color-outline-subtle);
+}
+.sobre-metric {
+  background: var(--color-surface-lowest);
+  padding: 2rem 1.75rem;
+}
+.sobre-metric-num {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #004b71;
+  line-height: 1;
+}
+.sobre-metric-label {
+  font-size: 13px;
+  color: var(--color-on-surface-muted);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+
+/* ─── Sections ─── */
+.sobre-section {
+  padding: 3rem 2rem;
+  border-bottom: 1px solid var(--color-outline-subtle);
+}
+.sobre-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--color-on-surface);
+}
+.sobre-section-body {
+  font-size: 0.95rem;
+  color: var(--color-on-surface-muted);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+/* ─── Results ─── */
+.sobre-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-outline-subtle);
+  margin-top: 2rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.sobre-result-card {
+  background: var(--color-surface-container-low);
+  padding: 1.5rem 1.25rem;
+}
+.sobre-result-brand {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-muted);
+  margin-bottom: 0.75rem;
+}
+.sobre-result-stat {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #004b71;
+  line-height: 1;
+}
+.sobre-result-stat-sm {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #004b71;
+  line-height: 1;
+  margin-top: 12px;
+}
+.sobre-result-desc {
+  font-size: 12px;
+  color: var(--color-on-surface-muted);
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
+/* ─── Products ─── */
+.sobre-products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 1.75rem;
+}
+.sobre-product-card {
+  background: var(--color-surface-lowest);
+  border: 1px solid var(--color-outline-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.sobre-product-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #004b71;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.sobre-product-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: var(--color-on-surface);
+}
+.sobre-product-desc {
+  font-size: 13px;
+  color: var(--color-on-surface-muted);
+  line-height: 1.55;
+}
+
+/* ─── Presence ─── */
+.sobre-offices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 1.75rem;
+}
+.sobre-office {
+  border-left: 2px solid #004b71;
+  padding-left: 14px;
+}
+.sobre-office-city {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-on-surface);
+}
+.sobre-office-addr {
+  font-size: 12px;
+  color: var(--color-on-surface-muted);
+  margin-top: 3px;
+  line-height: 1.45;
+}
+
+/* ─── Values ─── */
+.sobre-values {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+.sobre-value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem;
+  border: 1px solid var(--color-outline-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-lowest);
+}
+.sobre-value-index {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #004b71;
+  min-width: 22px;
+  flex-shrink: 0;
+}
+.sobre-value-text {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-on-surface-muted);
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 640px) {
+  .sobre-metrics,
+  .sobre-results { grid-template-columns: 1fr; }
+  .sobre-products,
+  .sobre-values { grid-template-columns: 1fr; }
+  .sobre-hero { padding: 2.5rem 1.25rem 2rem; }
+  .sobre-section { padding: 2.25rem 1.25rem; }
+  .sobre-metric { padding: 1.5rem 1.25rem; }
+}
