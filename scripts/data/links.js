@@ -10,7 +10,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-calendar',
     gradient: 'linear-gradient(135deg, #004b71, #006494)',
-    logo: 'https://logo.clearbit.com/ahgora.com.br',
+    logo: 'ahgora.com.br',
   },
   {
     id: 'portal-rh',
@@ -32,7 +32,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-document',
     gradient: 'linear-gradient(135deg, #0052cc, #0065ff)',
-    logo: 'https://logo.clearbit.com/atlassian.com',
+    logo: 'atlassian.com',
   },
   {
     id: 'sesame',
@@ -43,7 +43,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-calendar',
     gradient: 'linear-gradient(135deg, #0891b2, #06b6d4)',
-    logo: 'https://logo.clearbit.com/sesametime.com',
+    logo: 'sesametime.com',
   },
   {
     id: 'mariproject',
@@ -65,7 +65,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-book',
     gradient: 'linear-gradient(135deg, #0052cc, #0288d1)',
-    logo: 'https://logo.clearbit.com/atlassian.com',
+    logo: 'atlassian.com',
   },
   // RH
   {
@@ -77,7 +77,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-utensils',
     gradient: 'linear-gradient(135deg, #d97706, #f59e0b)',
-    logo: 'https://logo.clearbit.com/flashapp.com.br',
+    logo: 'flashapp.com.br',
   },
   {
     id: 'wellhub-app',
@@ -88,7 +88,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-zap',
     gradient: 'linear-gradient(135deg, #4a148c, #6a1b9a)',
-    logo: 'https://logo.clearbit.com/wellhub.com',
+    logo: 'wellhub.com',
   },
   {
     id: 'zenklub',
@@ -99,7 +99,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-brain',
     gradient: 'linear-gradient(135deg, #1b5e20, #2e7d32)',
-    logo: 'https://logo.clearbit.com/zenklub.com.br',
+    logo: 'zenklub.com.br',
   },
   // Financeiro
   {
@@ -123,7 +123,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-mail',
     gradient: 'linear-gradient(135deg, #d93025, #ea4335)',
-    logo: 'https://logo.clearbit.com/google.com',
+    logo: 'google.com',
   },
   {
     id: 'meet',
@@ -134,7 +134,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-play',
     gradient: 'linear-gradient(135deg, #0f9d58, #1ea362)',
-    logo: 'https://logo.clearbit.com/google.com',
+    logo: 'google.com',
   },
   // Ferramentas
   {
@@ -146,7 +146,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-link',
     gradient: 'linear-gradient(135deg, #1565c0, #1976d2)',
-    logo: 'https://logo.clearbit.com/google.com',
+    logo: 'google.com',
   },
   {
     id: 'github',
@@ -157,7 +157,7 @@ export const links = [
     isExternal: true,
     icon: 'icon-document',
     gradient: 'linear-gradient(135deg, #24292e, #3d444d)',
-    logo: 'https://logo.clearbit.com/github.com',
+    logo: 'github.com',
   },
 ];
 

@@ -16,7 +16,7 @@ export const beneficios = [
     provider: 'Flash',
     howToAccess: 'Você receberá um e-mail da Flash ("Flash | Seja Bem Vindo!") com sua senha. Baixe o app Flash, faça login e use sempre na função crédito. O cartão físico chega pelo Correios em até 10 dias úteis.',
     gradient: 'linear-gradient(135deg, #004b71, #006494)',
-    logo: 'https://logo.clearbit.com/flashapp.com.br',
+    logo: 'flashapp.com.br',
     countries: ['BR'],
   },
   {
@@ -48,7 +48,7 @@ export const beneficios = [
     provider: 'SulAmérica',
     howToAccess: 'Você receberá a carteirinha digital por e-mail em até 7 dias úteis. Para incluir dependentes, entre em contato com o RH em até 30 dias da admissão. Acesse a rede credenciada pelo app SulAmérica ou pelo site.',
     gradient: 'linear-gradient(135deg, #c62828, #e53935)',
-    logo: 'https://logo.clearbit.com/sulamerica.com.br',
+    logo: 'sulamerica.com.br',
     countries: ['BR'],
   },
   {
@@ -64,7 +64,7 @@ export const beneficios = [
     provider: 'SulAmérica',
     howToAccess: 'Você receberá a carteirinha digital por e-mail em até 7 dias úteis. Para incluir dependentes, solicite ao RH em até 30 dias da admissão. Busque dentistas credenciados pelo app SulAmérica.',
     gradient: 'linear-gradient(135deg, #283593, #3949ab)',
-    logo: 'https://logo.clearbit.com/sulamerica.com.br',
+    logo: 'sulamerica.com.br',
     countries: ['BR'],
   },
   {
@@ -80,7 +80,7 @@ export const beneficios = [
     provider: 'SulAmérica',
     howToAccess: 'A adesão é automática na admissão. Para atualizar beneficiários ou consultar apólice, fale com o RH pelo e-mail rh@mc1global.com.',
     gradient: 'linear-gradient(135deg, #00695c, #00897b)',
-    logo: 'https://logo.clearbit.com/sulamerica.com.br',
+    logo: 'sulamerica.com.br',
     countries: ['BR'],
   },
   {
@@ -96,7 +96,7 @@ export const beneficios = [
     provider: 'Wellhub',
     howToAccess: 'Acesse o app ou site do Wellhub, busque pelo nome da sua empresa (MC1), selecione, preencha suas informações e escolha seu plano. Você tem 7 dias grátis para explorar antes de ativar.',
     gradient: 'linear-gradient(135deg, #4a148c, #6a1b9a)',
-    logo: 'https://logo.clearbit.com/wellhub.com',
+    logo: 'wellhub.com',
     countries: ['BR'],
   },
   {
@@ -144,7 +144,7 @@ export const beneficios = [
     provider: 'ZenKlub',
     howToAccess: 'Baixe o app ou acesse o site do Zenklub. Cadastre-se com seu e-mail corporativo MC1 e insira o código de ativação fornecido pelo RH. Pronto — agende suas sessões e acesse todos os conteúdos.',
     gradient: 'linear-gradient(135deg, #1b5e20, #2e7d32)',
-    logo: 'https://logo.clearbit.com/zenklub.com.br',
+    logo: 'zenklub.com.br',
     countries: ['BR'],
   },
 ];

@@ -83,11 +83,12 @@ function buildNewsCard(card, { title, excerpt, tagLabel, dateLabel, gradient, hr
 // ─── Benefit Card ───
 function buildBenefitCard(card, { name, shortDesc, icon, gradient, logo, onClick }) {
   const accentColor = extractFirstColor(gradient);
+  const logoSrc = _logoSrc(logo);
   card.style.cursor = 'pointer';
   card.innerHTML = `
     <div class="card-body card-body-lg">
       <div class="icon-wrap icon-wrap-lg" style="background: ${accentColor}1a; color: ${accentColor}; margin-bottom: var(--space-5);">
-        ${logo ? `<img src="${logo}" alt="" loading="lazy"
+        ${logoSrc ? `<img src="${logoSrc}" alt="" loading="lazy"
           style="width:28px;height:28px;object-fit:contain;border-radius:4px;"
           onload="var p=this.parentElement;p.style.background='white';p.style.border='1px solid rgba(0,0,0,0.08)';this.nextElementSibling.style.display='none'"
           onerror="this.style.display='none'">` : ''}
@@ -134,11 +135,12 @@ function buildDocumentCard(card, { name, category, lastUpdatedLabel, fileType, f
 
 // ─── Link Card ───
 function buildLinkCard(card, { name, description, category, gradient, logo, href, isExternal }) {
+  const logoSrc = _logoSrc(logo);
   card.style.cursor = 'pointer';
   card.innerHTML = `
     <div class="card-body card-body-lg">
       <div class="card-link-thumb" style="width:44px; height:44px; border-radius: var(--radius-lg); background: ${gradient}; display:flex; align-items:center; justify-content:center; color:white; font-size:18px; font-weight:700; margin-bottom:var(--space-4);">
-        ${logo ? `<img src="${logo}" alt="" loading="lazy"
+        ${logoSrc ? `<img src="${logoSrc}" alt="" loading="lazy"
           style="width:28px;height:28px;object-fit:contain;border-radius:4px;"
           onload="var p=this.parentElement;p.style.background='white';p.style.border='1px solid rgba(0,0,0,0.08)';this.nextElementSibling.style.display='none'"
           onerror="this.style.display='none'">` : ''}
@@ -237,4 +239,9 @@ function buildQuickLinkCard(card, { title, icon, href, gradient, revealDelay }) 
 function extractFirstColor(gradient) {
   const match = gradient.match(/#([0-9a-fA-F]{3,8})/);
   return match ? match[0] : '#004b71';
+}
+
+// ─── Helper: domain → logo URL (Google Favicon API) ───
+function _logoSrc(domain) {
+  return domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : null;
 }
