@@ -81,11 +81,16 @@ function buildNewsCard(card, { title, excerpt, tagLabel, dateLabel, gradient, hr
 }
 
 // ─── Benefit Card ───
-function buildBenefitCard(card, { name, shortDesc, icon, gradient, onClick }) {
+function buildBenefitCard(card, { name, shortDesc, icon, gradient, logo, onClick }) {
+  const accentColor = extractFirstColor(gradient);
   card.style.cursor = 'pointer';
   card.innerHTML = `
     <div class="card-body card-body-lg">
-      <div class="icon-wrap icon-wrap-lg" style="background: ${extractFirstColor(gradient)}1a; color: ${extractFirstColor(gradient)}; margin-bottom: var(--space-5);">
+      <div class="icon-wrap icon-wrap-lg" style="background: ${accentColor}1a; color: ${accentColor}; margin-bottom: var(--space-5);">
+        ${logo ? `<img src="${logo}" alt="" loading="lazy"
+          style="width:28px;height:28px;object-fit:contain;border-radius:4px;"
+          onload="var p=this.parentElement;p.style.background='white';p.style.border='1px solid rgba(0,0,0,0.08)';this.nextElementSibling.style.display='none'"
+          onerror="this.style.display='none'">` : ''}
         <svg width="28" height="28"><use href="#${icon}"/></svg>
       </div>
       <h3 class="title-lg" style="margin-bottom: var(--space-3)">${name}</h3>
@@ -128,12 +133,16 @@ function buildDocumentCard(card, { name, category, lastUpdatedLabel, fileType, f
 }
 
 // ─── Link Card ───
-function buildLinkCard(card, { name, description, category, gradient, href, isExternal }) {
+function buildLinkCard(card, { name, description, category, gradient, logo, href, isExternal }) {
   card.style.cursor = 'pointer';
   card.innerHTML = `
     <div class="card-body card-body-lg">
       <div class="card-link-thumb" style="width:44px; height:44px; border-radius: var(--radius-lg); background: ${gradient}; display:flex; align-items:center; justify-content:center; color:white; font-size:18px; font-weight:700; margin-bottom:var(--space-4);">
-        ${name.charAt(0)}
+        ${logo ? `<img src="${logo}" alt="" loading="lazy"
+          style="width:28px;height:28px;object-fit:contain;border-radius:4px;"
+          onload="var p=this.parentElement;p.style.background='white';p.style.border='1px solid rgba(0,0,0,0.08)';this.nextElementSibling.style.display='none'"
+          onerror="this.style.display='none'">` : ''}
+        <span>${name.charAt(0)}</span>
       </div>
       <h3 class="title-md" style="margin-bottom: var(--space-2)">${name}</h3>
       <p class="body-md text-muted" style="display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin-bottom: var(--space-4);">${description}</p>

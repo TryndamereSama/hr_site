@@ -56,6 +56,7 @@ export function renderLinks(container) {
         href: l.url,
         isExternal: l.isExternal,
         gradient: l.gradient,
+        logo: l.logo || null,
         revealDelay: i * 60,
       });
       grid.appendChild(card);

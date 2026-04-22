@@ -107,6 +107,7 @@ export function renderRH(container) {
         shortDesc: b.shortDesc,
         icon: b.icon,
         gradient: b.gradient,
+        logo: b.logo || null,
         revealDelay: i * 60,
         onClick: () => openBenefitModal(b),
       });
