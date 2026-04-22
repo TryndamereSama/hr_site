@@ -3,6 +3,7 @@
 import { t } from '../i18n.js';
 
 export function renderSobreMC1(container) {
+  container.innerHTML = `
     <!-- Breadcrumb header -->
     <section class="section-sm" style="background: var(--color-surface-container-low);">
       <div class="container" style="max-width:900px">
