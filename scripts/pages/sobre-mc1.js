@@ -3,27 +3,15 @@
 import { t } from '../i18n.js';
 
 export function renderSobreMC1(container) {
-  // Load DM Serif Display for this page's editorial headings
-  if (!document.getElementById('dm-serif-font')) {
-    const link = document.createElement('link');
-    link.id = 'dm-serif-font';
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap';
-    document.head.appendChild(link);
-  }
-
   container.innerHTML = `
     <!-- Page-scoped styles -->
     <style>
       .sobre-page {
-        font-family: 'DM Sans', var(--font-sans, system-ui, sans-serif);
+        font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
         color: var(--color-on-surface);
         max-width: 900px;
         margin: 0 auto;
         padding-bottom: 4rem;
-      }
-      .sobre-page .dm-serif {
-        font-family: 'DM Serif Display', Georgia, serif;
       }
       .sobre-page .s-eyebrow {
         font-size: 11px;
@@ -39,14 +27,15 @@ export function renderSobreMC1(container) {
         border-bottom: 1px solid var(--color-outline-subtle);
       }
       .sobre-hero-title {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: clamp(2rem, 5vw, 3.4rem);
-        line-height: 1.1;
+        font-size: clamp(1.9rem, 4.5vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
         max-width: 680px;
         margin-bottom: 1.25rem;
         color: var(--color-on-surface);
       }
-      .sobre-hero-title em { font-style: italic; color: #1D9E75; }
+      .sobre-hero-title strong { color: #004b71; font-weight: 800; }
       .sobre-hero-sub {
         font-size: 1rem;
         color: var(--color-on-surface-muted);
@@ -82,9 +71,10 @@ export function renderSobreMC1(container) {
         padding: 2rem 1.75rem;
       }
       .sobre-metric-num {
-        font-family: 'DM Serif Display', Georgia, serif;
         font-size: 2.8rem;
-        color: #1D9E75;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: #004b71;
         line-height: 1;
       }
       .sobre-metric-label {
@@ -100,8 +90,9 @@ export function renderSobreMC1(container) {
         border-bottom: 1px solid var(--color-outline-subtle);
       }
       .sobre-section-title {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: 1.75rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
         margin-bottom: 1rem;
         color: var(--color-on-surface);
       }
@@ -135,15 +126,17 @@ export function renderSobreMC1(container) {
         margin-bottom: 0.75rem;
       }
       .sobre-result-stat {
-        font-family: 'DM Serif Display', Georgia, serif;
         font-size: 2.2rem;
-        color: #1D9E75;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: #004b71;
         line-height: 1;
       }
       .sobre-result-stat-sm {
-        font-family: 'DM Serif Display', Georgia, serif;
         font-size: 1.6rem;
-        color: #1D9E75;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: #004b71;
         line-height: 1;
         margin-top: 12px;
       }
@@ -174,7 +167,7 @@ export function renderSobreMC1(container) {
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: #1D9E75;
+        background: #004b71;
         flex-shrink: 0;
         margin-top: 5px;
       }
@@ -198,7 +191,7 @@ export function renderSobreMC1(container) {
         margin-top: 1.75rem;
       }
       .sobre-office {
-        border-left: 2px solid #1D9E75;
+        border-left: 2px solid #004b71;
         padding-left: 14px;
       }
       .sobre-office-city {
@@ -230,9 +223,9 @@ export function renderSobreMC1(container) {
         background: var(--color-surface-lowest);
       }
       .sobre-value-index {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: 1.2rem;
-        color: #1D9E75;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #004b71;
         min-width: 22px;
         flex-shrink: 0;
       }
@@ -244,14 +237,15 @@ export function renderSobreMC1(container) {
 
       /* ─── CTA ─── */
       .sobre-cta {
-        background: #052e1e;
+        background: #001e2d;
         padding: 4rem 2rem;
         text-align: center;
         margin: 0;
       }
       .sobre-cta-title {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: 2rem;
+        font-size: 1.9rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
         color: #ffffff;
         margin-bottom: 0.75rem;
         line-height: 1.2;
@@ -269,7 +263,7 @@ export function renderSobreMC1(container) {
         align-items: center;
         gap: 8px;
         padding: 12px 28px;
-        background: #1D9E75;
+        background: #004b71;
         color: #fff;
         border-radius: var(--radius-md);
         font-size: 0.9rem;
@@ -277,7 +271,7 @@ export function renderSobreMC1(container) {
         text-decoration: none;
         transition: background 0.2s;
       }
-      .sobre-cta-btn:hover { background: #178a65; }
+      .sobre-cta-btn:hover { background: #006494; }
 
       /* ─── Mobile ─── */
       @media (max-width: 640px) {
@@ -312,10 +306,10 @@ export function renderSobreMC1(container) {
       <div class="sobre-hero" data-reveal>
         <p class="s-eyebrow">MC1 · Win the Market</p>
         <h1 class="sobre-hero-title">
-          Software que transforma execução de vendas em <em>resultado real</em>
+          Software que transforma execução de vendas em <strong>resultado real</strong>
         </h1>
         <p class="sobre-hero-sub">
-          Mais de 20 anos capacitando empresas de bens de consumo a vender mais, com mais eficiência e menor custo operacional. Presente em mais de 30 países, com mais de 100 clientes Tier 1.
+          Mais de 20 anos capacitando empresas de bens de consumo a vender mais, com mais eficiência e menor custo operacional. Presente em toda a América Latina e nas maiores empresas de consumo do mundo.
         </p>
         <div class="sobre-tags">
           <span class="sobre-tag">Image Recognition</span>
@@ -335,11 +329,11 @@ export function renderSobreMC1(container) {
         </div>
         <div class="sobre-metric" data-reveal>
           <div class="sobre-metric-num">30+</div>
-          <div class="sobre-metric-label">países com operações ativas</div>
+          <div class="sobre-metric-label">operações ativas em toda a América Latina</div>
         </div>
         <div class="sobre-metric" data-reveal>
           <div class="sobre-metric-num">100+</div>
-          <div class="sobre-metric-label">clientes Tier 1 em múltiplos setores</div>
+          <div class="sobre-metric-label">Presente na operação das maiores empresas de consumo do mundo</div>
         </div>
       </div>
 
