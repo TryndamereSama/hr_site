@@ -235,43 +235,6 @@ export function renderSobreMC1(container) {
         color: var(--color-on-surface-muted);
       }
 
-      /* ─── CTA ─── */
-      .sobre-cta {
-        background: #001e2d;
-        padding: 4rem 2rem;
-        text-align: center;
-        margin: 0;
-      }
-      .sobre-cta-title {
-        font-size: 1.9rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: #ffffff;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      }
-      .sobre-cta-sub {
-        font-size: 0.95rem;
-        color: rgba(255,255,255,0.65);
-        margin-bottom: 1.75rem;
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .sobre-cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 28px;
-        background: #004b71;
-        color: #fff;
-        border-radius: var(--radius-md);
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.2s;
-      }
-      .sobre-cta-btn:hover { background: #006494; }
 
       /* ─── Mobile ─── */
       @media (max-width: 640px) {
@@ -281,7 +244,6 @@ export function renderSobreMC1(container) {
         .sobre-values { grid-template-columns: 1fr; }
         .sobre-hero { padding: 2.5rem 1.25rem 2rem; }
         .sobre-section { padding: 2.25rem 1.25rem; }
-        .sobre-cta { padding: 3rem 1.25rem; }
         .sobre-metric { padding: 1.5rem 1.25rem; }
       }
     </style>
@@ -470,15 +432,6 @@ export function renderSobreMC1(container) {
         </div>
       </div>
 
-      <!-- ⑧ CTA -->
-      <div class="sobre-cta">
-        <h2 class="sobre-cta-title">Pronto para transformar sua operação de campo?</h2>
-        <p class="sobre-cta-sub">Converse com nossos especialistas e veja como a MC1 se aplica ao seu contexto.</p>
-        <a href="#/contato" class="sobre-cta-btn">
-          Falar com um especialista
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
-      </div>
 
     </div>
   `;
