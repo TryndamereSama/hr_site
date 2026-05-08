@@ -6,9 +6,9 @@ import { t } from '../i18n.js';
 import { getCountry } from '../i18n.js';
 
 // ─── All News Page ───
-export function renderNoticias(container) {
+export async function renderNoticias(container) {
   const allLabel = t('news.filter_all');
-  const noticias = getLocalizedNoticias();
+  const noticias = await getLocalizedNoticias();
   const categories = [allLabel, ...new Set(noticias.map(n => n.tagLabel))];
   let activeFilter = allLabel;
 
@@ -94,8 +94,8 @@ export function renderNoticias(container) {
 }
 
 // ─── Single Article Page ───
-export function renderNoticia(container, { id }) {
-  const noticia = getLocalizedNoticia(id);
+export async function renderNoticia(container, { id }) {
+  const noticia = await getLocalizedNoticia(id);
 
   if (!noticia) {
     container.innerHTML = `
@@ -106,7 +106,7 @@ export function renderNoticia(container, { id }) {
     return;
   }
 
-  const others = getLocalizedNoticias().filter(n => n.id !== id).slice(0, 3);
+  const others = (await getLocalizedNoticias()).filter(n => n.id !== id).slice(0, 3);
 
   container.innerHTML = `
     <!-- Article Hero -->

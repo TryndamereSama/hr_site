@@ -24,12 +24,14 @@ import { renderPoliticas }   from './pages/politicas.js';
 import { renderTreinamentos} from './pages/treinamentos.js';
 import { renderLinks }       from './pages/links.js';
 import { renderContato }     from './pages/contato.js';
+import { renderAdmin }       from './pages/admin.js';
 
 // ─── Register Routes ───
-route('#/',               (el) => { renderHome(el);         postRender(); });
-route('#/noticias',       (el) => { renderNoticias(el);     postRender(); });
-route('#/noticia/:id',    (el, p) => { renderNoticia(el, p); postRender(); });
-route('#/rh',             (el) => { renderRH(el);           postRender(); });
+route('#/',               async (el) => { await renderHome(el);          postRender(); });
+route('#/noticias',       async (el) => { await renderNoticias(el);      postRender(); });
+route('#/noticia/:id',    async (el, p) => { await renderNoticia(el, p); postRender(); });
+route('#/rh',             async (el) => { await renderRH(el);            postRender(); });
+route('#/admin',          (el) => { renderAdmin(el); });
 route('#/financeiro',          (el) => { renderFinanceiro(el);  postRender(); });
 route('#/financeiro/compras',      (el) => { renderCompras(el);            postRender(); });
 route('#/financeiro/viagens',      (el) => { renderViagens(el);            postRender(); });

@@ -664,6 +664,40 @@ export const getNoticia = (id) => noticias.find(n => n.id === id);
 export const getNoticiasFeatured = () => noticias.filter(n => n.featured).slice(0, 3);
 export const getNoticiasRecentes = (limit = 3) => [...noticias].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, limit);
 
+// ─── Firestore integration ────────────────────────────────────────────────────
+
+let _fsCache = null; // null = not loaded yet, [] = loaded but empty
+
+/** Invalidate Firestore cache — call after admin create / update / delete */
+export function invalidateNoticiasCache() { _fsCache = null; }
+
+async function _loadFromFirestore() {
+  if (_fsCache !== null) return _fsCache;
+  try {
+    const { db } = await import('../firebase.js');
+    if (!db) { _fsCache = []; return []; }
+    const { collection, query, where, orderBy, getDocs } =
+      await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
+    const q = query(
+      collection(db, 'comunicados'),
+      where('published', '==', true),
+      orderBy('date', 'desc')
+    );
+    const snap = await getDocs(q);
+    _fsCache = snap.docs.map(d => ({ ...d.data(), id: d.data().id || d.id }));
+    return _fsCache;
+  } catch (e) {
+    console.warn('[Noticias] Firestore indisponível, usando dados estáticos:', e.message);
+    _fsCache = [];
+    return [];
+  }
+}
+
+function _mergeWithStatic(dynamic) {
+  const dynIds = new Set(dynamic.map(n => n.id));
+  return [...dynamic, ...noticias.filter(n => !dynIds.has(n.id))];
+}
+
 // ─── Locale-aware helpers ───────────────────────────────
 
 /** Checks if an article is visible for a given country code */
@@ -672,13 +706,15 @@ function _matchesCountry(n, country) {
   return n.countries.includes('ALL') || n.countries.includes(country);
 }
 
-/** Returns all articles with text fields in the current language, filtered by country */
-export function getLocalizedNoticias() {
+/** Returns all articles (Firestore + static fallback) in current language, filtered by country */
+export async function getLocalizedNoticias() {
   const lang    = getLang();
   const country = getCountry();
-  const base = lang === 'pt' ? noticias : (() => {
+  const dynamic = await _loadFromFirestore();
+  const all     = _mergeWithStatic(dynamic);
+  const base = lang === 'pt' ? all : (() => {
     const tr = noticiasTranslations[lang] || {};
-    return noticias.map(n => {
+    return all.map(n => {
       const override = tr[n.id];
       return override ? { ...n, ...override } : n;
     });
@@ -686,12 +722,14 @@ export function getLocalizedNoticias() {
   return base.filter(n => _matchesCountry(n, country));
 }
 
-/** Returns a single article by id in the current language (no country filter — direct access) */
-export function getLocalizedNoticia(id) {
-  const lang = getLang();
-  const base = lang === 'pt' ? noticias : (() => {
+/** Returns a single article by id in the current language */
+export async function getLocalizedNoticia(id) {
+  const lang    = getLang();
+  const dynamic = await _loadFromFirestore();
+  const all     = _mergeWithStatic(dynamic);
+  const base = lang === 'pt' ? all : (() => {
     const tr = noticiasTranslations[lang] || {};
-    return noticias.map(n => {
+    return all.map(n => {
       const override = tr[n.id];
       return override ? { ...n, ...override } : n;
     });
@@ -699,9 +737,9 @@ export function getLocalizedNoticia(id) {
   return base.find(n => n.id === id);
 }
 
-/** Returns the N most recent articles in the current language, filtered by country */
-export function getLocalizedNoticiasRecentes(limit = 3) {
-  return [...getLocalizedNoticias()]
+/** Returns the N most recent articles in current language, filtered by country */
+export async function getLocalizedNoticiasRecentes(limit = 3) {
+  return (await getLocalizedNoticias())
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, limit);
 }

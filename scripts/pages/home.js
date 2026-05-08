@@ -37,8 +37,8 @@ function _truncate(str, max = 38) {
   return str.length > max ? str.slice(0, max - 1).trimEnd() + '…' : str;
 }
 
-export function renderHome(container) {
-  const allBubbleNews = getLocalizedNoticiasRecentes(7);
+export async function renderHome(container) {
+  const allBubbleNews = await getLocalizedNoticiasRecentes(7);
   const news = allBubbleNews.slice(0, 3);
   const latestNews = allBubbleNews[0];
 

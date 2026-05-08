@@ -10,8 +10,8 @@ import { t } from '../i18n.js';
 // Tags considered RH-related
 const RH_TAGS = ['sindpd', 'pagamento', 'programas', 'comunicado', 'bemestar'];
 
-export function renderRH(container) {
-  const comunicados = getLocalizedNoticias()
+export async function renderRH(container) {
+  const comunicados = (await getLocalizedNoticias())
     .filter(n => RH_TAGS.includes(n.tag))
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
