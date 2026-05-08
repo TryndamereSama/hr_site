@@ -17,9 +17,10 @@ function normalize(str) {
 // ─── Build flat search index from all data sources ───
 let searchIndex = [];
 
-export function buildSearchIndex() {
+export async function buildSearchIndex() {
+  const noticias = await getLocalizedNoticias();
   searchIndex = [
-    ...getLocalizedNoticias().map(n => ({
+    ...noticias.map(n => ({
       id: n.id,
       type: 'noticia',
       typeLabel: 'Notícia',

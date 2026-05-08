@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
 
   // 3. Search
-  buildSearchIndex();
+  buildSearchIndex().catch(e => console.warn('[Search] index error:', e));
   initSearchOverlay();
 
   // 4. Router (renders current route)
@@ -83,14 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Language change — update data-i18n elements + rebuild search + re-render current page
   window.addEventListener('langchange', () => {
     applyTranslations();
-    buildSearchIndex();
+    buildSearchIndex().catch(() => {});
     window.dispatchEvent(new Event('hashchange'));
   });
 
   // 7. Country change — rebuild search + re-render current page
   window.addEventListener('countrychange', () => {
     applyTranslations();
-    buildSearchIndex();
+    buildSearchIndex().catch(() => {});
     window.dispatchEvent(new Event('hashchange'));
   });
 });
