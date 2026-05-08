@@ -18,12 +18,12 @@ import { getAuth }        from 'https://www.gstatic.com/firebasejs/10.12.2/fireb
 // ⚠️  Substitua TODOS os "REPLACE_ME" com os valores do seu projeto Firebase
 // Firebase Console → Configurações do projeto → Seus aplicativos → Web → SDK snippet → Config
 const _config = {
-  apiKey:            'REPLACE_ME',
-  authDomain:        'REPLACE_ME.firebaseapp.com',
-  projectId:         'REPLACE_ME',
-  storageBucket:     'REPLACE_ME.appspot.com',
-  messagingSenderId: 'REPLACE_ME',
-  appId:             'REPLACE_ME',
+  apiKey:            'AIzaSyAaNfqoqp5jnVtUpCaDQnUgxHEfS8qRzyA',
+  authDomain:        'mc1-hub.firebaseapp.com',
+  projectId:         'mc1-hub',
+  storageBucket:     'mc1-hub.firebasestorage.app',
+  messagingSenderId: '918770067784',
+  appId:             '1:918770067784:web:451f4a3a00a2efda752b7d',
 };
 
 export const FIREBASE_CONFIGURED = _config.apiKey !== 'REPLACE_ME';
