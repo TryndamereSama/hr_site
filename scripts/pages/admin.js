@@ -10,9 +10,9 @@ import {
   signOut,
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
-// ─── Dev/test accounts (remove before production) ───
+// ─── Allowed admin accounts (fase de testes) ───
 const ALLOWED_TEST_EMAILS = [
-  'thevinivini100@gmail.com', // ← TEMP: remover antes do deploy
+  'thevinivini100@gmail.com',
 ];
 
 // ─── Constants ───
@@ -1088,7 +1088,7 @@ export function renderAdmin(container) {
             <svg width="32" height="32"><use href="#icon-shield"/></svg>
           </div>
           <h2>Painel Admin</h2>
-          <p>Acesso restrito a contas <strong>@mc1global.com</strong></p>
+          <p>Acesso restrito a administradores</p>
           <button class="btn-google" id="btn-google-login">
             <svg width="18" height="18" viewBox="0 0 18 18">
               <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
@@ -1098,7 +1098,7 @@ export function renderAdmin(container) {
             </svg>
             Entrar com Google
           </button>
-          <p class="admin-login-note">Apenas contas @mc1global.com são autorizadas</p>
+          <p class="admin-login-note">Apenas administradores autorizados</p>
         </div>
       </div>
     </div>`;
@@ -1153,10 +1153,10 @@ function _initAuth(container) {
     }
 
     const email = user.email || '';
-    const isAllowed = email.endsWith('@mc1global.com') || ALLOWED_TEST_EMAILS.includes(email);
+    const isAllowed = ALLOWED_TEST_EMAILS.includes(email);
     if (!isAllowed) {
       signOut(auth);
-      showToast('Acesso negado: use uma conta @mc1global.com', 'error');
+      showToast('Acesso negado: conta não autorizada', 'error');
       return;
     }
 
@@ -1175,7 +1175,7 @@ function _renderLoginHTML(container) {
           <svg width="32" height="32"><use href="#icon-shield"/></svg>
         </div>
         <h2>Painel Admin</h2>
-        <p>Acesso restrito a contas <strong>@mc1global.com</strong></p>
+        <p>Acesso restrito a administradores</p>
         <button class="btn-google" id="btn-google-login">
           <svg width="18" height="18" viewBox="0 0 18 18">
             <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
@@ -1184,7 +1184,7 @@ function _renderLoginHTML(container) {
             <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.962L3.964 7.294C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
           Entrar com Google
         </button>
-        <p class="admin-login-note">Apenas contas @mc1global.com são autorizadas</p>
+        <p class="admin-login-note">Apenas administradores autorizados</p>
       </div>
     </div>`;
 }

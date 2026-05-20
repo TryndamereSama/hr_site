@@ -80,6 +80,56 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. Chat widget
   initChatWidget();
 
+  // 6. Easter egg — Konami Code (↑↑↓↓←→←→BA)
+  const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let _konamiIdx = 0;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === KONAMI[_konamiIdx]) {
+      _konamiIdx++;
+      if (_konamiIdx === KONAMI.length) {
+        _konamiIdx = 0;
+        _showKonamiEgg();
+      }
+    } else {
+      _konamiIdx = e.key === KONAMI[0] ? 1 : 0;
+    }
+  });
+
+  function _showKonamiEgg() {
+    if (document.getElementById('konami-overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.id = 'konami-overlay';
+    overlay.style.cssText = `
+      position:fixed;inset:0;z-index:99999;
+      background:rgba(0,0,0,0.85);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;animation:konami-fade-in 0.4s ease;
+    `;
+    overlay.innerHTML = `
+      <div style="text-align:center;animation:konami-pop 0.5s cubic-bezier(0.34,1.56,0.64,1)">
+        <img src="assets/images/Gemini_Generated_Image_2iy6r42iy6r42iy6.png"
+          alt="#DNAMC1er"
+          style="max-height:80vh;max-width:90vw;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.6)" />
+        <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:12px">clique para fechar</p>
+      </div>`;
+    document.body.appendChild(overlay);
+
+    // inject keyframes once
+    if (!document.getElementById('konami-styles')) {
+      const s = document.createElement('style');
+      s.id = 'konami-styles';
+      s.textContent = `
+        @keyframes konami-fade-in { from { opacity:0 } to { opacity:1 } }
+        @keyframes konami-pop { from { transform:scale(0.5);opacity:0 } to { transform:scale(1);opacity:1 } }
+      `;
+      document.head.appendChild(s);
+    }
+
+    const close = () => overlay.remove();
+    overlay.addEventListener('click', close);
+    document.addEventListener('keydown', close, { once: true });
+  }
+
   // 6. Language change — update data-i18n elements + rebuild search + re-render current page
   window.addEventListener('langchange', () => {
     applyTranslations();
