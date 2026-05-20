@@ -2,7 +2,7 @@
 
 const STORAGE_KEY   = 'mc1-lang';
 const COUNTRY_KEY   = 'mc1-country';
-const VALID_COUNTRIES = ['BR', 'MX'];
+const VALID_COUNTRIES = ['BR', 'MX', 'US'];
 
 const translations = {
   // ─────────────────────────────────────────────────────
@@ -179,6 +179,7 @@ const translations = {
     'country.label': 'País',
     'country.BR': 'Brasil',
     'country.MX': 'México',
+    'country.US': 'Global / EN',
     'country.no_benefits': 'Nenhum benefício disponível para o país selecionado.',
     'country.no_news': 'Nenhuma notícia disponível para o país selecionado.',
 
@@ -374,6 +375,7 @@ const translations = {
     'country.label': 'País',
     'country.BR': 'Brasil',
     'country.MX': 'México',
+    'country.US': 'Global / EN',
     'country.no_benefits': 'No hay beneficios disponibles para el país seleccionado.',
     'country.no_news': 'No hay noticias disponibles para el país seleccionado.',
 
@@ -569,6 +571,7 @@ const translations = {
     'country.label': 'Country',
     'country.BR': 'Brazil',
     'country.MX': 'Mexico',
+    'country.US': 'Global / EN',
     'country.no_benefits': 'No benefits available for the selected country.',
     'country.no_news': 'No news available for the selected country.',
 
@@ -605,7 +608,12 @@ export function setLang(lang) {
 
 export function getCountry() {
   const stored = localStorage.getItem(COUNTRY_KEY);
-  return VALID_COUNTRIES.includes(stored) ? stored : 'BR';
+  if (VALID_COUNTRIES.includes(stored)) return stored;
+  // Auto-assign by active language when no country stored
+  const lang = getLang();
+  if (lang === 'en') return 'US';
+  if (lang === 'es') return 'MX';
+  return 'BR';
 }
 
 export function setCountry(country) {

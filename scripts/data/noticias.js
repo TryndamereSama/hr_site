@@ -3,6 +3,85 @@ import { getLang, getCountry } from '../i18n.js';
 import { noticiasTranslations } from './noticias-i18n.js';
 
 export const noticias = [
+  // ─── 2026-05-20 ───
+  {
+    id: 'totalpass-novo-beneficio-2026',
+    title: 'Seu Novo Benefício de Bem-Estar Está Chegando! 🏋️',
+    excerpt: 'Prepare-se para explorar as infinitas possibilidades de cuidado físico e mental com a TotalPass. Academias, saúde mental, serviços online e muito mais. #VamosTotalizar',
+    body: `
+      <img src="assets/images/totalpass-novo-beneficio.png" alt="TotalPass — Seu Novo Benefício de Bem-Estar" style="width:100%; border-radius:12px; margin-bottom:1.5rem;" />
+
+      <p>Prepare-se para explorar as infinitas possibilidades de <strong>cuidado físico e mental</strong> com a TotalPass. 💚</p>
+
+      <h3>O que você terá acesso:</h3>
+
+      <div style="display:flex;flex-direction:column;gap:0.75rem;margin:1rem 0 1.5rem;">
+        <div style="display:flex;gap:1rem;align-items:center;padding:0.75rem 1rem;background:var(--color-surface-container-low);border-radius:var(--radius-lg)">
+          <span style="font-size:1.25rem;flex-shrink:0">📍</span>
+          <p style="margin:0"><strong>As melhores academias e estúdios do Brasil</strong></p>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;padding:0.75rem 1rem;background:var(--color-surface-container-low);border-radius:var(--radius-lg)">
+          <span style="font-size:1.25rem;flex-shrink:0">⭐</span>
+          <p style="margin:0"><strong>Parceiros exclusivos para cuidar da sua saúde mental</strong></p>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;padding:0.75rem 1rem;background:var(--color-surface-container-low);border-radius:var(--radius-lg)">
+          <span style="font-size:1.25rem;flex-shrink:0">▶️</span>
+          <p style="margin:0"><strong>Serviços on-line para se manter ativo onde estiver</strong></p>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;padding:0.75rem 1rem;background:var(--color-surface-container-low);border-radius:var(--radius-lg)">
+          <span style="font-size:1.25rem;flex-shrink:0">💰</span>
+          <p style="margin:0"><strong>Uma mensalidade, sem taxa de adesão ou cancelamento</strong></p>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-weight:700;font-size:1.05rem;">Todos ansiosos? Porque por aqui, nós estamos. 😄</p>
+      <p style="text-align:center;font-size:1.15rem;font-weight:800;color:#16a34a;letter-spacing:0.02em">#VAMOSTOTALIZAR</p>
+
+      <p style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--color-surface-container-low);border-left:3px solid var(--color-primary);border-radius:0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'Benefício',
+    tag: 'beneficio',
+    tagLabel: 'Benefício',
+    date: '2026-05-20',
+    dateLabel: '20 de maio de 2026',
+    author: 'Gente & Futuro',
+    readTime: '2 min',
+    image: 'assets/images/totalpass-novo-beneficio.png',
+    gradient: 'linear-gradient(135deg, #0d4b2e, #16a34a)',
+    featured: false,
+    countries: ['BR'],
+  },
+  {
+    id: 'wellhub-descontinuacao-maio-2026',
+    title: 'Atenção: Wellhub será descontinuado no Brasil 📢',
+    excerpt: 'O parceiro Wellhub ficará ativo na MC1 Brasil até 31/05/2026. Saiba como gerenciar seu plano e evitar cobranças indevidas.',
+    body: `
+      <p>Olá, MC1er 👋</p>
+
+      <p>Não esqueça! O parceiro <strong>Wellhub</strong> será descontinuado na <strong>MC1 Brasil</strong> e ficará ativo até <strong>31/05/2026</strong>. A MC1 México continuará com o mesmo parceiro.</p>
+
+      <p>Se você possui um plano ativo, lembre-se de acompanhar e gerenciar o faturamento no seu cartão de crédito para evitar cobranças após esse período. Em caso de dúvidas, utilize o suporte no app do Wellhub.</p>
+
+      <p style="margin-top:1.5rem;color:var(--color-on-surface-variant);font-style:italic">Gente &amp; Futuro</p>
+
+      <p style="margin-top:1.5rem;padding:1rem 1.25rem;background:var(--color-surface-container-low);border-left:3px solid var(--color-primary);border-radius:0 var(--radius-md) var(--radius-md) 0;">
+        Dúvidas? Entre em contato com o RH pelo e-mail <strong>rh@mc1global.com</strong>.
+      </p>
+    `,
+    category: 'Benefício',
+    tag: 'beneficio',
+    tagLabel: 'Benefício',
+    date: '2026-05-20',
+    dateLabel: '20 de maio de 2026',
+    author: 'Gente & Futuro',
+    readTime: '1 min',
+    image: null,
+    gradient: 'linear-gradient(135deg, #4a148c, #6a1b9a)',
+    featured: false,
+    countries: ['BR'],
+  },
   // ─── 2026-04-15 ───
   {
     id: 'zenklub-ative-beneficio',
@@ -666,44 +745,69 @@ export const getNoticiasRecentes = (limit = 3) => [...noticias].sort((a, b) => n
 
 // ─── Firestore integration ────────────────────────────────────────────────────
 
-let _fsCache = null; // null = not loaded yet, [] = loaded but empty
+let _fsCache     = null;  // null = not loaded yet
+let _fsAvailable = false; // true once Firestore responds (even with 0 results)
 
 /** Invalidate Firestore cache — call after admin create / update / delete */
-export function invalidateNoticiasCache() { _fsCache = null; }
+export function invalidateNoticiasCache() { _fsCache = null; _fsAvailable = false; }
 
 async function _loadFromFirestore() {
   if (_fsCache !== null) return _fsCache;
   try {
     const { db } = await import('../firebase.js');
     if (!db) { _fsCache = []; return []; }
-    const { collection, query, where, orderBy, getDocs } =
+    const { collection, query, where, getDocs } =
       await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
-    const q = query(
-      collection(db, 'comunicados'),
-      where('published', '==', true),
-      orderBy('date', 'desc')
-    );
+    // No orderBy → no composite index required; sort client-side after merge
+    const q = query(collection(db, 'comunicados'), where('published', '==', true));
     const snap = await getDocs(q);
-    _fsCache = snap.docs.map(d => ({ ...d.data(), id: d.data().id || d.id }));
+    _fsCache = snap.docs
+      .map(d => {
+        const data = { ...d.data(), id: d.data().id || d.id };
+        // Generate dateLabel if missing (e.g. "15 de abril de 2026")
+        if (!data.dateLabel && data.date) {
+          try {
+            data.dateLabel = new Intl.DateTimeFormat('pt-BR', {
+              day: 'numeric', month: 'long', year: 'numeric'
+            }).format(new Date(data.date + 'T12:00:00'));
+          } catch { data.dateLabel = data.date; }
+        }
+        return data;
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+    _fsAvailable = true;
     return _fsCache;
   } catch (e) {
     console.warn('[Noticias] Firestore indisponível, usando dados estáticos:', e.message);
-    _fsCache = [];
+    _fsCache     = [];
+    _fsAvailable = false;
     return [];
   }
 }
 
 function _mergeWithStatic(dynamic) {
+  // Firestore is up → trust it exclusively (drafts stay hidden, deletes respected)
+  if (_fsAvailable) return dynamic;
+  // Firestore down → fallback to static for articles not already in dynamic
   const dynIds = new Set(dynamic.map(n => n.id));
   return [...dynamic, ...noticias.filter(n => !dynIds.has(n.id))];
 }
 
 // ─── Locale-aware helpers ───────────────────────────────
 
-/** Checks if an article is visible for a given country code */
+/** Checks if an article is visible for a given country code.
+ *  Handles both new format (countries: ['BR','MX']) and legacy (country: 'br'). */
 function _matchesCountry(n, country) {
-  if (!n.countries || n.countries.length === 0) return true;
-  return n.countries.includes('ALL') || n.countries.includes(country);
+  // New format: countries array
+  if (Array.isArray(n.countries) && n.countries.length > 0) {
+    return n.countries.includes('ALL') || n.countries.includes(country);
+  }
+  // Legacy Firestore format: country string ('all', 'br', 'mx', 'BR', 'MX'…)
+  if (n.country) {
+    const c = n.country.toLowerCase();
+    return c === 'all' || c === country.toLowerCase();
+  }
+  return true; // no restriction
 }
 
 /** Returns all articles (Firestore + static fallback) in current language, filtered by country */
